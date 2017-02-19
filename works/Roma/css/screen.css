@@ -1,0 +1,388 @@
+
+/* body style begins here */
+body {
+	background: #f1efe8 url(../img/bg-dark.jpg) repeat-x;
+	background: url(../img/bg-drak.jpg) top center repeat-x,
+				url(../img/bg-light.jpg) 239px left repeat-x;
+				background-color: #f1efe8;
+	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+	color: #36332a;
+}
+
+a:link, a:active, a:visited {
+	color: #af670a;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #227115;
+}
+	
+a img {
+	border: none;
+}	
+
+legend {
+	display: none;
+}
+
+img {
+	display: block;
+}
+
+#content-wrapper{
+	position: relative;
+	margin: 0 auto;
+	width: 1070px;
+}
+
+#grid {
+	position: absolute;
+	left: -10px;
+	top: -20px;
+	z-index: 9999;
+	width: 1090px;
+}
+/* body style ends here */
+
+
+/* font-face begins here */
+@font-face {
+	font-family: "Museo Sans X";
+	src: url(../fonts/MuseoSans_500.otf);
+}
+#header ul a, #header h2, #home h3, #home h4, #main-video h3 {
+	font-family: "Museo Sans X", "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif; 
+}
+/* font-face ends here */
+
+
+
+/* header style begins here */
+#header ul.clearfix {
+	margin: 20px 25px 63px;
+	overflow: hidden; /* clear elements */
+}
+
+#header ul.clearfix li {
+	float: left;
+}
+
+#header ul.clearfix li a {
+	font-size: 11px;
+	float: left;
+	color: #f0eee7;
+	text-transform: uppercase;
+	margin-right: 25px;
+	padding: 0 0 3px;
+}
+
+#header ul.clearfix li a:hover {
+	padding-bottom: 2px;
+	border-bottom: 1px solid #423b2b;
+}
+
+#header ul.clearfix a em {
+	color: #7f7159;
+	font-style: normal;
+}
+
+#header h1 {
+	margin-left: 25px;
+	width: 266px;
+	float: left;
+}
+
+#header h1 a {
+	display: block;
+	width: 266px;
+	height: 27px;
+	text-indent: -9999px;
+	background: url(../img/logo.png) no-repeat;
+}
+
+#header h2 {
+	font-size: 10px;
+	color: #7f7159;
+	text-transform: uppercase;
+	float: left;
+	margin-top: 12px;
+	margin-left: 15px;
+	width: 475px;
+}
+
+#header form {
+	float: right;
+	margin-right: 25px;
+	text-align: right;
+	width: 249px;
+}
+
+#header form label {
+	position: absolute;
+	left: -9999px;
+}
+
+#header input[type="text"] {
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 6px 0 0 28px;
+	color: #333;
+	width: 180px;
+	height: 20px;
+	background: url(../img/search-bg.gif) top left no-repeat;
+	border: 0;
+	color: #333;
+}
+
+#header input[type="img"] {
+	float: left;
+}
+
+/* header style input ends here */
+
+
+
+/* main contect begins here */
+#main {
+	position: absolute;
+	top: 150px;
+}
+
+#main {
+	width: 710px;
+	float: left;
+	margin: 36px 10px 40px 0;
+}
+
+#main h3 {
+	color: #227115;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+#voices {
+	float: left;
+	margin: 150px 0 0 37px;
+	width: 310px;
+}
+
+#voices ul {
+	position: relative;
+	width: 310px;
+	height: 178px;
+	background: url(../img/bg-map.gif) no-repeat;
+}
+
+#voices ul li.l1 {
+	position: absolute;
+	padding-top: 16px; 
+	background: url(../img/mapmarker-dot.png) no-repeat 2px top;
+}
+
+#voices ul li.l1 a {
+	display: block;
+	padding-left: 11px;
+	font: 11px/14px Georgia, serif;
+	color: #32312a;
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+	background-color: rgba(255, 255, 255, 0.78);
+}
+
+#voices ul li.l1 a em {
+	display: block;
+	padding: 7px 8px 3px 2px;
+	height: 19px;
+	text-indent: -.3em;
+}
+
+/* CSS3 text-overflow */
+#voices ul li.l1 a em {
+	width: 135px; 
+	overflow: hidden;
+	white-space: nowrap; 
+	-o-text-overflow: ellipsis;
+	-khtml-text-overflow: ellipsis;
+	-moz-text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+}
+
+#voices ul li.l1 a em:hover {
+	overflow: visible;
+	white-space: normal; 
+	height: 72px;
+	background: #fff none;
+	cursor: pointer;
+	padding: 11px;
+	padding-bottom: 5px;
+	margin-left: -9px;
+}
+/**/
+
+#voices ul li.l2 {
+	position: absolute;
+	padding-top: 16px; 
+	background: url(../img/mapmarker-dot-alt.png) no-repeat 129px top;
+}
+
+#voices ul li.l2 a {
+	display: block;
+	padding-right: 11px;
+	font: 11px/14px Georgia, serif;
+	color: #32312a;
+	-moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+	background-color: rgba(255, 255, 255, 0.78);
+}
+
+#voices ul li.l2 a em {
+	display: block;
+	padding: 7px 0px 3px 10px;
+	height: 19px;
+	text-indent: -.3em;
+}
+
+/* CSS3 text-overflow */
+#voices ul li.l2 a em {
+	width: 135px; 
+	overflow: hidden;
+	white-space: nowrap; 
+	-o-text-overflow: ellipsis;
+	-khtml-text-overflow: ellipsis;
+	-moz-text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+}
+
+#voices ul li.l2 a em:hover {
+	overflow: visible;
+	white-space: normal; 
+	height: 72px;
+	background: #fff none;
+	cursor: pointer;
+	padding: 11px;
+	padding-bottom: 5px;
+	margin-right: -9px;
+}
+/**/
+
+#voices p {
+	text-align: right;
+}
+
+#voices p a {
+	margin-left: 10px;
+	font-size: 10px;
+	padding-right: 8px;
+	background: url(../img/arrow-orange.gif) no-repeat right center;
+
+}
+
+#voices p a:hover {
+	padding-bottom: 2px;
+	border-bottom: 1px solid #ccc;
+}
+/* main contect ends here */
+
+
+
+/* meta video contect begins here */
+#meta-video a:hover,
+#main-video a:hover,
+#secondary-video a:hover {
+	border-bottom: 1px solid #ccc;
+}
+
+#meta-video {
+	margin: 240px 25px 70px;
+	width: 210px;
+	float: left;
+}
+
+#meta-video img {
+	padding: 4px;
+	background-color: #fff;
+	-moz-box-shadow: 0px 2px 3px rgba(0,0,0,0.35);
+	-webkit-box-shadow: 0px 2px 3px rgba(0,0,0,0.35);
+	box-shadow: 0px 2px 3px rgba(0,0,0,0.35);
+}
+
+#meta-video h4 {
+	font-weight: bold;
+	float: left;
+	padding-left: 85px;
+	margin-top: -65px;
+}
+
+#meta-video h5 {
+	font-weight: normal;
+	float: left;
+	padding-left: 85px;
+	margin-top: -40px;
+}
+
+/* meta video contect ends here */
+
+
+
+/* main video contect begins here */
+#main-video h3 {
+	font-size: 19px;
+	line-height: 1.3em;
+	padding-bottom: 10px;
+}
+
+#main-video {
+	width: 520px;
+	float: left;
+	margin: 240px 10px 70px;
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+	column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-gap: 20px;
+	column-gap: 20px;
+}
+
+/* main video contect ends here */
+
+
+
+/* secondary video contect begins here */
+#secondary-video {
+	margin: 240px 25px 70px 57px;
+	float: left;
+	width: 178px;
+}
+
+#secondary-video ul {
+	margin: 2px 0 6px;
+}
+
+#secondary-video em {
+	font-style: normal;
+	color: #888;
+	font-size: 10px;
+}
+
+#secondary-video li a {
+	font-weight: bold;
+	font-size: 11px;
+}
+
+#secondary-video p {
+	padding-top: 6px;
+	padding-bottom: 9px;
+}
+/* secondary video contect ends here */
+
+
+
+
+
+
