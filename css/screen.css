@@ -1,15 +1,3 @@
 @import url(style.css);
-@import url(TW.css);
-@import url(OS.css);
 @import url(bootstrap.css);
 @import url(font_icon/css/pe-icon-7-stroke.css);
-@import url(font_icon/css/helper.css);
-@import url(owl.carousel.css);
-@import url(owl.theme.css);
-@import url(googleFont.css);
-
-/* emoji */
-@import url(emoji.css);
-
-/* map */
-@import url(map.css);
