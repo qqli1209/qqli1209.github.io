@@ -17,17 +17,60 @@
 	overflow: hidden;
 }
 
-/* introduction */
-#main .introduction {
+/* my articles */
+#myArticles {
 	width: 50%;
-	margin:  10em auto;
-	text-align: center;
+	margin: 10em auto;
+	font-family: 宋体, sans-serif;
 }
 
-#main .introduction h2 {
+#myArticles>h3 {
+	text-indent: 10px;
+	font-weight: 600;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #bbb;
+	-webkit-box-shadow: 0 5px 5px -5px #bbb;
+	-moz-box-shadow: 0 5px 5px -5px #bbb;
+	box-shadow: 0 5px 5px -5px #bbb;
+	border-left: 5px solid #0a5;
+}
+
+#myArticles h3 .recommend {
 	color: #0a5;
-	font-size: 3em;
 }
 
+#myArticles article {
+	margin-bottom: 20px;
+	width: 80%;
+	height: 250px;
+	padding: 20px;
+	margin: 5em auto;
+	border: 1px solid #f1f1f1;
+	background: #f1f1f1;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #bbb;
+}
+
+#myArticles article .article-header {
+	font-size: 1.4em;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+#myArticles article .article-body img {
+	height: 140px;
+	max-width: 30%;
+	float: left;
+	padding: 3px;
+	border: 1px solid #bbb;
+}
+
+#myArticles article .article-body .articleText {
+	width: 60%;
+	height: 120px;
+	line-height: 30px;
+	overflow: hidden;
+	float: right; 
+}
 
 /* main contect styles end here */

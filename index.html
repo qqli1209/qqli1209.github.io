@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tri-view Morphing</title>
+    <title>Sandy's blog</title>
     
     <!-- stylesheets -->
     <link rel='stylesheet' href="css/screen.css" type='text/css' />
@@ -15,6 +15,8 @@
     <script src="js/header.js" type="text/javascript"></script>
     <!-- baidu map script -->
     <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="js/jQuery.dot.js"></script>
 </head>
 
 
@@ -62,9 +64,25 @@
     <div id="cover-image">
         <!-- put cover image here -->
     </div>
-    <div class="introduction">
-        <h2>Introduction</h2>
-        <p>this is my homepage.</p>
+    <div id="myArticles">
+        <h3>文章<span class="recommend">推荐</span></h3>
+        <article>
+            <div class="article-header">Tri-view morphing 项目</div>
+            <div class="article-body">
+                <img src="images/1.JPG" alt="article intro image">
+                <div class="articleText dot-ellipsis">
+                    <p>机器学习致力于研究如何通过计算的手段，利用经验来改善系统自身的性能。
+“模型”泛指从数据中学得的结果，在计算机上从数据中产生“模型”的算法为学习算法。
+尽管训练集通常只是样本空间的一个很小的采样，我们仍希望它能很好地反映出样本空间的特性，否则很难期望在训练集上学得的模型能在整个样本空间上都工作得很好。
+归纳是从特殊到一般的泛化过程，即从具体的事实归结出一般性规律。“从样例中学习”是一个归纳的过程，因此亦称“归纳学习”。
+现实问题中我们常面临很大的假设空间，但学习的过程是基于有限样本训练集进行的，因此，可能有多个假设与训练集一致，即存在着一个与训练集一致的“假设集合”，我们称之为“版本空间”。
+机器学习算法在学习过程中对某种类型假设的偏好，称为“归纳偏好”。任何一个有效的机器学习算法必有其归纳偏好，归纳偏好可看作学习算法自身在一个可能很庞大的假设空间中对假设进行选择的启发式或“价值观”。
+“奥卡姆剃刀”是一种常用的、自然科学研究中最基本的原则，即“若有多个假设与观察一致，则选最简单的那个”。
+大数据时代的三大关键技术：机器学习，云计算，众包。机器学习提供数据分析能力，云计算提供数据处理能力，众包提供数据标注能力。</p>
+                </div>
+            </div>
+            <div class="article-footer"></div>
+        </article>
     </div>
 </div>
 <!-- main content ends here -->
