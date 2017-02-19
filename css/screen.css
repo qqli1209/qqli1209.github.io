@@ -1,3 +1,6 @@
 @import url(baseStyle.css);
 @import url(bootstrap.css);
 @import url(font_icon/css/pe-icon-7-stroke.css);
+
+/* homepage stylesheet */
+@import url(homepage.css);

@@ -1,0 +1,6 @@
+#cover-image {
+	width: 100%;
+	height: 40em;
+	background: url(../images/IMG_0542.JPG) no-repeat left center;
+	overflow: hidden;
+}
