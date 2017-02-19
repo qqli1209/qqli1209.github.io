@@ -1,6 +1,33 @@
+
+/* main contect styles start here */
+#main {
+	width: 100%;
+	position: relative;
+}
+
+#main>div {
+	margin-bottom: 10em;
+}
+
+/* cover image */
 #cover-image {
 	width: 100%;
 	height: 40em;
-	background: url(../images/IMG_0542.JPG) no-repeat left center;
+	background: url(../images/cover.JPG) no-repeat left center;
 	overflow: hidden;
 }
+
+/* introduction */
+#main .introduction {
+	width: 50%;
+	margin:  10em auto;
+	text-align: center;
+}
+
+#main .introduction h2 {
+	color: #0a5;
+	font-size: 3em;
+}
+
+
+/* main contect styles end here */
