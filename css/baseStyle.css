@@ -196,6 +196,7 @@ body a:hover{
   position: absolute;
   width: 100%;
   -webkit-filter: brightness(0.3);
+  -moz-filter: brightness(0.3);
   filter: brightness(0.3);
   height: 30em;
   overflow: hidden;
