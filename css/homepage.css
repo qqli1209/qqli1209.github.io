@@ -59,7 +59,7 @@
 
 #myArticles article .article-body img {
 	height: 140px;
-	max-width: 30%;
+	width: 30%;
 	float: left;
 	padding: 3px;
 	border: 1px solid #bbb;
