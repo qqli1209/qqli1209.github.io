@@ -14,12 +14,13 @@
 	width: 100%;
 	height: 40em;
 	background: url(../images/cover.JPG) no-repeat left center;
+	background-size: 100%;
 	overflow: hidden;
 }
 
 /* my articles */
 #myArticles {
-	width: 50%;
+	width: 70em;
 	margin: 10em auto;
 	font-family: 宋体, sans-serif;
 }
@@ -43,7 +44,7 @@
 	margin-bottom: 20px;
 	width: 80%;
 	height: 250px;
-	padding: 20px;
+	padding: 25px;
 	margin: 5em auto;
 	border: 1px solid #f1f1f1;
 	background: #f1f1f1;
@@ -64,7 +65,7 @@
 	padding: 3px;
 	border: 1px solid #bbb;
 }
-
+/*
 #myArticles article .article-body .articleText {
 	width: 60%;
 	height: 120px;
@@ -72,5 +73,67 @@
 	overflow: hidden;
 	float: right; 
 }
+*/
+
+#myArticles article .article-body .articleText {
+	width: 70%;
+	height: 120px;
+	line-height: 30px;
+	overflow: hidden;
+	padding-left: 10%;
+}
+
+.clearfix {
+	clear: both;
+}
+
+#myArticles article .article-footer {
+	padding: 15px 2px;
+	font-family: "iconfont";
+	font-size: 13px;
+	position: relative;
+}
+
+.time {
+    margin-right: 15px;
+    padding-left: 22px;
+    background: url(../images/icons/time.png) no-repeat center left;
+    background-size: 17px 17px;
+}
+
+.read {
+    margin-right: 15px;
+    padding-left: 22px;
+    background: url(../images/icons/read.png) no-repeat center left;
+    background-size: 17px 17px;
+}
+
+.comment {
+    margin-right: 15px;
+    padding-left: 22px;
+    background: url(../images/icons/comment.png) no-repeat center left;
+    background-size: 17px 17px;
+}
+
+.readMore {
+	display: inline-block;
+	font-size: 1em;
+	position: absolute;
+	right: 3em;
+	bottom: 1.3em;
+	border: 1px solid #00aa55;
+	padding: 5px 10px;
+	-webkit-border-radius: 0.6em;
+	-moz-border-radius: 0.6em;
+	border-radius: 0.6em;
+	color: #fff;
+	background-color: #00aa55;
+}
+
+.readMore:hover {
+	background-color: #0ba505;
+ 	cursor: pointer;
+}
+
 
 /* main contect styles end here */
