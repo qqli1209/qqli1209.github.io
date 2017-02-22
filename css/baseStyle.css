@@ -4,6 +4,11 @@ html, body{
 	font-family: 宋体, sans-serif;
 
 }
+/*
+body {
+  min-width: 930px;
+}
+*/
 body a{
 	transition: 0.5s all ease;
 	-webkit-transition: 0.5s all ease;
@@ -34,11 +39,11 @@ body a:hover{
 .foreground {
   background: transparent url(../images/bg-front.png) repeat-x 150% 0;
   padding-top: 8em;
-  padding-bottom: 15em;
+  padding-bottom: 8em;
 }
 .header-logo{
   position: absolute;
-  left: 10em;
+  left: 10%;
 }
 .header-logo h1 {
   color: #000;
@@ -68,12 +73,14 @@ body a:hover{
 */
 .top-nav {
   position: absolute;
-  right: 15em;
+  left: 15%;
+  margin-left: 25%;
   text-transform: uppercase;
 }
 
 .top-nav ul {
   margin: 0;
+  z-index: 999;
 }
 .top-nav ul li{
   list-style-type:none;
@@ -86,7 +93,7 @@ body a:hover{
   width: 7em;
   display: inline-block;
   padding: 5px 10px;
-  margin: 0 5px;
+  margin: 0 1px;
   color: #000;
   text-decoration: none;
   letter-spacing: 1.5px;
@@ -131,18 +138,18 @@ body a:hover{
     font-size: 18px;
     /*font-family: 'Open Sans', sans-serif;*/
     color: #fff;
-  background-color: #8cca12;
-  border: 1px solid #66a300;
-  /*
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
-  border-radius: 0.5em;*/
-  -moz-box-shadow: 2px 2px 2px #ccc;
-  -webkit-box-shadow: 2px 2px 2px #ccc;
-  box-shadow: 2px 2px 2px #ccc;
-  -moz-text-shadow: 2px 2px 2px #66a300;
-  -webkit-text-shadow: 2px 2px 2px #66a300;
-  text-shadow: 2px 2px 2px #66a300;
+    background-color: #8cca12;
+    border: 1px solid #66a300;
+    /*
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;*/
+    -moz-box-shadow: 2px 2px 2px #ccc;
+    -webkit-box-shadow: 2px 2px 2px #ccc;
+    box-shadow: 2px 2px 2px #ccc;
+    -moz-text-shadow: 2px 2px 2px #66a300;
+    -webkit-text-shadow: 2px 2px 2px #66a300;
+    text-shadow: 2px 2px 2px #66a300;
 }
 
 .top-nav li:hover ul{
