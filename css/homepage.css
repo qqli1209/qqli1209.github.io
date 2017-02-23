@@ -136,3 +136,92 @@
 
 
 /* main contect styles end here */
+
+
+/* article style starts here */
+.main-content {
+	width: 70em;
+	margin: 1em auto;
+	padding: 5em;
+}
+.main-content .title {
+	text-align: center;
+}
+.content-header {
+	padding: 0.8em 2em;
+	text-align: center;
+	color: #555;
+}
+.content-header .person-head {
+	margin-right: 15px;
+    padding-left: 22px;
+    background: url(../images/icons/head.png) no-repeat center left;
+    background-size: 17px 17px;
+}
+.content-header .person-head:hover {
+	transition: 0.5s all ease;
+	-webkit-transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
+	-o-transition: 0.5s all ease;
+	-ms-transition: 0.5s all ease;
+    background: url(../images/icons/head-hover.png) no-repeat center left;
+    background-size: 17px 17px;
+}
+.content-header .classified {
+	margin-right: 15px;
+    padding-left: 22px;
+    border-left: 1px solid #666;
+}
+.content-header .classified a:link,
+.content-header .classified a:visited {
+	display: inline-block;
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+}
+.content-header .classified a:hover,
+.content-header .classified a:focus,
+.content-header .classified a:active {
+	border-bottom: 1px solid #222;
+	color: #084;
+}
+
+.content-body {
+	padding-top: 2em;
+	font-size: 16px;
+	line-height: 2;
+}
+.content-body h3 {
+	padding-top: 0.8em;
+	padding-bottom: 0.5em;
+	font-size: 20px;
+	font-weight: 600;
+}
+.content-body h4 {
+	margin-top: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	font-size: 18px;
+	padding-left: 1em;
+	border-left: 0.45em solid #999;
+}
+.content-body img {
+	width: 80%;
+	display: block;
+	margin: 2em auto;
+}
+.indent {
+  text-indent: 2em;
+}
+.inline-code {
+  padding: 0.1em 0.3em;
+  margin: 0 0.3em;
+  font-family: "Consolas",'Menlo',"Monaco","Lucida Console",
+    "Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono",
+    "Courier New","monospace",sans-serif;
+  background-color: #eff0f1;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+}
+
+
+/* article style ends here */

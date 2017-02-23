@@ -1,7 +1,7 @@
 html, body{
   font-size: 100%;
 	background:	#fff;
-	font-family: 宋体, sans-serif;
+	font-family: 'Lato', "PingFang SC", "Microsoft YaHei", 宋体, sans-serif;
 
 }
 
@@ -29,6 +29,13 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
+code {
+    font-family: "Consolas",'Menlo',"Monaco","Lucida Console",
+    "Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono",
+    "Courier New","monospace",sans-serif;
+    background-color: #eff0f1;
+}
+
 
 /*--header--*/
 .header{
