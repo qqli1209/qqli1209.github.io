@@ -4,11 +4,11 @@ html, body{
 	font-family: 宋体, sans-serif;
 
 }
-/*
+
 body {
-  min-width: 930px;
+  min-width: 900px;
 }
-*/
+
 body a{
 	transition: 0.5s all ease;
 	-webkit-transition: 0.5s all ease;
