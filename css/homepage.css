@@ -56,6 +56,15 @@
 	font-weight: bold;
 	padding-bottom: 10px;
 }
+#myArticles article .article-header a:link,
+#myArticles article .article-header a:visited {
+	text-decoration: none;
+}
+#myArticles article .article-header a:hover,
+#myArticles article .article-header a:focus,
+#myArticles article .article-header a:active {
+	color:#c00;
+}
 
 #myArticles article .article-body img {
 	height: 140px;
@@ -80,6 +89,7 @@
 	line-height: 30px;
 	overflow: hidden;
 	padding-left: 10%;
+	color: #666;
 }
 
 .clearfix {
@@ -114,7 +124,8 @@
     background-size: 17px 17px;
 }
 
-.readMore {
+.readMore a:link,
+.readMore a:visited {
 	display: inline-block;
 	font-size: 1em;
 	position: absolute;
@@ -129,7 +140,9 @@
 	background-color: #00aa55;
 }
 
-.readMore:hover {
+.readMore a:hover,
+.readMore a:focus,
+.readMore a:active {
 	background-color: #0ba505;
  	cursor: pointer;
 }
