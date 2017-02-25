@@ -159,6 +159,21 @@
 .main-content .title {
 	text-align: center;
 }
+.main-content video {
+	width: 50%;
+	margin: 2em 0;
+}
+.main-content video a:link,
+.main-content video a:visited {
+	color: #009fcc;
+	text-decoration: underline;
+}
+.main-content video a:hover,
+.main-content video a:focus,
+.main-content video a:active {
+	color: #f51;
+	text-decoration: underline;
+}
 .content-header {
 	padding: 0.8em 2em;
 	text-align: center;
