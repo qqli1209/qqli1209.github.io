@@ -22,7 +22,6 @@
 #myArticles {
 	width: 70em;
 	margin: 10em auto;
-	font-family: 宋体, sans-serif;
 }
 
 #myArticles>h3 {
@@ -53,8 +52,8 @@
 
 #myArticles article .article-header {
 	font-size: 1.4em;
-	font-weight: bold;
 	padding-bottom: 10px;
+	font-family: "Microsoft YaHei";
 }
 #myArticles article .article-header a:link,
 #myArticles article .article-header a:visited {
