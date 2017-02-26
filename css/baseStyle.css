@@ -221,8 +221,9 @@ code {
   width: 100%;
   -webkit-filter: brightness(0.3);
   -moz-filter: brightness(0.3);
+  -o-filter: brightness(0.3);
   filter: brightness(0.3);
-  height: 30em;
+  height: 25em;
   overflow: hidden;
 }
 
@@ -232,6 +233,15 @@ code {
     padding-top: 60px;
     width: 600px;
 }
+/* IE6 */
+*html#contact-text {
+  color: #000;
+}
+/* IE7 */
+*+html#contact-text {
+  color: #000;
+}
+
 .con-title {
     font-weight: 300;
     font-size: 3em;
