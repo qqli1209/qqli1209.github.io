@@ -73,6 +73,13 @@ code {
   outline: none;
   color: #084;
 }
+
+.nowTime {
+  position: absolute;
+  margin-left: 2em;
+  margin: 2em;
+  font-size: 1.3em;
+}
 /*
 .top-nav {
   float:right;
@@ -265,6 +272,7 @@ ul.address li span a:active {
   color: #0ff;
   text-decoration: none;
 }
+
 /*--real contact end here--*/
 
 
