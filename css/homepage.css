@@ -9,14 +9,49 @@
 	margin-bottom: 10em;
 }
 
-/* cover image */
-#cover-image {
-	width: 100%;
+/* 图片轮播 */
+.imageroll {
 	height: 30em;
-	background: url(../images/cover.JPG) no-repeat left center;
-	background-size: 100%;
-	overflow: hidden;
+    margin: 10px 11px 0 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
+.imageroll img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 30em;
+}
+.imageroll div {
+    bottom: 0;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.imageroll div a {
+    background-color: #444;
+    color: #fff;
+    display: inline-block;
+    float: left;
+    height: 2em;
+    line-height: 2em;
+    margin-right: 0.05%;
+    overflow: hidden;
+    text-align: center;
+    width: 19.95%
+}
+.imageroll div a:hover {
+    text-decoration: none;
+}
+.imageroll div a em {
+    cursor: pointer;
+    display: block;    
+    width: 100%;
+}
+/* end */
 
 /* my articles */
 #myArticles {
@@ -252,3 +287,17 @@
 
 
 /* article style ends here */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
