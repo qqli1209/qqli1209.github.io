@@ -19,13 +19,18 @@
     <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
     <!-- text ellipsis -->
     <script type="text/javascript" src="../js/jQuery.dot.js"></script>
-
+    <!-- show time -->
+    <script type="text/javascript" src="../js/showTime.js"></script>
 </head>
 
 
 <body>
 <!-- header starts here -->
 <div class="header">
+<!-- show time -->
+    <div class="nowTime">
+        <span id="nowTime"></span>
+    </div>
     <div class="foreground">
         <div class="content">
             <div class="header-logo">
@@ -83,9 +88,9 @@
             <p>改了将近两个月的论文终于在年前投出去了，进入了漫长的审稿阶段。</p>
             <p>用文字表述这个项目具体是做什么的可能很生硬，放段视频大家就懂了。</p>
             <video controls="controls">
-                <source src="videos/demo.mp4" type="video/mp4">
                 <source src="videos/demo.webm" type="video/webm">
                 <source src="videos/demo.ogg" type="video/ogg">
+                <source src="videos/demo.mp4" type="video/mp4">
                 Sorry, your browser does not support the video tag. Click <a href="videos/demo.mp4">here</a> to download the video.
             </video> 
             <p>用户带上虚拟现实头盔 ( 视频中是Oculus Rift cv1 ) 转动头部，Oculus捕捉用户的头部坐标，我们利用这个坐标实时计算出相应位置的图像，用户就可以看到眼前的场景在跟着自己做相应的变化，就好像真的置身于这个场景中一样。所有的计算不需要任何的3D信息，完全是基于图片的，所以计算开销很小。</p>
