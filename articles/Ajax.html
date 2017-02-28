@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ajax | Sandy's blog</title>
+    
+    <!-- stylesheets -->
+    <link rel='stylesheet' href="../css/screen.css" type='text/css' />
+    <!--[if IE]> 
+        <link rel='stylesheet' href="css/ie.css" type='text/css' />
+    <![endif]-->
+
+    <!-- scripts-->
+    <script src="../js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/header.js" type="text/javascript"></script>
+    <!-- baidu map script -->
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="../js/jQuery.dot.js"></script>
+    <!-- show time -->
+    <script type="text/javascript" src="../js/showTime.js"></script>
+</head>
+
+
+<body>
+<!-- header starts here -->
+<div class="header">
+<!-- show time -->
+    <div class="nowTime">
+        <span id="nowTime"></span>
+    </div>
+    <div class="foreground">
+        <div class="content">
+            <div class="header-logo">
+                <h1><a href="#">Sandy's blog</a></h1>
+            </div>
+            <div class="top-nav">
+                <ul class="nav1">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="#">前端学习</a>
+                        <ul>
+                            <li><a href="#">html</a></li>
+                            <li><a href="#">js</a></li>
+                            <li><a href="#">css</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">作品案例</a>
+                        <ul>
+                            <li>
+                            <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
+                            </li>
+                            <li><a href="../works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="../works/Roma/index.html">Roma</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">关于我</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!-- header ends here -->
+
+
+<!-- main content starts here -->
+<div class="main-content">
+    <h2 class="title">Ajax</h2>
+    <div class="content-header">
+        <span class="time">发表于 2017-02-28</span>
+        <span class="person-head">Sandy</span>
+        <span class="classified">分类于 <a href="#">前端学习 | JavaScript</a></span>
+    </div>
+    <div class="content-body">
+        <div class="part">
+        	<h4>Ajax是什么</h4>
+        	<p>Ajax, 就是 Asynchronous JavaScript and XML 的简写，按照 HTML 的标签来写就是</p>
+        	<code>
+        		&lt;acronym title="Asynchronous JavaScript and XML"&gt;Ajax&lt;/acronym&gt;
+        	</code>
+        	<p>Ajax 的核心是 XMLHttpRequest ( XHR ), 这是由微软最先引入的特性，后来各个浏览器提供商都提供了相同的实现。Ajax 能够以异步方式获取新数据，这意味着用户单击 ( 如提交表单 ) 后，不用刷新页面也能获得新数据。更重要的是，提交数据时，页面仍然可以正常显示，用户甚至可以编辑表单。这样的特性给了web应用程序以一种桌面应用程序的感觉，极大提高了交互性和用户体验。</p>
+        </div>
+        <div class="part">
+        	<h4>XMLHttpRequest 对象</h4>
+        	<p>在除了IE之外的浏览器或IE7及更高版本的浏览器中创建新的XHR对象很简单，只需要下面这样使用它的构造函数。</p>
+        	<code>
+        		var xhr = new XMLHttpRequest();
+        	</code>
+        	<p>但由于IE的早期版本是用MSXML中的一个ActiveX对象实现XHR的，而且还有三个不同版本的XHR, MSXML2.XMLHttp.6.0、 MSXML2.XMLHttp.3.0 和 MSXML2.XMLHttp。因此有必要创建一个通用函数来支持这些老的浏览器，如下所示。</p>
+        	<code>
+        		function createXHR(){ <br>
+        			if(typeof XMLHttpRequest != "undefinde"){ <br>
+        				return new XMLHttpRequest(); <br>
+        			} else if(typeof ActiveXObject != "undefined"){ <br>
+        				if(typeof arguments.callee.ActiveXString != "string"){ <br>
+        					var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", <br>
+        									"MSXML2.XMLHttp"]; <br>
+        					var len = versions.length; <br>
+        					for(var i=0; i<len; i++){ <br>
+        						try{ <br>
+        							new ActiveXObject(versions[i]); <br>
+        							arguments.callee.ActiveXString = versions[i]; <br>
+        							break; <br>
+        						} catch(e) { <br>
+        							//skip <br>
+        						} <br>
+        					} <br>
+        				} <br>
+        				return new ActiveXObject(arguments.callee.ActiveXString); <br>
+        			} else { <br>
+        				throw new Error("No XHR object availble."); <br>
+        			} <br>
+        		}
+        	</code>
+        	<p>现在，我们可以放心地用<span class="inline-code">var xhr = createXHR();</span>来创建XHR对象了。</p>
+        </div>
+        <div class="part">
+        	<h4>XHR 的用法</h4>
+        	<p>我们已经有了一个崭新的 XHR 对象，现在让它干点活儿吧。首先需要一个 Web 页面能够调用的JavaScript方法（比如当用户输入文本或者从菜单中选择一项时）。接下来就是在所有 Ajax 应用程序中基本都雷同的流程：
+        	<ol>
+        		<li>从 Web 表单中获取需要的数据。</li>
+        		<li>建立要连接的 URL。 </li>
+        		<li>打开到服务器的连接。</li>
+        		<li>设置服务器在完成后要运行的函数。</li>
+        		<li>发送请求。</li>
+        	</ol>
+			</p>
+			<p>使用 XHR 对象时，要调用的第一个方法是<span class="inline-code">open()</span>。该方法接收三个参数：要发送请求的类型( "get", "post"等 )、请求的 URL ( 相对于执行代码的当前页 )以及表示是否异步发送请求的 Boolean值( 默认为true，异步 )。例如： </p>
+			<code>
+				var xhr = createXHR(); <br>
+				xhr.open("get","example.php",false);
+			</code>
+			<p>要发送请求，要调用<span class="inline-code">send()</span>方法。</p>
+			<code>
+				xhr.send(null);
+			</code>
+			<p>在收到响应后，请求的数据会填充 xhr 的属性，例如：
+			<ul>
+				<li>responseText : 作为相应主体被返回的文本</li>
+				<li>status : 响应的 HTTP 状态码</li>
+				<li>statusText : HTTP 状态的说明</li>
+			</ul>
+			</p>
+			<p>应该像下面这样检查上面两种状态码：</p>
+			<code>
+				if((xhr.status>=200 && xhr.status<300) || xhr.status==304){ <br>
+					console.log(responseText); <br>
+				} else { <br>
+					console.log("Request was unsuccessful : " + xhr.status); <br>
+				}
+			</code>
+			<p>像前面这样发送同步请求当然没有问题，但多数情况下，我们还是要发送异步请求，才能让JavaScript 继续执行而不必等待响应。此时，可以检测 XHR 对象的 readyState 属性，该属性表示请求/响应过程的当前活动阶段。这个属性可取的值如下：
+			<ul>
+				<li>0 : 尚未调用open()方法初始化</li>
+				<li>1 : 已调用open(),未调用send()</li>
+				<li>2 : 已调用send(),尚未接收到响应数据</li>
+				<li>3 : 已接收到部分响应数据</li>
+				<li>4 : 已收到全部响应数据</li>
+			</ul>
+			</p>
+			<p>只要 readyState 值发生改变，就会调用 onreadystatechange 事件。通常，我们只对 readyState 值为 4 的阶段感兴趣，因为这时所有数据都已经就绪。下面来看一个例子。</p>
+			<code>
+				var xhr = createXHR(); <br>
+				xhr.onreadystatechange = function(){ <br>
+				if (xhr.readyState == 4){ <br>
+				if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){ <br>
+				alert(xhr.responseText); <br>
+				} else { <br>
+				alert("Request was unsuccessful: " + xhr.status); <br>
+				} <br>
+				} <br>
+				}; <br>
+				xhr.open("get", "example.txt", true); <br>
+				xhr.send(null);
+			</code>
+        </div>
+        <div class="part">
+        	<h4>get 和 post 请求</h4>
+        	<p>get请求 最常用于向服务器查询某些信息，这种方式将查询字符串参数追加到 URL 末尾。查询字符串中每个参数的 key 和 value 都要用 <span class="inline-code">encodeURIComponent()</span>编码。</p>
+        	<p>post 请求通常用于向服务器发送应该被保存的数据，可以包含非常多的数据，而且格式不限。发送 post 请求的第二部就是向 <span class="inline-code">sned()</span>方法传入某些数据( 需要以适当的格式创建字符串 )。</p>
+        </div>
+        <div class="part">
+        	<h4>跨域资源共享( CORS )</h4>
+        	<p>对于除了IE之外的浏览器，要请求位于另一个域中的资源，只需要向<span class="inline-code">send()</span>的第二个参数传入绝对URL即可。</p>
+        	<p>对于IE要稍微麻烦些，需要创建XDomainRequest 而不是XMLHttpRequest。例如：</p>
+        	<code>
+        		var xdr = new XDomainRequest(); <br>
+				xdr.onload = function(){ <br>
+				alert(xdr.responseText); <br>
+				}; <br>
+				xdr.open("get", "http://www.somewhere-else.com/page/"); <br>
+				xdr.send(null);
+        	</code>
+        </div>
+        <div class="part">
+        	<h4>jQuery中Ajax的操作</h4>
+        	<p></p>
+        </div>
+    </div>
+</div>
+<!-- main content ends here -->
+
+
+<!-- map starts here -->
+<div id="contact">
+    <script>
+        var map = new AMap.Map('contact', {
+                  zoom: 17,
+                  center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
+                  });
+
+        var marker = new AMap.Marker({
+                     position: [118.9615169379,32.1108455072],
+                     map: map
+                     });
+
+        //scale rule
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
+                   var toolBar = new AMap.ToolBar();
+                   var scale   = new AMap.Scale();
+                   map.addControl(toolBar);
+                   map.addControl(scale);
+                   });
+    </script>
+</div>
+<!-- map ends here -->
+
+
+<!-- contact starts here -->
+<div class="container" id="contact-text">
+        <div class="moreDetails">
+            <h2 class="con-title">Contact Me</h2>
+            <ul class="address">
+                <li>
+                    <i class="pe-7s-map-marker"></i>
+                    <span>
+                        305 Room, Panzhonglai Building,<br>
+                        <span class="tab">163, Xianlin Avenue,<br></span>
+                        <span class="tab">Nanjing, Jiangsu Province, China<br></span>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@163.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@gmail.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-monitor"></i>
+                    <span>
+                        <a target="_blank" href="http://github.com/qqli1209">github.com/qqli1209</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+</div>
+<!-- contact ends here -->
+
+
+<!-- footer starts here -->
+<div class="footer">
+    <p>Copyright &copy; 2017.Sandy All rights reserved.</p>      
+    <div class="clearfix"></div>
+</div>
+<!-- header ends here -->
+</body>
+</html>
