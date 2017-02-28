@@ -197,7 +197,31 @@
         </div>
         <div class="part">
         	<h4>jQuery中Ajax的操作</h4>
-        	<p></p>
+        	<p>一、$.ajax，这是 jQuery 对 ajax 封装的最基础步，通过使用这个函数可以完成异步通讯的所有功能。常用参数有：</p>
+        	<code>
+        		var configObj = { <br>
+			       method   //数据的提交方式：get和post <br>
+			       url   //数据的提交路劲 <br>
+			       async   //是否支持异步刷新，默认是true <br>
+			       data    //需要提交的数据 <br>
+			       dataType   //服务器返回数据的类型，例如xml,String,Json等 <br>
+			       success    //请求成功后的回调函数 <br>
+			       error   //请求失败后的回调函数 <br>
+			    } <br>
+				$.ajax(configObj);//通过$.ajax函数进行调用。
+        	</code>
+        	<p>二、$.post，这个函数其实就是对$.ajax进行了更进一步的封装，减少了参数，简化了操作，但是运用的范围更小了。$.post简化了数据提交方式，只能采用POST方式提交。只能是异步访问服务器，不能同步访问，不能进行错误处理。因此还剩下这些常用参数：</p>
+        	<code>
+        		var configObj = { <br>
+			       url   //数据的提交路劲 <br>
+			       data    //需要提交的数据 <br>
+			       type  //返回内容格式，xml, html, script, json, text,_default <br>
+			       callback  //发送成功时回调函数。 <br>
+			    } <br>
+				$.post(configObj);//通过$.ajax函数进行调用。
+        	</code>
+        	<p>三、$.get，和$.post一样，这个函数是对get方法的提交数据进行封装，只能使用在get提交数据解决异步刷新的方式上，使用方式和上边的也差不多。</p>
+        	<p>四、$.getJSON，这个是进一步的封装，也就是对返回数据类型为Json进行操作。里边就三个参数，需要我们设置，非常简单：url,[data],[callback]。</p>
         </div>
     </div>
 </div>
