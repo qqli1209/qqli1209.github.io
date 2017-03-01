@@ -310,25 +310,33 @@ pre {
 	color: #000;
 }
 
+.main-content .content-footer {
+	position: fixed;
+	left: 50%;
+	bottom: 200px;
+	margin-left: 30em;
+}
+.main-content .content-footer .backToTop {
+	margin: 0;
+	padding: 0;
+}
+
 .main-content .content-footer a {
 	display: block;
-	margin-top: 1em;
-	padding-left: 22px;
-	background: url(../images/icons/backToTop.png) center left no-repeat;
-	background-size: 17px 17px;
+	width: 40px;
+	height: 40px;
 }
 
 .main-content .content-footer a:link,
 .main-content .content-footer a:visited {
-	color: #0a0;
-	text-decoration: none;
+	background: url(../images/icons/backToTop.png) center left no-repeat;
+	background-size: 40px 40px;
 }
 .main-content .content-footer a:hover,
 .main-content .content-footer a:focus,
 .main-content .content-footer a:active {
 	background: url(../images/icons/backToTopAfter.png) center left no-repeat;
-	background-size: 17px 17px;
-	color: #06f;
+	background-size: 40px 40px;
 	text-decoration: none;
 }
 
