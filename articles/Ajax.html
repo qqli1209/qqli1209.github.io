@@ -81,7 +81,7 @@
         	<code>
         		&lt;acronym title="Asynchronous JavaScript and XML"&gt;Ajax&lt;/acronym&gt;
         	</code>
-        	<p>Ajax 的核心是 XMLHttpRequest ( XHR ), 这是由微软最先引入的特性，后来各个浏览器提供商都提供了相同的实现。Ajax 能够以异步方式获取新数据，这意味着用户单击 ( 如提交表单 ) 后，不用刷新页面也能获得新数据。更重要的是，提交数据时，页面仍然可以正常显示，用户甚至可以编辑表单。这样的特性给了web应用程序以一种桌面应用程序的感觉，极大提高了交互性和用户体验。</p>
+        	<p>Ajax 的核心是 XMLHttpRequest ( XHR ), 这是由微软最先引入的特性，后来各个浏览器提供商都提供了相同的实现。Ajax 能够以异步方式获取新数据，这意味着用户单击 ( 如提交表单 ) 后，不用刷新页面也能获得新数据。更重要的是，以异步方式提交数据时，页面仍然可以正常显示，用户甚至可以编辑表单。这样的特性给了web应用程序以一种桌面应用程序的感觉，极大提高了交互性和用户体验。</p>
         </div>
         <div class="part">
         	<h4>XMLHttpRequest 对象</h4>
@@ -99,7 +99,7 @@
         					var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", <br>
         									"MSXML2.XMLHttp"]; <br>
         					var len = versions.length; <br>
-        					for(var i=0; i<len; i++){ <br>
+        					for(var i=0; i&lt;len; i++){ <br>
         						try{ <br>
         							new ActiveXObject(versions[i]); <br>
         							arguments.callee.ActiveXString = versions[i]; <br>
@@ -179,8 +179,8 @@
         </div>
         <div class="part">
         	<h4>get 和 post 请求</h4>
-        	<p>get请求 最常用于向服务器查询某些信息，这种方式将查询字符串参数追加到 URL 末尾。查询字符串中每个参数的 key 和 value 都要用 <span class="inline-code">encodeURIComponent()</span>编码。</p>
-        	<p>post 请求通常用于向服务器发送应该被保存的数据，可以包含非常多的数据，而且格式不限。发送 post 请求的第二部就是向 <span class="inline-code">sned()</span>方法传入某些数据( 需要以适当的格式创建字符串 )。</p>
+        	<p>get 请求最常用于向服务器查询某些信息，这种方式将查询字符串参数追加到 URL 末尾。查询字符串中每个参数的 key 和 value 都要用 <span class="inline-code">encodeURIComponent()</span>编码。</p>
+        	<p>post 请求通常用于向服务器发送应该被保存的数据，可以包含非常多的数据，而且格式不限。发送 post 请求的第二步就是向 <span class="inline-code">sned()</span>方法传入某些数据( 需要以适当的格式创建字符串 )。</p>
         </div>
         <div class="part">
         	<h4>跨域资源共享( CORS )</h4>
