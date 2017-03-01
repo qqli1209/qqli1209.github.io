@@ -310,34 +310,39 @@ pre {
 	color: #000;
 }
 
-.main-content .content-footer {
+.content-footer {
 	position: fixed;
 	left: 50%;
 	bottom: 200px;
-	margin-left: 30em;
+	
 }
-.main-content .content-footer .backToTop {
+.content-footer .backToTop {
 	margin: 0;
 	padding: 0;
+	margin-left: 30em;
 }
 
-.main-content .content-footer a {
+.content-footer a {
 	display: block;
 	width: 40px;
 	height: 40px;
+	border: 0;
 }
 
-.main-content .content-footer a:link,
-.main-content .content-footer a:visited {
+.content-footer a:link,
+.content-footer a:visited {
 	background: url(../images/icons/backToTop.png) center left no-repeat;
 	background-size: 40px 40px;
+	text-decoration: none;
+	border: 0;
 }
-.main-content .content-footer a:hover,
-.main-content .content-footer a:focus,
-.main-content .content-footer a:active {
+.content-footer a:hover,
+.content-footer a:focus,
+.content-footer a:active {
 	background: url(../images/icons/backToTopAfter.png) center left no-repeat;
 	background-size: 40px 40px;
 	text-decoration: none;
+	border: 0;
 }
 
 
