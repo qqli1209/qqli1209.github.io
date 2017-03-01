@@ -305,6 +305,22 @@ pre {
   font-size: 0.9em;
 }
 
+.main-content .content-body  h5 {
+	font-size: 1.1em;
+	color: #000;
+}
+.main-content .content-footer a:link,
+.main-content .content-footer a:visited {
+	color: #0a0;
+	text-decoration: none;
+}
+.main-content .content-footer a:hover,
+.main-content .content-footer a:focus,
+.main-content .content-footer a:active {
+	color: #06f;
+	text-decoration: none;
+}
+
 
 /* article style ends here */
 

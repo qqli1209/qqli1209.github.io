@@ -154,9 +154,9 @@
                     <p>使用<span class="inline-code">hasOwnProperty()</span>可以检测一个属性是存在于实例中，还是原型中。只有给定属性存在于实例中，才会返回<span class="inline-code">true</span>。</p>
                     <code>
                         person1.name = "Greg";<br>
-                        console.log(person1.hasOwnProperty("name"));  //Greg<br>
+                        console.log(person1.hasOwnProperty("name"));  //true<br>
                         delete person1.name;<br>
-                        console.log(person1.hasOwnProperty("name"));  //Nicholas
+                        console.log(person1.hasOwnProperty("name"));  //false
                     </code>
                     <p>下表展示了上面例子在不同情况下的实现与原型的关系。</p>
                     <img src="../images/article/2.PNG" alt="prototype">
@@ -249,6 +249,7 @@
             另外还有一些创建对象的方法如动态原型模式，寄生构造函数模式，稳妥构造函数模式等，就不一一写出了。
         </div>
     </div>
+    <div class="content-footer"><a href="#">Back To Top</a></div>
 </div>
 <!-- main content ends here -->
 
