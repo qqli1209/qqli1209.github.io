@@ -309,6 +309,15 @@ pre {
 	font-size: 1.1em;
 	color: #000;
 }
+
+.main-content .content-footer a {
+	display: block;
+	margin-top: 1em;
+	padding-left: 22px;
+	background: url(../images/icons/backToTop.png) center left no-repeat;
+	background-size: 17px 17px;
+}
+
 .main-content .content-footer a:link,
 .main-content .content-footer a:visited {
 	color: #0a0;
@@ -317,6 +326,8 @@ pre {
 .main-content .content-footer a:hover,
 .main-content .content-footer a:focus,
 .main-content .content-footer a:active {
+	background: url(../images/icons/backToTopAfter.png) center left no-repeat;
+	background-size: 17px 17px;
 	color: #06f;
 	text-decoration: none;
 }
