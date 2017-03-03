@@ -17,7 +17,8 @@
 	background-color: #0bf;
 	height: 210px;
 	width: 30em;
-	position: absolute;
+	position: fixed;
+	z-index: 9999;
 	border: 1px solid #666;
 	left: -9999px;
 	margin-left: -15em;
