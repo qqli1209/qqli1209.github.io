@@ -291,6 +291,12 @@ pre {
 	display: block;
 	margin: 2em auto;
 }
+.content-body h5 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 .indent {
   text-indent: 2em;
 }
@@ -310,9 +316,16 @@ pre {
 	color: #000;
 }
 
+.quote {
+	background-color: #bfb;
+	border: 1px dotted #666;
+	padding: 5px 10px;
+	margin-top: 30px;
+}
+
 .content-footer {
 	position: fixed;
-	left: 50%;
+	left: 55%;
 	bottom: 200px;
 	
 }
