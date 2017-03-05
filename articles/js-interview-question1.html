@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>js-interview-question 1 | Sandy's blog</title>
+    
+    <!-- stylesheets -->
+    <link rel='stylesheet' href="../css/screen.css" type='text/css' />
+    <!--[if IE]> 
+        <link rel='stylesheet' href="css/ie.css" type='text/css' />
+    <![endif]-->
+
+    <!-- scripts-->
+    <script src="../js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/header.js" type="text/javascript"></script>
+    <!-- baidu map script -->
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="../js/jQuery.dot.js"></script>
+    <!-- show time -->
+    <script type="text/javascript" src="../js/showTime.js"></script>
+</head>
+
+
+<body>
+<!-- header starts here -->
+<div class="header">
+<!-- show time -->
+    <div class="nowTime">
+        <span id="nowTime"></span>
+    </div>
+    <div class="foreground">
+        <div class="content">
+            <div class="header-logo">
+                <h1><a href="#">Sandy's blog</a></h1>
+            </div>
+            <div class="top-nav">
+                <ul class="nav1">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="#">前端学习</a>
+                        <ul>
+                            <li><a href="#">html</a></li>
+                            <li><a href="#">js</a></li>
+                            <li><a href="#">css</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">作品案例</a>
+                        <ul>
+                            <li>
+                            <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
+                            </li>
+                            <li><a href="../works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="../works/Roma/index.html">Roma</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">关于我</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!-- header ends here -->
+
+
+<!-- main content starts here -->
+<div class="main-content">
+    <h2 class="title">【转】JavaScript 面试题 1</h2>
+    <div class="content-header">
+        <span class="time">发表于 2017-02-12</span>
+        <span class="person-head">Sandy</span>
+        <span class="classified">分类于 <a href="#">前端学习</a> / <a href="#">JavaScript</a></span>
+    </div>
+    <div class="content-body">
+        <div class="part">
+            <h4>前言</h4>
+            <p>QQ糖受到了暴击，膝盖中了无数剑，大概是醒不过来了。。。转了两篇博文，留着慢慢思考，这是第一篇。</p>
+        </div>
+        <div class="part">
+            <h4>大部分人都会做错的经典JS闭包面试题</h4>
+            <p>这是一个我工作当中的遇到的一个问题，似乎很有趣，就当做了一道题去面试，发现几乎没人能全部答对并说出原因，遂拿出来聊一聊吧。</p>
+            <p>先看题目代码：</p>
+            <code>
+                function fun(n,o) { <br>
+                    console.log(o); <br>
+                    return { <br>
+                        fun: function (m) { <br>
+                            return fun(m, n); <br>
+                        } <br>
+                    }; <br>
+                } <br>
+                var a = fun(0); a.fun(1); a.fun(2); a.fun(3); //undefined,?,?,? <br>
+                var b = fun(0).fun(1).fun(2).fun(3); //undefined,?,?,? <br>
+                var c = fun(0).fun(1); c.fun(2); c.fun(3); //undefined,?,?,? <br>
+                //问:三行a,b,c的输出分别是什么？
+            </code>
+            <p>这是一道非常典型的JS闭包问题。其中嵌套了三层fun函数，搞清楚每层fun的函数是那个fun函数尤为重要。</p>
+            <p>可以先在纸上或其他地方写下你认为的结果，然后展开看看正确答案是什么？</p>
+            <code>
+                //答案：  <br>
+                //a: undefined,0,0,0  <br>
+                //b: undefined,0,1,2  <br>
+                //c: undefined,0,1,1
+            </code>
+            <p>都答对了么？如果都答对了恭喜你在js闭包问题当中几乎没什么可以难住你了；如果没有答对，继续往下分析。</p>
+            <h3>JS中有几种函数</h3>
+            <p>首先，在此之前需要了解的是，在JS中函数可以分为两种，<strong>具名函数（命名函数）和匿名函数</strong>。</p>
+            <p>区分这两种函数的方法非常简单，可以通过输出 <span class="inline-code">fn.name</span> 来判断，有<span class="inline-code">name</span>的就是具名函数，没有<span class="inline-code">name</span>的就是匿名函数。</p>
+            <p>我们采用兼容IE的获取函数<span class="inline-code">name</span>方法来获取函数名称：</p>
+            <code>
+                /** * 获取指定函数的函数名称（用于兼容IE）  <br> 
+                * @param {Function} fun 任意函数   <br>
+                */   <br>
+                function getFunctionName(fun) {   <br>
+                    if (fun.name !== undefined) {  <br>
+                        return fun.name;   <br>
+                    }  <br>
+                    var ret = fun.toString();   <br>
+                    ret = ret.substr('function '.length);   <br>
+                    ret = ret.substr(0, ret.indexOf('('));   <br>
+                    return ret;   <br>
+                }
+            </code>
+            <p>用上述函数测试是否为匿名函数：</p>
+            <code>
+                getFunctionName(fun1);  //"xxcanghai" <br>
+                getFunctionName(fun2);  //""
+            </code>
+            <p>可以得知变量<span class="inline-code">fn1</span>是具名函数，<span class="inline-code">fn2</span>是匿名函数</p>
+            <h3>创建函数的几种方式</h3>
+            <p>说完函数的类型，还需要了解JS中创建函数都有几种创建方法。</p>
+            <ol>
+                <li>声明函数
+                <p>最普通最标准的声明函数方法，包括函数名及函数体。</p>
+                <code>
+                    function fn1(){}
+                </code>
+                </li>
+                <li>创建匿名函数表达式
+                    <p>创建一个变量，这个变量的内容为一个函数</p>
+                    <code>
+                        var fn1 = function(){}
+                    </code>
+                    <p>注意采用这种方法创建的函数为<strong>匿名函数</strong>，即没有函数name</p>
+                </li>
+                <li>创建具名函数表达式
+                    <p>创建一个变量，内容为一个带有名称的函数</p>
+                    <code>
+                        var fn1 = function xxcanghai(){}
+                    </code>
+                    <p><strong>注意：</strong>具名函数表达式的函数名只能在创建函数内部使用即采用此种方法创建的函数在函数外层只能使用<span class="inline-code">fn1</span>不能使用<span class="inline-code">xxcanghai</span>的函数名。<span class="inline-code">xxcanghai</span>的命名只能在创建的函数内部使用。测试：</p>
+                    <code>
+                        var fn1=function xxcanghai(){ <br>
+                        console.log("in:fn1<",typeof fn1,">xxcanghai:<",typeof xxcanghai,">");  <br>
+                        };  <br>
+                        console.log("out:fn1<",typeof fn1,">xxcanghai:<",typeof xxcanghai,">");  <br>
+                        fn1();  <br>
+                        //out:fn1< function >xxcanghai:< undefined >  <br>
+                        //in:fn1< function >xxcanghai:< function >
+                    </code>
+                    <p><strong>注意：在对象内定义函数如var o={ fn : function (){…} }，也属于函数表达式</strong></p>
+                </li>
+                <li><span class="inline-code">Function</span> 构造函数
+                <p>可以给 <span class="inline-code">Function</span> 构造函数传一个函数字符串，返回包含这个字符串命令的函数，此种方法创建的是匿名函数。</p>
+                <code>
+                    Function("alert(1)"); <br>
+                    //function anoymous(){ <br>
+                    //    alert(1); <br>
+                    //} <br>
+                    new Function("alert(1)"); <br>
+                    //function anoymous(){ <br>
+                    //    alert(1); <br>
+                    //}
+                </code>
+                </li>
+                <li>自执行函数
+                    <code>
+                        (function(){console.log(1);})(); <br>
+                        (function fn1(){console.log(1);})();
+                    </code>
+                    <p>自执行函数属于上述的“函数表达式”，规则相同</p>
+                </li>
+                <li>其他
+                <p>当然还有其他创建函数或执行函数的方法，这里不再多说，比如采用 <span class="inline-code">eval</span>，<span class="inline-code">，setTimeout</span>，<span class="inline-code">setInterval</span>等非常用方法，这里不做过多介绍，属于非标准方法，这里不做过多展开。</p>
+                </li>
+            </ol>
+            <h3>三个fun函数的关系是什么？</h3>
+            <p>这段代码中出现了三个<span class="inline-code">fun</span>函数，所以第一步先搞清楚，这三个<span class="inline-code">fun</span>函数的关系，哪个函数与哪个函数是相同的。</p>
+            <code>
+                function fun(n,o) { <br>
+                    console.log(o); <br>
+                    return { <br>
+                        fun: function (m) { <br>
+                            return fun(m, n); <br>
+                        } <br>
+                    }; <br>
+                }
+            </code>
+            <p>
+                先看第一个<span class="inline-code">fun</span>函数，属于标准具名函数声明，是<strong>新创建</strong>的函数，他的返回值是一个对象字面量表达式，属于一个新的<span class="inline-code">object</span>。这个新的对象内部包含一个也叫<span class="inline-code">fun</span>的属性，通过上述介绍可得知，属于匿名函数表达式，即<span class="inline-code">fun</span>这个属性中存放的是一个新创建匿名函数表达式。
+            </p>
+            <strong>注意：所有声明的匿名函数都是一个新函数。</strong>
+            <p>所以第一个<span class="inline-code">fun</span>函数与第二个<span class="inline-code">fun</span>函数不相同，均为新创建的函数。</p>
+            <h3>函数作用域链的问题</h3>
+            <p>在说第三个<span class="inline-code">fun</span>函数之前需要先说下，在函数表达式内部能不能访问存放当前函数的变量。</p>
+            <h5>测试1，对象内部的函数表达式：</h5>
+            <code>
+                var o={  <br>
+                fn:function (){  <br>
+                console.log(fn);  <br>
+                }  <br>
+                }; <br>
+                 o.fn();//ERROR报错
+            </code>
+            <h5>测试2，非对象内部的函数表达式：</h5>
+            <code>
+                var fn=function (){   <br>
+                console.log(fn);   <br>
+                };   <br>
+                fn();//function (){console.log(fn);};正确
+            </code>
+            <p>结论是：使用<span class="inline-code">var</span>或是非对象内部的函数表达式内，可以访问到存放当前函数的变量；在对象内部的不能访问到。原因也非常简单，因为<strong>函数作用域链</strong>的问题，采用<span class="inline-code">var</span>的是在外部创建了一个<span class="inline-code">fn</span>变量，函数内部当然可以在内部寻找不到<span class="inline-code">fn</span>后向上册作用域查找<span class="inline-code">fn</span>，而在创建对象内部时，因为没有在函数作用域内创建<span class="inline-code">fn</span>，所以无法访问。</p>
+            <p>所以综上所述，可以得知，<strong>最内层的return出去的fun函数不是第二层fun函数，是最外层的fun函数。</strong>所以，三个<span class="inline-code">fun</span>函数的关系也理清楚了，第一个等于第三个，他们都不等于第二个。</p>
+            <h3>到底在调用哪个函数？</h3>
+            <h5>第一行a</h5>
+            <code>
+                var a = fun(0); a.fun(1); a.fun(2); a.fun(3);
+            </code>
+            <p>可以得知，第一个<span class="inline-code">fun(0)</span>是在调用第一层<span class="inline-code">fun</span>函数。第二个<span class="inline-code">fun(1)</span>是在调用前一个<span class="inline-code">fun</span>的返回值的<span class="inline-code">fun</span>函数，所以：第后面几个<span class="inline-code">fun(1),fun(2),fun(3)</span>,函数都是在调用第二层<span class="inline-code">fun</span>函数。</p>
+            <p>所以：在第一次调用<span class="inline-code">fun(0)</span>时，<span class="inline-code">o</span>为<span class="inline-code">undefined</span>；第二次调用<span class="inline-code">fun(1)</span>时<span class="inline-code">m</span>为1，此时<span class="inline-code">fun</span>闭包了外层函数的<span class="inline-code">n</span>，也就是第一次调用的<span class="inline-code">n=0</span>，即<span class="inline-code">m=1，n=0</span>，并在内部调用第一层<span class="inline-code">fun</span>函数<span class="inline-code">fun(1,0);</span>，所以<span class="inline-code">o</span>为0；第三次调用<span class="inline-code">fun(2)</span>时<span class="inline-code">m</span>为2，但依然是调用<span class="inline-code">a.fun</span>，所以还是闭包了第一次调用时的<span class="inline-code">n</span>，所以内部调用第一层的<span class="inline-code">fun(2,0);</span>，所以<span class="inline-code">o</span>为0第四次同理。</p>
+            <p><strong>即最终答案：undefined,0,0,0</strong></p>
+            <h5>第二行b</h5>
+            <code>
+                var b = fun(0).fun(1).fun(2).fun(3);
+            </code>
+            <p>先从<span class="inline-code">fun(0)</span>开始看，肯定是调用的第一层<span class="inline-code">fun</span>函数；而他的返回值是一个对象，所以第二个<span class="inline-code">fun(1)</span>调用的是第二层<span class="inline-code">fun</span>函数，后面几个也是调用的第二层<span class="inline-code">fun</span>函数。</p>
+            <p>
+                在第一次调用第一层<span class="inline-code">fun(0)</span>时，<span class="inline-code">o</span>为<span class="inline-code">undefined</span>；第二次调用 <span class="inline-code">.fun(1)</span>.时m为1，此时<span class="inline-code">fun</span>闭包了外层函数的<span class="inline-code">n</span>，也就是第一次调用的<span class="inline-code">n=0</span>，即<span class="inline-code">m=1，n=0</span>，并在内部调用第一层<span class="inline-code">fun</span>函数<span class="inline-code">fun(1,0)</span>;所以<span class="inline-code">o</span>为0；第三次调用<span class="inline-code"> .fun(2)</span>时<span class="inline-code">m</span>为2，此时当前的<span class="inline-code">fun</span>函数不是第一次执行的返回对象，而是第二次执行的返回对象。而在第二次执行第一层<span class="inline-code">fun</span>函数时时(1,0)所以<span class="inline-code">n=1,o=0</span>,返回时闭包了第二次的<span class="inline-code">n</span>，遂在第三次调用第三层<span class="inline-code">fun</span>函数时<span class="inline-code">m=2,n=1</span>，即调用第一层<span class="inline-code">fun</span>函数<span class="inline-code">fun(2,1)</span>，所以<span class="inline-code">o</span>为1；第四次调用 <span class="inline-code">.fun(3)</span>时<span class="inline-code">m<.为3，闭包了第三次调用的<span class="inline-code">n</span>，同理，最终调用第一层<span class="inline-code">fun</span>函数为<span class="inline-code">fun(3,2)</span>；所以<span class="inline-code">o</span>为2。
+            </p>
+            <p><strong>即最终答案：undefined,0,1,2</strong></p>
+            <h5>第三行c</h5>
+            <code>
+                var c = fun(0).fun(1); c.fun(2); c.fun(3);
+            </code>
+            <p>
+                根据前面两个例子，可以得知：<span class="inline-code">fun(0)</span>为执行第一层<span class="inline-code">fun</span>函数，<span class="inline-code">.fun(1)</span>执行的是<span class="inline-code">fun(0)</span>返回的第二层<span class="inline-code">fun</span>函数，这里语句结束，遂<span class="inline-code">c</span>存放的是<span class="inline-code">fun(1)</span>的返回值，而不是<span class="inline-code">fun(0)</span>的返回值，所以<span class="inline-code">c</span>中闭包的也是<span class="inline-code">fun(1)</span>第二次执行的<span class="inline-code">n</span>的值。<span class="inline-code">c.fun(2)</span>执行的是<span class="inline-code">fun(1)</span>返回的第二层<span class="inline-code">fun</span>函数，<span class="inline-code">c.fun(3)</span>执行的也是<span class="inline-code">fun(1)</span>返回的第二层<span class="inline-code">fun</span>函数。
+            </p>
+            <p>
+                所以，在第一次调用第一层<span class="inline-code">fun(0)</span>时，<span class="inline-code">o</span>为<span class="inline-code">undefined</span>；第二次调用 <span class="inline-code">.fun(1)</span>时<span class="inline-code">m</span>为1，此时<span class="inline-code">fun</span>闭包了外层函数的n，也就是第一次调用的<span class="inline-code">n=0</span>，即<span class="inline-code">m=1，n=0</span>，并在内部调用第一层<span class="inline-code">fun</span>函数<span class="inline-code">fun(1,0)</span>;所以<span class="inline-code">o</span>为0；第三次调用 <span class="inline-code">.fun(2)</span>时<span class="inline-code">m</span>为2，此时<span class="inline-code">fun</span>闭包的是第二次调用的<span class="inline-code">n=1</span>，即<span class="inline-code">m=2，n=1</span>，并在内部调用第一层<span class="inline-code">fun</span>函数<span class="inline-code">fun(2,1)</span>;所以<span class="inline-code">o</span>为1；第四次<span class="inline-code">.fun(3)</span>时同理，但依然是调用的第二次的返回值，遂最终调用第一层<span class="inline-code">fun</span>函数<span class="inline-code">fun(3,1)</span>，所以<span class="inline-code">o</span>还为1。
+            </p>
+            <p><strong>即最终答案：undefined,0,1,1</strong></p>
+            <h3>后话</h3>
+            <p>
+                这段代码原本是在做一个将异步回调改写为同步调用的组件时的代码，发现了这个坑，对JS的闭包有了更深入的了解。关于什么是闭包，网上的文章数不胜数，但理解什么是闭包还是要在代码中自己去发现与领悟。如果要我说什么是闭包，我认为，广义上的闭包就是指一个变量在他自身作用域外被使用了，就叫发生了闭包。希望读者能通过本文对闭包现象有进一步的了解，如有其它见解或看法，欢迎指正或留言讨论。
+            </p>
+        </div>
+        <div class="quote">
+            <p>作者：小小沧海</p>
+            <p>出处：<a href="http://www.cnblogs.com/xxcanghai/">http://www.cnblogs.com/xxcanghai/</a></p>
+            <p>本文地址：<a href="http://www.cnblogs.com/xxcanghai/p/4991870.html">http://www.cnblogs.com/xxcanghai/p/4991870.html</a></p>
+        </div>
+    </div>
+    <div class="content-footer">
+        <div class="backToTop">
+            <a href="#"></a>
+        </div>
+    </div>
+</div>
+<!-- main content ends here -->
+
+
+<!-- map starts here -->
+<div id="contact">
+    <script>
+        var map = new AMap.Map('contact', {
+                  zoom: 17,
+                  center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
+                  });
+
+        var marker = new AMap.Marker({
+                     position: [118.9615169379,32.1108455072],
+                     map: map
+                     });
+
+        //scale rule
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
+                   var toolBar = new AMap.ToolBar();
+                   var scale   = new AMap.Scale();
+                   map.addControl(toolBar);
+                   map.addControl(scale);
+                   });
+    </script>
+</div>
+<!-- map ends here -->
+
+
+<!-- contact starts here -->
+<div class="container" id="contact-text">
+        <div class="moreDetails">
+            <h2 class="con-title">Contact Me</h2>
+            <ul class="address">
+                <li>
+                    <i class="pe-7s-map-marker"></i>
+                    <span>
+                        305 Room, Panzhonglai Building,<br>
+                        <span class="tab">163, Xianlin Avenue,<br></span>
+                        <span class="tab">Nanjing, Jiangsu Province, China<br></span>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@163.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@gmail.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-monitor"></i>
+                    <span>
+                        <a target="_blank" href="http://github.com/qqli1209">github.com/qqli1209</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+</div>
+<!-- contact ends here -->
+
+
+<!-- footer starts here -->
+<div class="footer">
+    <p>Copyright &copy; 2017.Sandy All rights reserved.</p>      
+    <div class="clearfix"></div>
+</div>
+<!-- header ends here -->
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>js-interview-question 2 | Sandy's blog</title>
+    
+    <!-- stylesheets -->
+    <link rel='stylesheet' href="../css/screen.css" type='text/css' />
+    <!--[if IE]> 
+        <link rel='stylesheet' href="css/ie.css" type='text/css' />
+    <![endif]-->
+
+    <!-- scripts-->
+    <script src="../js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/header.js" type="text/javascript"></script>
+    <!-- baidu map script -->
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="../js/jQuery.dot.js"></script>
+    <!-- show time -->
+    <script type="text/javascript" src="../js/showTime.js"></script>
+</head>
+
+
+<body>
+<!-- header starts here -->
+<div class="header">
+<!-- show time -->
+    <div class="nowTime">
+        <span id="nowTime"></span>
+    </div>
+    <div class="foreground">
+        <div class="content">
+            <div class="header-logo">
+                <h1><a href="#">Sandy's blog</a></h1>
+            </div>
+            <div class="top-nav">
+                <ul class="nav1">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="#">前端学习</a>
+                        <ul>
+                            <li><a href="#">html</a></li>
+                            <li><a href="#">js</a></li>
+                            <li><a href="#">css</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">作品案例</a>
+                        <ul>
+                            <li>
+                            <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
+                            </li>
+                            <li><a href="../works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="../works/Roma/index.html">Roma</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">关于我</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!-- header ends here -->
+
+
+<!-- main content starts here -->
+<div class="main-content">
+    <h2 class="title">【转】JavaScript 面试题 2</h2>
+    <div class="content-header">
+        <span class="time">发表于 2017-02-12</span>
+        <span class="person-head">Sandy</span>
+        <span class="classified">分类于 <a href="#">前端学习</a> / <a href="#">JavaScript</a></span>
+    </div>
+    <div class="content-body">
+        <div class="part">
+            <h4>前言</h4>
+            <p>QQ糖受到了暴击，膝盖中了无数剑，大概是醒不过来了。。。转了两篇博文，留着慢慢思考，这是第二篇。</p>
+        </div>
+        <div class="part">
+            <h4>99%的人都会答错的js面试题</h4>
+            <p>这是前端工程师面试中考察比较全面的题，几乎没有人能够完全答对，并非多难只是因为大多面试者过于轻视他。</p>
+            <p>题目如下</p>
+            <code>
+                function Foo() { <br>
+                    getName = function () { console.log (1); }; <br>
+                    return this; <br>
+                } <br>
+                Foo.getName = function () { console.log (2);}; <br>
+                Foo.prototype.getName = function () { console.log (3);}; <br>
+                var getName = function () { console.log (4);}; <br>
+                function getName() { console.log (5);}
+            </code>
+            <p>请写出以下输出结果：</p>
+            <code>
+                Foo.getName(); <br>
+                getName(); <br>
+                Foo().getName(); <br>
+                getName(); <br>
+                new Foo.getName(); <br>
+                new Foo().getName(); <br>
+                new new Foo().getName();
+            </code>
+            <p>
+                此题是我综合之前的开发经验以及遇到的JS各种坑汇集而成。此题涉及的知识点众多，包括变量定义提升、this指针指向、运算符优先级、原型、继承、全局变量污染、对象属性及原型属性优先级等等。此题包含7小问，分别说下。
+            </p>
+            <h3>第一问</h3>
+            <p>先看此题的上半部分做了什么，首先定义了一个叫Foo的函数，之后为Foo创建了一个叫getName的静态属性存储了一个匿名函数，之后为Foo的原型对象新创建了一个叫getName的匿名函数。之后又通过函数变量表达式创建了一个getName的函数，最后再声明一个叫getName函数。</p>
+            <p>第一问的 Foo.getName 自然是访问Foo函数上存储的静态属性，自然是2，没什么可说的。</p>
+            <h3>第二问</h3>
+            <p>第二问，直接调用 getName 函数。既然是直接调用那么就是访问当前上文作用域内的叫getName的函数，所以跟1 2 3都没什么关系。此题有无数面试者回答为5。此处有两个坑，一是变量声明提升，二是函数表达式。</p>
+            <h5>变量声明提升：所有声明变量或声明函数都会被提升到当前函数的顶部。</h5>
+            <p>例如：</p>
+            <code>
+                console.log('x' in window);//true <br>
+                var x;  <br>
+                x = 0;
+            </code>
+            <p>代码执行时js引擎会将声明语句提升至代码最上方，变为：</p>
+            <code>
+                var x; <br>
+                console.log('x' in window);//true <br>
+                x = 0;
+            </code>
+            <h5>函数表达式：js会将此代码拆分为两行代码分别执行</h5>
+            <p>例如：</p>
+            <code>
+                console.log(x);//输出：function x(){}  <br>
+                var x = 1;  <br>
+                function x(){}
+            </code>
+            <p>实际执行的代码为先把<span class="inline-code">var x=1</span>拆分为<span class="inline-code">var x;</span>和<span class="inline-code">x=1;</span>两行。再将<span class="inline-code">var x;</span>和<span class="inline-code">function x(){}</span>提升至最上方变成：</p>
+            <code>
+                var x;  <br>
+                function x(){}  <br>
+                console.log(x);  <br>
+                x = 1;
+            </code>
+            <p>所以最终函数声明的x覆盖了变量声明的x，log输出为x函数。</p>
+            <p>同理，原题中代码最终执行时的是：</p>
+            <code>
+                function Foo() {  <br>
+                getName = function () { alert (1); };  <br>
+                return this;  <br>
+                }  <br>
+                var getName;//只提升变量声明  <br>
+                function getName() { alert (5);}//提升函数声明，覆盖var的声明  <br>
+                Foo.getName = function () { alert (2);};  <br>
+                Foo.prototype.getName = function () { alert (3);};  <br>
+                getName = function () { alert (4);};//最终的赋值再次覆盖function getName声明  <br>
+                getName();//最终输出4 <br>
+            </code>
+            <h3>第三问</h3>
+            <p>第三问的 <span class="inline-code">Foo().getName(); </span>先执行了Foo函数，然后调用Foo函数的返回值对象的getName属性函数。</p>
+            <p>Foo函数的第一句 <span class="inline-code">getName = function () { alert (1); };</span> 是一句函数赋值语句，注意它没有<span class="inline-code">var</span>声明，所以先向当前<span class="inline-code">Foo</span>函数作用域内寻找<span class="inline-code">getName</span>变量，没有。再向当前函数作用域上层，即外层作用域内寻找是否含有<span class="inline-code">getName</span>变量，找到了，也就是第二问中的<span class="inline-code">alert(4)</span>函数，将此变量的值赋值为 <span class="inline-code">function(){alert(1)}</span>。</p>
+            <p>此处实际上是将外层作用域内的<span class="inline-code">getName</span>函数修改了。</p>
+            <p>注意：此处若依然没有找到会一直向上查找到<span class="inline-code">window</span>对象，若<span class="inline-code">window</span>对象中也没有<span class="inline-code">getName</span>属性，就在<span class="inline-code">window</span>对象中创建一个<span class="inline-code">getName</span>变量。</p>
+            <p>之后<span class="inline-code">Foo</span>函数的返回值是<span class="inline-code">this</span>，而JS的<span class="inline-code">this</span>问题博客园中已经有非常多的文章介绍，这里不再多说。</p>
+            <p>简单的讲，<span class="inline-code">this</span>的指向是由所在函数的调用方式决定的。而此处的直接调用方式，<span class="inline-code">this</span>指向<span class="inline-code">window</span>对象。</p>
+            <p>遂<span class="inline-code">Foo</span>函数返回的是<span class="inline-code">window</span>对象，相当于执行 <span class="inline-code">window.getName() </span>，而<span class="inline-code">window</span>中的<span class="inline-code">getName</span>已经被修改为<span class="inline-code">alert(1)</span>，所以最终会输出1。</p>
+            <p>此处考察了两个知识点，一个是变量作用域问题，一个是<span class="inline-code">this</span>指向问题。</p>
+            <h3>第四问</h3>
+            <p>直接调用<span class="inline-code">getName</span>函数，相当于 <span class="inline-code">window.getName() </span>，因为这个变量已经被<span class="inline-code">Foo</span>函数执行时修改了，遂结果与第三问相同，为1。</p>
+            <h3>第五问</h3>
+            <p>第五问 <span class="inline-code">new Foo.getName(); </span>,此处考察的是js的运算符优先级问题。</p>
+            <p>js运算符优先级:</p>
+            <p>
+                参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence</a></p>
+                <p>通过查上表可以得知点<span class="inline-code">（.）</span>的优先级高于<span class="inline-code">new</span>操作，遂相当于是<span class="inline-code">:new (Foo.getName)();</span>所以实际上将<span class="inline-code">getName</span>函数作为了构造函数来执行，遂弹出2。</p>
+                <h3>第六问</h3>
+                <p>第六问 <span class="inline-code">new Foo().getName() </span>，首先看运算符优先级括号高于<span class="inline-code">new</span>，实际执行为<span class="inline-code">(new Foo()).getName()</span>遂先执行<span class="inline-code">Foo</span>函数，而<span class="inline-code">Foo</span>此时作为构造函数却有返回值，所以这里需要说明下js中的构造函数返回值问题。</p>
+                <p>构造函数的返回值在传统语言中，构造函数不应该有返回值，实际执行的返回值就是此构造函数的实例化对象。而在js中构造函数可以有返回值也可以没有。</p>
+                <ol>
+                    <li>没有返回值则按照其他语言一样返回实例化对象。</li>
+                    <li>若有返回值则检查其返回值是否为引用类型。如果是非引用类型，如基本类型<span class="inline-code">（string,number,boolean,null,undefined）</span>则与无返回值相同，实际返回其实例化对象。</li>
+                    <li>若返回值是引用类型，则实际返回值为这个引用类型。</li>
+                </ol>
+                <p>原题中，返回的是<span class="inline-code">this</span>，而<span class="inline-code">this</span>在构造函数中本来就代表当前实例化对象，遂最终<span class="inline-code">Foo</span>函数返回实例化对象。之后调用实例化对象的<span class="inline-code">getName</span>函数，因为在<span class="inline-code">Foo</span>构造函数中没有为实例化对象添加任何属性，遂到当前对象的原型对象（prototype）中寻找<span class="inline-code">getName</span>，找到了。遂最终输出3。</p>
+            <h3>第七问</h3>
+            <p>第七问,<span class="inline-code">new new Foo().getName(); </span>同样是运算符优先级问题。</p>
+            <p>最终实际执行为：<span class="inline-code">new ((new Foo()).getName)();</span></p>
+            <p>初始化<span class="inline-code">Foo</span>的实例化对象，然后将其原型上的<span class="inline-code">getName</span>函数作为构造函数再次<span class="inline-code">new</span>。遂最终结果为3。</p>
+            <p>这里确实是<span class="inline-code">(new Foo()).getName()</span>，但是跟括号优先级高于成员访问没关系，实际上这里成员访问的优先级是最高的，因此先执行了<span class="inline-code"> .getName</span>，但是在进行左侧取值的时候， <span class="inline-code">new Foo()</span> 可以理解为两种运算：<span class="inline-code">new</span> 带参数（即 <span class="inline-code">new Foo()</span>）和函数调用（即 先 <span class="inline-code">Foo()</span> 取值之后再 <span class="inline-code">new</span>），而 <span class="inline-code">new</span> 带参数的优先级是高于函数调用的，因此先执行了 <span class="inline-code">new Foo()</span>，或得 <span class="inline-code">Foo</span> 类的实例对象，再进行了成员访问 <span class="inline-code">.getName</span>。</p>
+        </div>
+        <div class="quote">
+            <p>作者：小小沧海</p>
+            <p>出处：<a href="http://www.imooc.com/u/112353/articles">http://www.imooc.com/u/112353/articles</a></p>
+            <p>本文地址：<a href="http://www.imooc.com/article/13893#parent_1">http://www.imooc.com/article/13893#parent_1</a></p>
+        </div>
+    </div>
+    <div class="content-footer">
+        <div class="backToTop">
+            <a href="#"></a>
+        </div>
+    </div>
+</div>
+<!-- main content ends here -->
+
+
+<!-- map starts here -->
+<div id="contact">
+    <script>
+        var map = new AMap.Map('contact', {
+                  zoom: 17,
+                  center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
+                  });
+
+        var marker = new AMap.Marker({
+                     position: [118.9615169379,32.1108455072],
+                     map: map
+                     });
+
+        //scale rule
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
+                   var toolBar = new AMap.ToolBar();
+                   var scale   = new AMap.Scale();
+                   map.addControl(toolBar);
+                   map.addControl(scale);
+                   });
+    </script>
+</div>
+<!-- map ends here -->
+
+
+<!-- contact starts here -->
+<div class="container" id="contact-text">
+        <div class="moreDetails">
+            <h2 class="con-title">Contact Me</h2>
+            <ul class="address">
+                <li>
+                    <i class="pe-7s-map-marker"></i>
+                    <span>
+                        305 Room, Panzhonglai Building,<br>
+                        <span class="tab">163, Xianlin Avenue,<br></span>
+                        <span class="tab">Nanjing, Jiangsu Province, China<br></span>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@163.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@gmail.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-monitor"></i>
+                    <span>
+                        <a target="_blank" href="http://github.com/qqli1209">github.com/qqli1209</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+</div>
+<!-- contact ends here -->
+
+
+<!-- footer starts here -->
+<div class="footer">
+    <p>Copyright &copy; 2017.Sandy All rights reserved.</p>      
+    <div class="clearfix"></div>
+</div>
+<!-- header ends here -->
+</body>
+</html>
