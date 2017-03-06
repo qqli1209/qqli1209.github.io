@@ -135,6 +135,45 @@
 	color: #222;
 }
 
+/* bottom page nav */
+#pageNav {
+	text-align: center;
+}
+#pageNav ul {
+	list-style-type: disc;
+	display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+#pageNav ul li {
+	display: inline-block;
+}
+#pageNav li a {
+	position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -4px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#pageNav a:hover,
+#pageNav a:focus,
+#pageNav a:active {
+	font-weight: bold;
+	color: #fff;
+	background-color: #f60;
+}
+#pageNav a.pageSelected {
+	font-weight: bold;
+	color: #fff;
+	background-color: #f60;
+}
+
 pre {
 	white-space: pre;
 	display: block;
