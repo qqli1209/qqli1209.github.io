@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSS 水平垂直居中总结 | Sandy's blog</title>
+    
+    <!-- stylesheets -->
+    <link rel='stylesheet' href="../css/screen.css" type='text/css' />
+    <!--[if IE]> 
+        <link rel='stylesheet' href="css/ie.css" type='text/css' />
+    <![endif]-->
+
+    <!-- scripts-->
+    <script src="../js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/header.js" type="text/javascript"></script>
+    <!-- baidu map script -->
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="../js/jQuery.dot.js"></script>
+    <!-- show time -->
+    <script type="text/javascript" src="../js/showTime.js"></script>
+</head>
+
+
+<body>
+<!-- header starts here -->
+<div class="header">
+<!-- show time -->
+    <div class="nowTime">
+        <span id="nowTime"></span>
+    </div>
+    <div class="foreground">
+        <div class="content">
+            <div class="header-logo">
+                <h1><a href="#">Sandy's blog</a></h1>
+            </div>
+            <div class="top-nav">
+                <ul class="nav1">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="#">前端学习</a>
+                        <ul>
+                            <li><a href="#">html</a></li>
+                            <li><a href="#">js</a></li>
+                            <li><a href="#">css</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">作品案例</a>
+                        <ul>
+                            <li>
+                            <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
+                            </li>
+                            <li><a href="../works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="../works/Roma/index.html">Roma</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">关于我</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!-- header ends here -->
+
+
+<!-- main content starts here -->
+<div class="main-content">
+    <h2 class="title">CSS 水平垂直居中总结</h2>
+    <div class="content-header">
+        <span class="time">发表于 2017-03-06</span>
+        <span class="person-head">Sandy</span>
+        <span class="classified">分类于 <a href="#">前端学习</a> / <a href="#">CSS</a></span>
+    </div>
+    <div class="content-body">
+        <div class="part">
+            <h4>前言</h4>
+            <p>在网页布局中经常需要设置水平居中或( 和 )垂直居中。在不同的场景中实现的方法也各有不同，本文总结自己曾经碰到过的情况，算是对这个知识点的回顾和总结。</p>
+        </div>
+        <div class="part">
+            <h4>水平居中</h4>
+            <p>元素水平居中的前提是父元素必须是块级盒子容器，且父元素宽度必须已经被设定好。本文以下案例，所有父元素基础样式为：</p>
+            <code>
+                .wrapper { <br>
+                        position: relative; <br>
+                        margin-bottom: 20px; <br>
+                        margin-top: 20px; <br>
+                        width: 400px; <br>
+                        height: 300px; <br>
+                        border: 2px solid #ccc; <br>
+                        box-sizing: border-box; <br>
+                    } 
+            </code>
+            <ol>
+                <li>子元素是块级元素且宽度没有设定，没有居中的概念，会占满整个父元素的宽度。
+                <p>html 结构：</p>
+                <code>
+                    &lt;div class="wrapper"&gt; <br>
+                        &lt;div class="content"&gt; <br>
+                            子元素是块级元素且宽度没有设定，没有居中的概念，会占满整个父元素的宽度 <br>
+                        &lt;/div&gt; <br>
+                    &lt;/div&gt;
+                </code>
+                <p>css 样式表：</p>
+                <code>
+                    .content { <br>
+                        background-color: green; <br>
+                        color: white; <br>
+                    }
+                </code>
+                <p>结果如下：</p>
+                <img class="small-image" src="../images/article/5.PNG" alt="css水平居中">
+                </li>
+                <li>
+                    子元素是内联元素，宽度由其内容决定。设置父元素 text-align: center;
+                    <p>hmtl 结构：</p>
+                    <code>
+                        &lt;div class="wrapper center"&gt; <br>
+                            &lt;span class="span"&gt; <br>子元素是内联元素，宽度由其内容决定。设置父元素 text-align: center; <br>
+                            &lt;/span&gt; <br>
+                        &lt;/div&gt; <br>
+                    </code>
+                    <p>css 样式表：</p>
+                    <code>
+                        .center { <br> 
+                            text-align: center; <br>
+                        }
+                    </code>
+                    <p>结果如下：</p>
+                    <img class="small-image" src="../images/article/6.PNG" alt="css水平居中">
+                </li>
+                <li>子元素是块元素，宽度确定。
+                    <code>
+                        .child { <br>
+                            color: white; <br>
+                            width: 150px; <br>
+                            height: 150px; <br>
+                            box-sizing: border-box; <br>
+                            border: 1px solid #000; <br>
+                            background-color: green; <br>
+                        }
+                    </code>
+                    <ol>
+                        <li>给子元素添加margin:0 auto;
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper"&gt; <br>
+                                    &lt;div class="child child1"&gt; <br>子元素是块元素，宽度确定。给子元素添加margin:0 auto; <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt; <br>
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .child1 { <br>
+                                    margin: 0 auto; <br>
+                                }
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/7.PNG" alt="css水平居中">
+                        </li>
+                        <li>子元素相对父元素绝对定位。left: 50%; margin-left: -(子元素宽度)/2;
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper"&gt; <br>
+                                    &lt;div class="child child2">子元素是块元素，宽度确定。子元素相对父元素绝对定位。<br>left: 50%; margin-left: -(子元素宽度)/2; <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt; <br>
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .child2 { <br>
+                                    position: absolute; <br>
+                                    left: 50%; <br>
+                                    margin-left: -75px; <br>
+                                }
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/8.PNG" alt="css水平居中">
+                        </li>
+                        <li>
+                            父元素设置padding-left=(父元素宽度-子元素宽度)/2
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper wrapper1"&gt; <br>
+                                    &lt;div class="child"&gt; <br>子元素是块元素，宽度确定。父元素设置padding-left=(父元素宽度-子元素宽度)/2 <br>
+                                    &lt;/div&gt; <br>
+                                &lt;div&gt; <br>
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .wrapper1 { <br>
+                                    padding-left: 125px; <br>
+                                }
+                            </code>
+                            <img class="small-image" src="../images/article/18.PNG" alt="css水平居中">
+                        </li>
+                        <li>子元素设置margin-left=(父元素宽度-子元素宽度)/2。原理同上。</li>
+                        <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/9.PNG" alt="css水平居中">
+                        <li>
+                            父元素flex布局。flex-direction: row; justify-content: center;
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper wrapper2"&gt; <br>
+                                    &lt;div class="child">子元素是块元素，宽度确定。<br>父元素flex布局。flex-direction: row; justify-content: center; <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt; <br>
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .wrapper2 { <br>
+                                    display: flex; <br>
+                                    flex-direction: row; <br>
+                                    justify-content: center; <br>
+                                }
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/10.PNG" alt="css水平居中">
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <div class="part">
+            <h4>垂直居中</h4>
+            <p>元素水平居中的前提是父元素必须是块级盒子容器，且父元素高度必须已经被设定好。本文以下案例，所有父元素基础样式与水平居中的基础样式相同。</p>
+            <ol>
+                <li>
+                    子元素是行内元素，高度是由其内容撑开的。设置父元素的line-height与height相同。
+                    <p>html 结构：</p>
+                    <code>
+                        &lt;div class="wrapper wrapper1"&gt; <br>
+                            &lt;span class="span"&gt; <br>子元素是行内元素，设置父元素的line-height=height <br>
+                            &lt;/span&gt; <br>
+                        &lt;div&gt;
+                    </code>
+                    <p>css 样式表：</p>
+                    <code>
+                        .wrapper1 { <br>
+                            line-height: 200px; <br>
+                        }
+                    </code>
+                    <p>结果如下：</p>
+                    <img class="small-image" src="../images/article/11.PNG" alt="css水平居中">
+                </li>
+                <li>
+                    子元素是块级元素但是子元素高度没有设定，在这种情况下实际上是不知道子元素的高度的，无法通过计算得到padding或margin来调整，但是还是存在一些解法。
+                    <ol>
+                        <li>
+                            父元素display:table-cell; vertical-align:middle;
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper wrapper2"&gt; <br>
+                                    &lt;div class="non-height">子元素是块级元素但是子元素高度没有设定。<br>
+                                    父元素display:table-cell;vertical-align:middle; <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt;
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .non-height { <br>
+                                    color: white; <br>
+                                    box-sizing: border-box; <br>
+                                    border: 1px solid #000; <br>
+                                    background-color: green; <br>
+                                } <br>
+                                .wrapper2 { <br>
+                                    display: table-cell; <br>
+                                    vertical-align: middle; <br>
+                                }
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/12.PNG" alt="css水平居中">
+                        </li>
+                        <li>
+                            子元素是块级元素但是子元素高度没有设定。父元素flex-direction: column; justify-content: center;
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper wrapper3"&gt; <br>
+                                    &lt;div class="non-height"&gt; <br>子元素是块级元素但是子元素高度没有设定。 <br>
+                                    父元素flex-direction: column; justify-content: center; <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt;
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .wrapper3 { <br>
+                                    display: flex; <br>
+                                    flex-direction: column; <br>
+                                    justify-content: center; <br>
+                                }
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/13.PNG" alt="css水平居中">
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    子元素是块级元素且高度已经设定。
+                    <code>
+                        .child-heigth { <br>
+                            height: 150px; <br>
+                            width: 150px; <br>
+                            color: white; <br>
+                            box-sizing: border-box; <br>
+                            border: 1px solid #000; <br>
+                            background-color: green; <br>
+                        }
+                    </code>
+                    <ol>
+                        <li>
+                            计算子元素的margin-top = (父元素高度-子元素高度)/2。
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper wrapper4"&gt; <br>
+                                    &lt;div class="child-heigth"&gt; <br>子元素是块级元素且高度已经设定。
+                                     <br>计算父元素的padding-top = (父元素高度-子元素高度)/2 <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt;
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .wrapper4 { <br>
+                                    padding-top: 75px; <br>
+                                }
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/14.PNG" alt="css水平居中">
+                        </li>
+                        <li>
+                            计算子元素的margin-top = (父元素高度-子元素高度)/2，原理同上。
+                            <p>结果如下。</p>
+                            <img class="small-image" src="../images/article/15.PNG" alt="css水平居中">
+                        </li>
+                        <li>
+                            子元素绝对定位，设置top: 50%; margin-top: -(子元素高度)/2;
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper"&gt; <br>
+                                    &lt;div class="child-heigth child2"&gt; <br>子元素是块级元素且高度已经设定。 <br>
+                                    子元素绝对定位，设置top: 50%; margin-top: -(子元素高度)/2; <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt;
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                                .child2 { <br>
+                                    position: absolute; <br>
+                                    top: 50%; <br>
+                                    margin-top: -75px; <br>
+                                }
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/16.PNG" alt="css水平居中">
+                        </li>
+                        <li>
+                            父元素flex-direction: column; justify-content: center;
+                            <p>html 结构：</p>
+                            <code>
+                                &lt;div class="wrapper wrapper3"&gt; <br>
+                                    &lt;div class="child-heigth"&gt; <br>子元素是块级元素且高度已经设定。 <br>
+                                    父元素flex-direction: column; justify-content: center; <br>
+                                    &lt;/div&gt; <br>
+                                &lt;/div&gt;
+                            </code>
+                            <p>css 样式表：</p>
+                            <code>
+                               .wrapper3 { <br>
+                                    display: flex; <br>
+                                    flex-direction: column; <br>
+                                    justify-content: center; <br>
+                                } 
+                            </code>
+                            <p>结果如下：</p>
+                            <img class="small-image" src="../images/article/17.PNG" alt="css水平居中">
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <div class="part">
+            <h4>总结</h4>
+            <p>css 水平垂直居中的方法有很多，在实践中慢慢总结经验，在不同的情况下选用最合适的方式。</p>
+        </div>
+    </div>
+    <div class="content-footer">
+        <div class="backToTop">
+            <a href="#"></a>
+        </div>
+    </div>
+</div>
+<!-- main content ends here -->
+
+
+<!-- map starts here -->
+<div id="contact">
+    <script>
+        var map = new AMap.Map('contact', {
+                  zoom: 17,
+                  center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
+                  });
+
+        var marker = new AMap.Marker({
+                     position: [118.9615169379,32.1108455072],
+                     map: map
+                     });
+
+        //scale rule
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
+                   var toolBar = new AMap.ToolBar();
+                   var scale   = new AMap.Scale();
+                   map.addControl(toolBar);
+                   map.addControl(scale);
+                   });
+    </script>
+</div>
+<!-- map ends here -->
+
+
+<!-- contact starts here -->
+<div class="container" id="contact-text">
+        <div class="moreDetails">
+            <h2 class="con-title">Contact Me</h2>
+            <ul class="address">
+                <li>
+                    <i class="pe-7s-map-marker"></i>
+                    <span>
+                        305 Room, Panzhonglai Building,<br>
+                        <span class="tab">163, Xianlin Avenue,<br></span>
+                        <span class="tab">Nanjing, Jiangsu Province, China<br></span>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@163.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-mail"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@gmail.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="pe-7s-monitor"></i>
+                    <span>
+                        <a target="_blank" href="http://github.com/qqli1209">github.com/qqli1209</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+</div>
+<!-- contact ends here -->
+
+
+<!-- footer starts here -->
+<div class="footer">
+    <p>Copyright &copy; 2017.Sandy All rights reserved.</p>      
+    <div class="clearfix"></div>
+</div>
+<!-- header ends here -->
+</body>
+</html>
