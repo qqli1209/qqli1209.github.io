@@ -344,6 +344,26 @@ pre {
 .content-body ol li ol {
 	list-style-type: lower-alpha; 
 }
+.content-body ul {
+	list-style-type: none; 
+}
+
+#aboutMePart div {
+	position: relative;
+	height: 13em;
+}
+#aboutMePart img#headPortrait {
+	display: block;
+	margin: 0;
+	padding: 1px;
+	width: 9em;
+	height: 9em;
+	position: absolute;
+	right: 2em;
+	top: 1em;
+	border: 1px solid #bbb;
+	box-shadow: 2px 2px 2px #bbb;
+}
 .indent {
   text-indent: 2em;
 }
