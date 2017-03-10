@@ -25,6 +25,9 @@
     <script type="text/javascript" src="js/banner-pc.js"></script>
     <!-- 底部导航栏，选择博客 -->
     <script type="text/javascript" src="js/pageNav.js"></script>
+    <!-- 按文章分类显示文章 -->
+    <script type="text/javascript" src="js/article-classification.js"></script>
+    
 </head>
 
 
@@ -43,11 +46,11 @@
             <div class="top-nav">
                 <ul class="nav1">
                     <li><a href="#">首页</a></li>
-                    <li><a href="#">前端学习</a>
+                    <li><a href="#myArticles">前端学习</a>
                         <ul>
-                            <li><a href="#">html</a></li>
-                            <li><a href="#">js</a></li>
-                            <li><a href="#">css</a></li>
+                            <li class="html-article"><a href="#myArticles">html</a></li>
+                            <li class="js-article"><a href="#myArticles">js</a></li>
+                            <li class="css-article"><a href="#myArticles">css</a></li>
                         </ul>
                     </li>
                     <li><a href="#">作品案例</a>
@@ -92,7 +95,7 @@
 
     <div id="myArticles">
         <h3>文章<span class="recommend">推荐</span></h3>
-        <article>
+        <article class="js">
             <div class="article-header">
                 <a href="articles/event.html">js中的event事件对象总结</a>
             </div>
@@ -111,7 +114,7 @@
             </div>
         </article>
 
-        <article>
+        <article class="css">
             <div class="article-header">
                 <a href="articles/css-center.html">CSS 水平垂直居中总结</a>
             </div>
@@ -130,7 +133,7 @@
             </div>
         </article>
 
-        <article>
+        <article  class="html">
             <div class="article-header">
                 <a href="articles/href-src.html">href 和 src</a>
             </div>
@@ -149,7 +152,7 @@
             </div>
         </article>
 
-        <article>
+        <article  class="js html css">
             <div class="article-header">
                 <a href="articles/dialog.html">Dialog</a>
             </div>
@@ -168,7 +171,7 @@
             </div>
         </article>
 
-        <article>
+        <article  class="js html">
             <div class="article-header">
                 <a href="articles/Ajax.html">Ajax总结</a>
             </div>
@@ -187,7 +190,7 @@
             </div>
         </article>
 
-        <article>
+        <article  class="js">
             <div class="article-header">
                 <a href="articles/js-inherit.html">js继承方法总结</a>
             </div>
@@ -206,7 +209,7 @@
             </div>
         </article>
 
-        <article>
+        <article  class="js">
             <div class="article-header"><a href="articles/js-create-element.html">js创建对象方法总结</a></div>
             <div class="article-body">
                 <img src="images/coverImage/7.jpg" alt="article intro image">
@@ -224,7 +227,7 @@
             </div>
         </article>
 
-        <article>
+        <article  class="js">
             <div class="article-header">
                 <a href="articles/js-interview-question2.html">【转】JavaScript 面试题 2</a>
             </div>
@@ -243,7 +246,7 @@
             </div>
         </article>
 
-        <article>
+        <article  class="js">
             <div class="article-header">
                 <a href="articles/js-interview-question1.html">【转】JavaScript 面试题 1</a>
             </div>
