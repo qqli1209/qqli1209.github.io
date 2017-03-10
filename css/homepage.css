@@ -392,27 +392,24 @@ pre {
 
 .content-footer {
 	position: fixed;
-	left: 55%;
-	bottom: 30em;
+	right: 1em;
+	bottom: 10em;
+	z-index: 9999;
 	
 }
-.content-footer .backToTop {
-	margin: 0;
-	padding: 0;
-	margin-left: 30em;
-}
+
 
 .content-footer a {
 	display: block;
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	border: 0;
 }
 
 .content-footer a:link,
 .content-footer a:visited {
 	background: url(../images/icons/backToTop.png) center left no-repeat;
-	background-size: 40px 40px;
+	background-size: 50px 50px;
 	text-decoration: none;
 	border: 0;
 }
@@ -420,7 +417,7 @@ pre {
 .content-footer a:focus,
 .content-footer a:active {
 	background: url(../images/icons/backToTopAfter.png) center left no-repeat;
-	background-size: 40px 40px;
+	background-size: 50px 50px;
 	text-decoration: none;
 	border: 0;
 }
