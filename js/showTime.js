@@ -57,13 +57,9 @@ $(function(){
         this.title = this.myTitle;
         $("#tooltip").remove();
     });
+
+
 });
-
-
-
-
-
-
 
 
 
