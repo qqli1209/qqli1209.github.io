@@ -392,10 +392,9 @@ pre {
 
 .content-footer {
 	position: fixed;
-	right: 1em;
+	right: 1.5em;
 	bottom: 10em;
 	z-index: 9999;
-	
 }
 
 
@@ -421,8 +420,6 @@ pre {
 	text-decoration: none;
 	border: 0;
 }
-
-
 /* article style ends here */
 
 

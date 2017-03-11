@@ -36,6 +36,27 @@
         
 $(function(){
 	startTime();
+    //show back to top title
+    var backToTopLink = $("a#backToTopLink");
+    //console.log(backToTopText);
+    backToTopLink.mouseover(function(e){
+        this.myTitle = this.title;
+        this.title = "";
+        //创建 div 元素
+        var tooltip = "<div id='tooltip'>" + this.myTitle + "</div>";
+        //添加到 DOM 中
+        $("body").append(tooltip);
+        $("#tooltip").css({
+            "position" : "fixed",
+            "color" : "#f90",
+            "bottom" : "8.5em",
+            "right" : "0.6em"
+        }).show("fast");
+        console.log(e.pageY + "px",e.pageX + "px");
+    }).mouseout(function(e){
+        this.title = this.myTitle;
+        $("#tooltip").remove();
+    });
 });
 
 
