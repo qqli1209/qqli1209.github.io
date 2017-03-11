@@ -19,7 +19,6 @@
 	width: 30em;
 	position: fixed;
 	z-index: 9999;
-	border: 1px solid #666;
 	left: -9999px;
 	margin-left: -15em;
 	top: 50%;
