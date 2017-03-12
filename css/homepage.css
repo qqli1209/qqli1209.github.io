@@ -427,7 +427,11 @@ blockquote {
 	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 
-
+.content-footer {
+	position: fixed;
+	bottom : 10em;
+    right : 1.5em;
+}
 .content-footer a {
 	display: block;
 	width: 50px;
