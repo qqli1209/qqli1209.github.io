@@ -20,13 +20,14 @@ h1,h2,h3,h4,h5,h6{
 }
 p{
 	margin:0;
+  text-indent: 2em;
 }
 ul,label{
 	margin:0;
 	padding:0;
 }
 body a:hover{
-	text-decoration:none;
+	text-decoration: none;
 }
 code {
     display: block;
@@ -36,6 +37,7 @@ code {
     "Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono",
     "Courier New","monospace",sans-serif;
     background-color: #eff0f1;
+    margin-left: 2em;
 }
 
 

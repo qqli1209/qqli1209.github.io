@@ -414,11 +414,17 @@ pre {
 	margin-top: 30px;
 }
 
-.content-footer {
-	position: fixed;
-	right: 1.5em;
-	bottom: 10em;
-	z-index: 9999;
+blockquote {
+	color: #5a5a5a;	
+	font-style: italic;
+	text-align: center;
+	background-color: #faebbc;  
+	border-top: 1px solid #e1cc89;
+	border-bottom: 1px solid #e1cc89;
+	width: 30em;
+	margin: 2em auto;
+	padding-left: 2em;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 
 
