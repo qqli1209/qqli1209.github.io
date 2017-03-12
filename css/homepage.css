@@ -102,7 +102,7 @@
 
 #myArticles article .article-body img {
 	height: 140px;
-	width: 30%;
+	width: 28%;
 	float: left;
 	padding: 3px;
 	border: 1px solid #bbb;
@@ -347,6 +347,30 @@ pre {
 .content-body ul {
 	list-style-type: none; 
 }
+.content-body .image-view {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+}
+.content-body .image-view .flex-column {
+	flex-basis: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.content-body .image-view img {
+	height: 240px;
+	width: 320px;
+	padding: 1px;
+	border: 1px solid silver;
+	box-shadow: 2px 2px 2px #aaa;
+	cursor: pointer;
+}
+
+.content-body .image-view .flex-column div.hide {
+	visibility: hidden;
+}
+
 
 #aboutMePart div {
 	position: relative;
@@ -356,11 +380,11 @@ pre {
 	display: block;
 	margin: 0;
 	padding: 1px;
-	width: 9em;
+	width: 12em;
 	height: 9em;
 	position: absolute;
 	right: 2em;
-	top: 1em;
+	top: 2em;
 	border: 1px solid #bbb;
 	box-shadow: 2px 2px 2px #bbb;
 }

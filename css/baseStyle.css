@@ -172,6 +172,10 @@ code {
       left: auto;
 }
 
+.top-nav ul#eassy a {
+  font-weight: normal;
+}
+
 
 
 /* Self Clearing Goodness */
