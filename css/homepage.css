@@ -358,7 +358,7 @@ pre {
 	justify-content: space-between;
 }
 
-.content-body .image-view img {
+.content-body .flex-column img {
 	height: 240px;
 	width: 320px;
 	padding: 1px;
@@ -367,10 +367,13 @@ pre {
 	cursor: pointer;
 }
 
-.content-body .image-view .flex-column div.hide {
-	visibility: hidden;
+#bigimg{
+	position: absolute;
+	border: 1px solid #ccc;
+	background: #aaa;
+	padding: 2px;
+	display: none;
 }
-
 
 #aboutMePart div {
 	position: relative;
@@ -418,13 +421,15 @@ blockquote {
 	color: #5a5a5a;	
 	font-style: italic;
 	text-align: center;
-	background-color: #faebbc;  
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#faebcc),to(#ffd));
+	background-color: #faebcc;
 	border-top: 1px solid #e1cc89;
 	border-bottom: 1px solid #e1cc89;
 	width: 30em;
 	margin: 2em auto;
 	padding-left: 2em;
 	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+	text-shadow: 1px 1px 2px #ccc;
 }
 
 .content-footer {
