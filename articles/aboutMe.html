@@ -40,18 +40,12 @@
             </div>
             <div class="top-nav">
                 <ul class="nav1">
-                    <li><a href="../index.html">首页</a></li>
-                    <li><a href="../index.html#myArticles">前端学习</a>
-                        <ul>
-                            <li>
-                                <a href="#">html</a>
-                            </li>
-                            <li>
-                                <a href="#">js</a>
-                            </li>
-                            <li>
-                                <a href="#">css</a>
-                            </li>
+                    <li id="all-articles"><a href="../index.html">首页</a></li>
+                    <li id="front-end-articles"><a href="../index.html#myArticles">前端学习</a>
+                        <ul id="article-nav">
+                            <li id="html-article"><a href="../index.html#myArticles">html</a></li>
+                            <li id="js-article"><a href="../index.html#myArticles">js</a></li>
+                            <li id="css-article"><a href="../index.html#myArticles">css</a></li>
                         </ul>
                     </li>
                     <li><a href="#">作品案例</a>
@@ -59,13 +53,13 @@
                             <li>
                             <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
                             </li>
-                            <li><a href="../works/Shopping/index.html">Shopping</a></li>
-                            <li><a href="../works/Roma/index.html">Roma</a></li>
+                            <li><a href="works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="works/Roma/index.html">Roma</a></li>
                         </ul>
                     </li>
                     <li><a href="#">碎言碎语</a>
                         <ul id="eassy">
-                            <li class="eassy-article"><a href="../index.html#myArticles">随记</a></li>
+                            <li id="eassy-article"><a href="../index.html#myArticles">随记</a></li>
                             <li><a href="#">关于我</a></li>
                         </ul>
                     </li>
@@ -103,7 +97,12 @@
         </div>
     </div>
     <div class="content-footer">
-        <a href="#" id="backToTopLink" title="back to top"></a> <!--back to top -->
+        <a href="#" id="backToTopLink">
+            <span class="icon-text">回到顶部</span>
+        </a> <!--back to top -->
+        <a href="../index.html" id="backToHomeLink">
+            <span class="icon-text">返回首页</span>
+        </a>
     </div>
 </div>
 <!-- main content ends here -->
