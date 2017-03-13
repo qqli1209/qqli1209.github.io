@@ -434,39 +434,38 @@ blockquote {
 
 .content-footer {
 	position: fixed;
-	bottom : 10em;
+	bottom : 3em;
     right : 1em;
     z-index: 9999;
 }
 .content-footer a {
 	position: relative;
 	display: block;
-	margin-bottom: 1.5em;
+	margin-bottom: 1em;
 	width: 60px;
-	height: 70px;
 	border: 0;
 }
 .content-footer a span.icon-text {
 	display: inline-block;
-	margin-top: 68px;
+	margin-top: 55px;
 	width: 60px;
 	text-align: center;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .content-footer a#backToTopLink:link,
 .content-footer a#backToTopLink:visited {
-	background: url(../images/icons/backToTop.png) center left no-repeat;
-	background-size: 60px 60px;
+	background: url(../images/icons/backToTop.png) top center no-repeat;
+	background-size: 50px 50px;
 	text-decoration: none;
 	border: 0;
-	color: #666;
+	color: #999;
 }
 .content-footer a#backToTopLink:hover,
 .content-footer a#backToTopLink:focus,
 .content-footer a#backToTopLink:active {
-	background: url(../images/icons/backToTopAfter.png) center left no-repeat;
-	background-size: 60px 60px;
+	background: url(../images/icons/backToTopAfter.png) top center no-repeat;
+	background-size: 50px 50px;
 	text-decoration: none;
 	border: 0;
 	color: #f90;
@@ -474,17 +473,17 @@ blockquote {
 
 .content-footer a#backToHomeLink:link,
 .content-footer a#backToHomeLink:visited {
-	background: url(../images/icons/backToHome.png) center left no-repeat;
-	background-size: 60px 60px;
+	background: url(../images/icons/backToHome.png) top center no-repeat;
+	background-size: 50px 50px;
 	text-decoration: none;
 	border: 0;
-	color: #666;
+	color: #999;
 }
 .content-footer a#backToHomeLink:hover,
 .content-footer a#backToHomeLink:focus,
 .content-footer a#backToHomeLink:active {
-	background: url(../images/icons/backToHomeAfter.png) center left no-repeat;
-	background-size: 60px 60px;
+	background: url(../images/icons/backToHomeAfter.png) top center no-repeat;
+	background-size: 50px 50px;
 	text-decoration: none;
 	border: 0;
 	color: #f90;
