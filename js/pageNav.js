@@ -71,30 +71,44 @@ $(function(){
     var article_html = $("article.html");
     var article_css = $("article.css");
     var article_eassy = $("article.eassy");
-
-    $(".html-article").click(function(){
+    
+    $("#html-article").click(function(){
         event.stopPropagation();
         article.hide();
         article_html.show();
     });
-    $(".js-article").click(function(){
+    
+
+    $("#js-article").click(function(){
         event.stopPropagation();
         article.hide();
         article_js.show();
     });
-    $(".css-article").click(function(){
+    $("#css-article").click(function(){
         event.stopPropagation();
         article.hide();
         article_css.show();
     });
-    $(".eassy-article").click(function(){
+    
+    $("#eassy-article").click(function(){
         event.stopPropagation();
         article.hide();
         article_eassy.show();
     });
-    $(".all-articles").click(function(){
+    $("#all-articles").click(function(){
+        event.stopPropagation();
         pageLink.eq(1).click();
     });
-
-
+    $("#front-end-articles").click(function(){
+        article.show();
+        article_eassy.hide();
+    });
 });
+
+
+
+
+
+
+
+

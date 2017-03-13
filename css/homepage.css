@@ -435,29 +435,59 @@ blockquote {
 .content-footer {
 	position: fixed;
 	bottom : 10em;
-    right : 1.5em;
+    right : 1em;
+    z-index: 9999;
 }
 .content-footer a {
+	position: relative;
 	display: block;
-	width: 50px;
-	height: 50px;
+	margin-bottom: 1.5em;
+	width: 60px;
+	height: 70px;
 	border: 0;
+}
+.content-footer a span.icon-text {
+	display: inline-block;
+	margin-top: 68px;
+	width: 60px;
+	text-align: center;
+	font-size: 15px;
 }
 
-.content-footer a:link,
-.content-footer a:visited {
+.content-footer a#backToTopLink:link,
+.content-footer a#backToTopLink:visited {
 	background: url(../images/icons/backToTop.png) center left no-repeat;
-	background-size: 50px 50px;
+	background-size: 60px 60px;
 	text-decoration: none;
 	border: 0;
+	color: #666;
 }
-.content-footer a:hover,
-.content-footer a:focus,
-.content-footer a:active {
+.content-footer a#backToTopLink:hover,
+.content-footer a#backToTopLink:focus,
+.content-footer a#backToTopLink:active {
 	background: url(../images/icons/backToTopAfter.png) center left no-repeat;
-	background-size: 50px 50px;
+	background-size: 60px 60px;
 	text-decoration: none;
 	border: 0;
+	color: #f90;
+}
+
+.content-footer a#backToHomeLink:link,
+.content-footer a#backToHomeLink:visited {
+	background: url(../images/icons/backToHome.png) center left no-repeat;
+	background-size: 60px 60px;
+	text-decoration: none;
+	border: 0;
+	color: #666;
+}
+.content-footer a#backToHomeLink:hover,
+.content-footer a#backToHomeLink:focus,
+.content-footer a#backToHomeLink:active {
+	background: url(../images/icons/backToHomeAfter.png) center left no-repeat;
+	background-size: 60px 60px;
+	text-decoration: none;
+	border: 0;
+	color: #f90;
 }
 /* article style ends here */
 
