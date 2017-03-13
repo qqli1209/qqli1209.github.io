@@ -37,6 +37,7 @@
 $(function(){
 	startTime();
     $("#backToTopLink").hide();
+    //var n = 0;
     var availHeight = window.screen.availHeight;
     //函数节流，防止短时间内重复触发
     function throtte(method,context){
@@ -47,6 +48,7 @@ $(function(){
     }
     function showBackToTop(){
         //console.log(document.body.scrollTop, availHeight);
+        //console.log(++n); 
         var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
         if(scrollTop >  availHeight) {
             $("#backToTopLink").show();
@@ -54,10 +56,23 @@ $(function(){
             $("#backToTopLink").hide();
         }
     }
-
+    
+    /*
+    window.onscroll = function(){
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        console.log(++n); 
+        if(scrollTop >  availHeight) {
+            $("#backToTopLink").show();
+        } else {
+            $("#backToTopLink").hide();
+        }
+    };
+    */
+    
     window.onscroll = function(){
         throtte(showBackToTop);
     };
+    
 });
 
 
