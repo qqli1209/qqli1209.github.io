@@ -36,9 +36,16 @@
         
 $(function(){
 	startTime();
+    $("#backToTopLink").hide();
     var availHeight = window.screen.availHeight;
-    
-    window.onscroll = function(){
+    //函数节流，防止短时间内重复触发
+    function throtte(method,context){
+        clearTimeout(method.tId);
+        method.tId = setTimeout(function(){
+            method.call(context);
+        },100);
+    }
+    function showBackToTop(){
         //console.log(document.body.scrollTop, availHeight);
         var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
         if(scrollTop >  availHeight) {
@@ -46,8 +53,11 @@ $(function(){
         } else {
             $("#backToTopLink").hide();
         }
+    }
+
+    window.onscroll = function(){
+        throtte(showBackToTop);
     };
-    
 });
 
 
