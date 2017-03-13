@@ -1,3 +1,6 @@
+#wrapper {
+	width: 100%;
+}
 
 #wrapper #dl {
 	width: 6em;
@@ -11,18 +14,30 @@
 	-webkit-border-radius: 0.5em;
 	-moz-border-radius: 0.5em;
 	border-radius: 0.5em;
-	margin: 2em auto;
+	margin: 3em auto;
+	margin-top: 0;
+}
+#dialog-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	z-index: 8888;
+	left: -9999px;
+	background-color: rgba(0,0,0,0.3);
 }
 #dialog {
 	background-color: #0bf;
 	height: 210px;
 	width: 30em;
 	position: fixed;
-	z-index: 9999;
-	left: -9999px;
 	margin-left: -15em;
 	top: 50%;
 	margin-top: -105px;
+	z-index: 9999;
+	left: -9999px;
 	/* left: -15em; */
 }
 #head {
