@@ -36,6 +36,18 @@
         
 $(function(){
 	startTime();
+    var availHeight = window.screen.availHeight;
+    
+    window.onscroll = function(){
+        //console.log(document.body.scrollTop, availHeight);
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if(scrollTop >  availHeight) {
+            $("#backToTopLink").show();
+        } else {
+            $("#backToTopLink").hide();
+        }
+    };
+    
 });
 
 
