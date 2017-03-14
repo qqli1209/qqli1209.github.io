@@ -29,8 +29,8 @@ $(function(){
 	}
 	*/
 	//预加载图片
-	
-	
+
+
 	$(".flex-column img").mouseover(function(e){
 		this.myTitle = this.title;
 		this.title = "";
@@ -38,7 +38,7 @@ $(function(){
 		$("body").append(bigimg);
 		$("#bigimg").css({
 			"top" : (e.pageY+y)+"px",
-			"left" : (e.pageX+x)+"px"}).show("fast");
+			"left" : (e.pageX+x)+"px"}).fadeIn("fast");
 			console.log($("#bigimg"));
 	}).mouseout(function(){
 		this.title = this.myTitle;
