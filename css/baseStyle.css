@@ -178,6 +178,10 @@ code {
   font-weight: normal;
 }
 
+#blogReadTimes {
+  float: right;
+  margin-right: 20px;
+}
 
 
 /* Self Clearing Goodness */
