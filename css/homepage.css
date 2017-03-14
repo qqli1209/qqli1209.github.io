@@ -173,6 +173,9 @@
 	color: #fff;
 	background-color: #f60;
 }
+#image-container {
+    visibility: hidden;
+}
 
 pre {
 	white-space: pre;

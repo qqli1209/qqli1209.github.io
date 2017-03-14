@@ -49,7 +49,19 @@ $(function(){
 			"top" : (e.pageY+y)+"px",
 			"left" : (e.pageX+x)+"px"});
 	});
-
+	var images = new Array();
+        function preload() {
+            for (i = 0; i < preload.arguments.length; i++) {
+                images[i] = new Image()
+                images[i].src = preload.arguments[i];
+                document.getElementById("image-container").appendChild(images[i]);
+            }
+        }
+        preload(
+            "../images/icons/backToHomeAfter.png",
+            "../images/icons/backToTopAfter.png",
+            "../images/icons/head-hover.png"
+        );
 });
 
 
