@@ -39,12 +39,12 @@ $(function(){
 		$("#bigimg").css({
 			"top" : (e.pageY+y)+"px",
 			"left" : (e.pageX+x)+"px"}).fadeIn("fast");
-			console.log($("#bigimg"));
+			//console.log($("#bigimg"));
 	}).mouseout(function(){
 		this.title = this.myTitle;
 		$("#bigimg").remove();
 	}).mousemove(function(e){
-		console.log(e.pageY);
+		//console.log(e.pageY);
 		$("#bigimg").css({
 			"top" : (e.pageY+y)+"px",
 			"left" : (e.pageX+x)+"px"});
