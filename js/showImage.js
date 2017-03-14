@@ -28,6 +28,9 @@ $(function(){
 			"left" : (e.pageX+x)+"px"});
 	}
 	*/
+	//预加载图片
+	
+	
 	$(".flex-column img").mouseover(function(e){
 		this.myTitle = this.title;
 		this.title = "";

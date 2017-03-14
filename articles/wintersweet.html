@@ -25,6 +25,11 @@
     <script type="text/javascript" src="../js/showImage.js"></script>
     <!-- 底部导航栏，选择博客,按文章分类显示文章 -->
     <script type="text/javascript" src="../js/pageNav.js"></script>
+    <style type="text/css">
+        #image-container {
+            height: 0;
+        }
+    </style>
 </head>
 
 
@@ -133,7 +138,7 @@
     </div>
 </div>
 <!-- main content ends here -->
-
+<div id="image-container"></div>
 
 <!-- map starts here -->
 <div id="contact">
@@ -201,5 +206,23 @@
     <div class="clearfix"></div>
 </div>
 <!-- header ends here -->
+
+<script type="text/javascript">
+    var images = new Array()
+            function preload() {
+                for (i = 0; i < preload.arguments.length; i++) {
+                    images[i] = new Image()
+                    images[i].src = preload.arguments[i];
+                    document.getElementById("image-container").appendChild(images[i]);
+                }
+                //alert("preload down!");
+            }
+            preload(
+                "../images/article/20.jpg",
+                "../images/article/21.jpg",
+                "../images/article/22.jpg",
+                "../images/article/23.jpg",
+            );
+</script>
 </body>
 </html>
