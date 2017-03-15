@@ -1,0 +1,30 @@
+
+        .main-content {
+            width: 100%;
+        }
+        div#image-container {
+            visibility: visible;
+          }
+         #imageList {
+          padding: 0;
+          list-style: none;
+          width: 80%;
+          margin: 2em auto;
+          }
+           
+          #imageList .in {
+          margin: 10px;
+          text-align: center;
+          height: 200px;
+          width: 320px;
+          float: left;
+          }
+           
+          .in img {
+            padding: 1px;
+            border: 1px solid #999;
+            margin: 1em;
+            box-shadow: 2px 2px 2px #ccc;
+            width: 320px;
+            height: 200px;
+          }
