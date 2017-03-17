@@ -1,0 +1,63 @@
+		#triangle {
+			position: relative;
+			width: 500px;
+			margin: 5em auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		#triangle:hover {
+			cursor: pointer;
+		}
+		#triangle div {
+			display: inline-block;
+		}
+		#first {
+			position: absolute;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			border-width: 25px;
+			border-style: solid;
+			border-color: #009900 #00cccc #9933cc #ffcc00;
+		}
+		#second {
+			position: absolute;
+			left: 200px;
+			width: 0px;
+			height: 0px;
+			border-width: 25px;
+			border-style: solid;
+			border-color: #009900  #00cccc #9933cc #ffcc00;
+		}
+		#third {
+			position: absolute;
+			left: 400px;
+			width: 0px;
+			height: 0px;
+			border-width: 25px;
+			border-style: solid;
+			border-color: #009900 transparent transparent transparent;
+		}
+
+		.city {
+			width: 500px;
+			margin: 5em auto;
+			color: #333;
+			
+		}
+		.city div {
+			display: inline-block;
+			padding: 0 20px;
+			border: 1px solid #44a5fc;
+			transform: skew(-20deg);
+		}
+		.city div:hover {
+			background-color: #44a5fc;
+			color: #fff;
+			cursor: pointer;
+		}
+		.city div span {
+			display: inline-block;
+			transform: skew(20deg);
+		}
