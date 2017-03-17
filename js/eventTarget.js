@@ -1,3 +1,4 @@
+
 function EventTarget(){
 		this.handlers = {};
 	}
