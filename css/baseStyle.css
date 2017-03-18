@@ -5,7 +5,7 @@ html, body{
 }
 
 body {
-  min-width: 900px;
+  /*min-width: 830px;*/
 }
 
 body a{
@@ -184,9 +184,6 @@ code {
   margin-right: 20px;
   height: 1em;
 }
-#blogReadTimes img {
-  height: 1em;
-}
 
 
 /* Self Clearing Goodness */
@@ -234,18 +231,18 @@ code {
 #contact {
   position: absolute;
   width: 100%;
-  -webkit-filter: brightness(0.3);
-  -moz-filter: brightness(0.3);
-  -o-filter: brightness(0.3);
-  filter: brightness(0.3);
-  height: 25em;
+  -webkit-filter: brightness(0.4);
+  -moz-filter: brightness(0.4);
+  -o-filter: brightness(0.4);
+  filter: brightness(0.4);
+  height: 22em;
   overflow: hidden;
 }
 
 #contact-text {
     font-family: "Titillium Web", 'Open Sans', sans-serif;
     color: #fff;
-    padding-top: 60px;
+    padding-top: 30px;
     width: 600px;
 }
 /* IE6 */

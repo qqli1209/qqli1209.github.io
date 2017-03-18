@@ -1,14 +1,4 @@
 
-/* main contect styles start here */
-#main {
-	width: 100%;
-	position: relative;
-}
-
-#main>div {
-	margin-bottom: 10em;
-}
-
 /* 图片轮播 */
 .imageroll {
 	height: 30em;
@@ -51,12 +41,27 @@
     display: block;    
     width: 100%;
 }
+
+/* main contect styles start here */
+#main {
+	width: 100%;
+	margin-top: 5em;
+    padding: 0 30px;
+    zoom: 1;
+    max-width: 1600px;
+	overflow: hidden;
+}
+
+
+
 /* end */
 
 /* my articles */
 #myArticles {
-	width: 70em;
-	margin: 10em auto;
+	margin-left: 20%;
+    max-width: 800px;
+    width: 60%;
+    display: inline-block;
 }
 
 #myArticles>h3 {
@@ -76,7 +81,7 @@
 
 #myArticles article {
 	margin-bottom: 20px;
-	width: 80%;
+	/*width: 80%;*/
 	padding: 25px 25px 5px 25px;
 	margin: 5em auto;
 	border: 1px solid #f1f1f1;
@@ -102,7 +107,7 @@
 
 #myArticles article .article-body img {
 	height: 140px;
-	width: 28%;
+	width: 200px;
 	float: left;
 	padding: 3px;
 	border: 1px solid #bbb;
@@ -118,7 +123,8 @@
 */
 
 #myArticles article .article-body .articleText {
-	width: 70%;
+	min-width: 10%;
+	/*width: 70%;*/
 	height: 120px;
 	line-height: 30px;
 	overflow: hidden;
@@ -137,7 +143,9 @@
 
 /* bottom page nav */
 #pageNav {
-	text-align: center;
+	text-align: right;
+    font-size: 14px;
+    padding: 10px 0;
 }
 #pageNav ul {
 	list-style-type: disc;
@@ -177,6 +185,70 @@
     visibility: hidden;
 }
 
+.sidebar {
+	float: right;
+    min-width: 150px;
+    width: 20%;
+    font-size: 13px;
+    padding: 35px 0 0 20px;
+}
+@media screen and (max-width:840px){
+	#myArticles{display: block;margin:0 auto;width: 80%;} 
+	.sidebar{display: block;margin:0 auto;width: 80%;float: none;padding: 0;margin-bottom: 5em;}
+}
+@media screen and (max-width:650px){
+	#myArticles .readMore{display: none;}
+}
+@media screen and (max-width:600px){
+	#myArticles img{display: none;}
+	#myArticles article .article-body .articleText {padding-left: 0;}
+}
+.sidebar>div {
+	border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+.sidebar h4 {
+    font-size: 1.1em;
+    font-weight: 400;
+    margin: 0;
+}
+hr {
+	box-sizing: content-box;
+    height: 0;
+    border: none;
+    border-bottom: 1px solid #cfcfcf;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.sidebar #myInfo img {
+	float: right;
+	width: 45px;
+	height: 45px;
+	margin: 0 0 5px 10px;
+}
+.sidebar p {
+	text-indent: 0;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.sidebar #other-sites img {
+    cursor: pointer;
+    margin: 4px 6px 0 0;
+    width: 25px;
+    height: 25px;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+.sidebar #other-sites img:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
 pre {
 	white-space: pre;
 	display: block;
@@ -198,23 +270,26 @@ pre {
 	font-size: 13px;
 	position: relative;
 }
+#myArticles article p{
+	text-indent: 0;
+}
 
 .time {
-    margin-right: 15px;
+    margin-right: 1%;
     padding-left: 22px;
     background: url(../images/icons/time.png) no-repeat center left;
     background-size: 17px 17px;
 }
 
 .read {
-    margin-right: 15px;
+    margin-right: 1%;
     padding-left: 22px;
     background: url(../images/icons/read.png) no-repeat center left;
     background-size: 17px 17px;
 }
 
 .comment {
-    margin-right: 15px;
+    margin-right: 1%;
     padding-left: 22px;
     background: url(../images/icons/comment.png) no-repeat center left;
     background-size: 17px 17px;
@@ -237,7 +312,7 @@ pre {
 	display: inline-block;
 	font-size: 1em;
 	position: absolute;
-	right: 3em;
+	right: 1em;
 	bottom: 1.3em;
 	border: 1px solid #00aa55;
 	padding: 5px 10px;
