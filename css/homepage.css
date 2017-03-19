@@ -195,6 +195,7 @@
 @media screen and (max-width:840px){
 	#myArticles{display: block;margin:0 auto;width: 80%;} 
 	.sidebar{display: block;margin:0 auto;width: 80%;float: none;padding: 0;margin-bottom: 5em;}
+	.sidebar #myInfo {min-height: 100px;}
 }
 @media screen and (max-width:650px){
 	#myArticles .readMore{display: none;}

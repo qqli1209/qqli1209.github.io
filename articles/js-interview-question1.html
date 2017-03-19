@@ -17,9 +17,9 @@
 <body>
 <!-- header starts here -->
 <div class="header">
-<!-- show time -->
-    <div class="nowTime">
-        <span id="nowTime"></span>
+    <!-- show clock -->
+    <div id="clockDiv">
+        <canvas id="clock" width="100" height="100"></canvas>
     </div>
     <div class="foreground">
         <div class="content">
@@ -285,8 +285,10 @@
     <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
     <!-- text ellipsis -->
     <script type="text/javascript" src="../js/jQuery.dot.js"></script>
-    <!-- show time -->
-    <script type="text/javascript" src="../js/showTime.js"></script>
+    <!-- back to top -->
+    <script type="text/javascript" src="../js/backToTop.js"></script>
+    <!-- show clock -->
+    <script type="text/javascript" src="../js/clock.js"></script> 
     <!-- 底部导航栏，选择博客,按文章分类显示文章 -->
     <script type="text/javascript" src="../js/pageNav.js"></script>
     <!-- 统计博客访问次数 -->

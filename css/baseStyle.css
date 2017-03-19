@@ -76,11 +76,11 @@ code {
   color: #084;
 }
 
-.nowTime {
+#clockDiv {
+  width: 100px;
   position: absolute;
-  margin-left: 2em;
-  margin: 2em;
-  font-size: 1.3em;
+  top: 40px;
+  right: 6%;
 }
 /*
 .top-nav {

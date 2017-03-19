@@ -1,4 +1,4 @@
-
+/*
 		function startTime(){
                 var today=new Date();//定义日期对象     
                 var yy = today.getFullYear();//通过日期对象的getFullYear()方法返回年      
@@ -21,7 +21,7 @@
                 if(today.getDay()==4)   {day = "星期四 " ;}  
                 if(today.getDay()==5)   {day = "星期五 " ;}  
                 if(today.getDay()==6)   {day = "星期六 " ;}
-                */
+                
                 document.getElementById('nowTime').innerHTML=
                 yy+"-"+MM +"-"+ dd +" " + hh + ":" + mm + ":" + ss;
                 setTimeout('startTime()',1000);//每一分钟重新加载startTime()方法  
@@ -33,9 +33,10 @@
             }     
             return t;  
         }    
-        
+*/   
+
 $(function(){
-	startTime();
+	//startTime();
     $("#backToTopLink").hide();
     //var n = 0;
     var availHeight = window.screen.availHeight;
