@@ -203,5 +203,11 @@ var clock=document.getElementById("clock");
 	
 }
 drawClock();
-//使用setInterval(代码,周期(毫秒制))让时钟动起来
-setInterval(drawClock,10);
+//setInterval缺点：某些间隔被跳过，多个定时器执行代码之间的间隔可能比较小
+//setInterval(drawClock,10);
+
+//链式setTimeout 解决这个问题
+setTimeout(function(){
+	drawClock();
+	setTimeout(arguments.callee,1000);
+},1000);
