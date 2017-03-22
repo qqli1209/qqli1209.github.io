@@ -73,43 +73,42 @@
         <div class="part">
         	<h4>Ajax是什么</h4>
         	<p>Ajax, 就是 Asynchronous JavaScript and XML 的简写，按照 HTML 的标签来写就是</p>
-        	<code>
-        		&lt;acronym title="Asynchronous JavaScript and XML"&gt;Ajax&lt;/acronym&gt;
-        	</code>
+        	<code><pre>
+&lt;acronym title="Asynchronous JavaScript and XML"&gt;Ajax&lt;/acronym&gt;
+        	</pre></code>
         	<p>Ajax 的核心是 XMLHttpRequest ( XHR ), 这是由微软最先引入的特性，后来各个浏览器提供商都提供了相同的实现。Ajax 能够以异步方式获取新数据，这意味着用户单击 ( 如提交表单 ) 后，不用刷新页面也能获得新数据。更重要的是，以异步方式提交数据时，页面仍然可以正常显示，用户甚至可以编辑表单。这样的特性给了web应用程序以一种桌面应用程序的感觉，极大提高了交互性和用户体验。</p>
         </div>
         <div class="part">
         	<h4>XMLHttpRequest 对象</h4>
         	<p>在除了IE之外的浏览器或IE7及更高版本的浏览器中创建新的XHR对象很简单，只需要下面这样使用它的构造函数。</p>
-        	<code>
-        		var xhr = new XMLHttpRequest();
-        	</code>
+        	<code><pre>
+var xhr = new XMLHttpRequest();
+        	</pre></code>
         	<p>但由于IE的早期版本是用MSXML中的一个ActiveX对象实现XHR的，而且还有三个不同版本的XHR, MSXML2.XMLHttp.6.0、 MSXML2.XMLHttp.3.0 和 MSXML2.XMLHttp。因此有必要创建一个通用函数来支持这些老的浏览器，如下所示。</p>
-        	<code>
-        		function createXHR(){ <br>
-        			if(typeof XMLHttpRequest != "undefinde"){ <br>
-        				return new XMLHttpRequest(); <br>
-        			} else if(typeof ActiveXObject != "undefined"){ <br>
-        				if(typeof arguments.callee.ActiveXString != "string"){ <br>
-        					var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", <br>
-        									"MSXML2.XMLHttp"]; <br>
-        					var len = versions.length; <br>
-        					for(var i=0; i&lt;len; i++){ <br>
-        						try{ <br>
-        							new ActiveXObject(versions[i]); <br>
-        							arguments.callee.ActiveXString = versions[i]; <br>
-        							break; <br>
-        						} catch(e) { <br>
-        							//skip <br>
-        						} <br>
-        					} <br>
-        				} <br>
-        				return new ActiveXObject(arguments.callee.ActiveXString); <br>
-        			} else { <br>
-        				throw new Error("No XHR object availble."); <br>
-        			} <br>
-        		}
-        	</code>
+        	<code><pre>
+function createXHR(){
+    if(typeof XMLHttpRequest != "undefinde"){
+        return new XMLHttpRequest();
+    } else if(typeof ActiveXObject != "undefined"){
+        if(typeof arguments.callee.ActiveXString != "string"){
+            var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0","MSXML2.XMLHttp"];
+            var len = versions.length;
+            for(var i=0; i&lt;len; i++){
+                try{
+                    new ActiveXObject(versions[i]);
+                    arguments.callee.ActiveXString = versions[i];
+                    break;
+            	} catch(e) {
+            	   //skip
+            	}
+            }
+        }
+        return new ActiveXObject(arguments.callee.ActiveXString);
+    } else {
+        throw new Error("No XHR object availble.");
+    }
+}
+        	</pre></code>
         	<p>现在，我们可以放心地用<span class="inline-code">var xhr = createXHR();</span>来创建XHR对象了。</p>
         </div>
         <div class="part">
@@ -124,14 +123,14 @@
         	</ol>
 			</p>
 			<p>使用 XHR 对象时，要调用的第一个方法是<span class="inline-code">open()</span>。该方法接收三个参数：要发送请求的类型( "get", "post"等 )、请求的 URL ( 相对于执行代码的当前页 )以及表示是否异步发送请求的 Boolean值( 默认为true，异步 )。例如： </p>
-			<code>
-				var xhr = createXHR(); <br>
-				xhr.open("get","example.php",false);
-			</code>
+			<code><pre>
+var xhr = createXHR();
+xhr.open("get","example.php",false);
+			</pre></code>
 			<p>要发送请求，要调用<span class="inline-code">send()</span>方法。</p>
-			<code>
-				xhr.send(null);
-			</code>
+			<code><pre>
+xhr.send(null);
+			</pre></code>
 			<p>在收到响应后，请求的数据会填充 xhr 的属性，例如：
 			<ul>
 				<li>responseText : 作为相应主体被返回的文本</li>
@@ -140,13 +139,13 @@
 			</ul>
 			</p>
 			<p>应该像下面这样检查上面两种状态码：</p>
-			<code>
-				if((xhr.status>=200 && xhr.status<300) || xhr.status==304){ <br>
-					console.log(responseText); <br>
-				} else { <br>
-					console.log("Request was unsuccessful : " + xhr.status); <br>
-				}
-			</code>
+			<code><pre>
+if((xhr.status>=200 && xhr.status<300) || xhr.status==304){
+    console.log(responseText);
+} else {
+    console.log("Request was unsuccessful : " + xhr.status);
+}
+			</pre></code>
 			<p>像前面这样发送同步请求当然没有问题，但多数情况下，我们还是要发送异步请求，才能让JavaScript 继续执行而不必等待响应。此时，可以检测 XHR 对象的 readyState 属性，该属性表示请求/响应过程的当前活动阶段。这个属性可取的值如下：
 			<ul>
 				<li>0 : 尚未调用open()方法初始化</li>
@@ -157,20 +156,20 @@
 			</ul>
 			</p>
 			<p>只要 readyState 值发生改变，就会调用 onreadystatechange 事件。通常，我们只对 readyState 值为 4 的阶段感兴趣，因为这时所有数据都已经就绪。下面来看一个例子。</p>
-			<code>
-				var xhr = createXHR(); <br>
-				xhr.onreadystatechange = function(){ <br>
-				if (xhr.readyState == 4){ <br>
-				if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){ <br>
-				alert(xhr.responseText); <br>
-				} else { <br>
-				alert("Request was unsuccessful: " + xhr.status); <br>
-				} <br>
-				} <br>
-				}; <br>
-				xhr.open("get", "example.txt", true); <br>
-				xhr.send(null);
-			</code>
+			<code><pre>
+var xhr = createXHR();
+xhr.onreadystatechange = function(){
+    if (xhr.readyState == 4){
+    	if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+    		alert(xhr.responseText);
+    	} else {
+    		alert("Request was unsuccessful: " + xhr.status);
+        }
+    }
+};
+xhr.open("get", "example.txt", true);
+xhr.send(null);
+			</pre></code>
         </div>
         <div class="part">
         	<h4>get 和 post 请求</h4>
@@ -181,40 +180,40 @@
         	<h4>跨域资源共享( CORS )</h4>
         	<p>对于除了IE之外的浏览器，要请求位于另一个域中的资源，只需要向<span class="inline-code">send()</span>的第二个参数传入绝对URL即可。</p>
         	<p>对于IE要稍微麻烦些，需要创建XDomainRequest 而不是XMLHttpRequest。例如：</p>
-        	<code>
-        		var xdr = new XDomainRequest(); <br>
-				xdr.onload = function(){ <br>
-				alert(xdr.responseText); <br>
-				}; <br>
-				xdr.open("get", "http://www.somewhere-else.com/page/"); <br>
-				xdr.send(null);
-        	</code>
+        	<code><pre>
+var xdr = new XDomainRequest();
+xdr.onload = function(){
+    alert(xdr.responseText);
+};
+xdr.open("get", "http://www.somewhere-else.com/page/");
+xdr.send(null);
+        	</pre></code>
         </div>
         <div class="part">
         	<h4>jQuery中Ajax的操作</h4>
         	<p>一、$.ajax，这是 jQuery 对 ajax 封装的最基础步，通过使用这个函数可以完成异步通讯的所有功能。常用参数有：</p>
-        	<code>
-        		var configObj = { <br>
-			       method   //数据的提交方式：get和post <br>
-			       url   //数据的提交路劲 <br>
-			       async   //是否支持异步刷新，默认是true <br>
-			       data    //需要提交的数据 <br>
-			       dataType   //服务器返回数据的类型，例如xml,String,Json等 <br>
-			       success    //请求成功后的回调函数 <br>
-			       error   //请求失败后的回调函数 <br>
-			    } <br>
-				$.ajax(configObj);//通过$.ajax函数进行调用。
-        	</code>
+        	<code><pre>
+var configObj = {
+    method   //数据的提交方式：get和post
+    url   //数据的提交路劲
+    async   //是否支持异步刷新，默认是true
+    data    //需要提交的数据
+    dataType   //服务器返回数据的类型，例如xml,String,Json等
+    success    //请求成功后的回调函数
+    error   //请求失败后的回调函数
+} 
+$.ajax(configObj);//通过$.ajax函数进行调用。
+        	</pre></code>
         	<p>二、$.post，这个函数其实就是对$.ajax进行了更进一步的封装，减少了参数，简化了操作，但是运用的范围更小了。$.post简化了数据提交方式，只能采用POST方式提交。只能是异步访问服务器，不能同步访问，不能进行错误处理。因此还剩下这些常用参数：</p>
-        	<code>
-        		var configObj = { <br>
-			       url   //数据的提交路劲 <br>
-			       data    //需要提交的数据 <br>
-			       type  //返回内容格式，xml, html, script, json, text,_default <br>
-			       callback  //发送成功时回调函数。 <br>
-			    } <br>
-				$.post(configObj);//通过$.ajax函数进行调用。
-        	</code>
+        	<code><pre>
+var configObj = {
+    url   //数据的提交路劲
+    data    //需要提交的数据
+    type  //返回内容格式，xml, html, script, json, text,_default
+    callback  //发送成功时回调函数。
+}
+$.post(configObj);//通过$.ajax函数进行调用。
+        	</pre></code>
         	<p>三、$.get，和$.post一样，这个函数是对get方法的提交数据进行封装，只能使用在get提交数据解决异步刷新的方式上，使用方式和上边的也差不多。</p>
         	<p>四、$.getJSON，这个是进一步的封装，也就是对返回数据类型为Json进行操作。里边就三个参数，需要我们设置，非常简单：url,[data],[callback]。</p>
         </div>

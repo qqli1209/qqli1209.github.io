@@ -81,17 +81,17 @@
         <div class="part">
             <h4>事件冒泡</h4>
             <p>IE 的事件流叫做事件冒泡，即事件开始时由最具体的元素( 文档中嵌套层次最深的那个节点 )接收，然后逐级向上传播到较为不具体的节点。以下面的 HTML 页面为例：</p>
-            <code>
-                &lt;!DOCTYPE html&gt; <br>
-                &lt;html&gt; <br>
-                &lt;head&gt; <br>
-                    &lt;title>event bubbling example&lt;/title&gt; <br>
-                &lt;/head&gt; <br>
-                &lt;body&gt; <br>
-                &lt;div id="myDiv">my div&lt;/div&gt; <br>
-                &lt;/body&gt; <br>
-                &lt;/html&gt; <br>
-            </code>
+            <code><pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title>event bubbling example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="myDiv">my div&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre></code>
             <p>如果你单击了页面的<span class="inline-code">div</span>元素，那么这个<span class="inline-code">click</span>事件会按照如下顺序传播：</p>
             <ol>
                 <li>div</li>
@@ -124,9 +124,9 @@
                         <div class="part">
                             <h5>HTML 事件处理程序</h5>
                             <p>可以用一个与相应事件同名的 HTML 特性来指定。例如：</p>
-                            <code>
-                                &lt;input type="button" name="clickme" value="click me" onclick="alert('clicked')"&gt;
-                            </code>
+                            <code><pre>
+&lt;input type="button" name="clickme" value="click me" onclick="alert('clicked')"&gt;
+                            </pre></code>
                             <p>这种方法 HTML 与JavaScript 耦合太高，灵活性很差。</p>
                         </div>
                     </li>
@@ -134,12 +134,12 @@
                         <div class="part">
                             <h5>DOM0级事件处理程序</h5>
                             <p>这种方法通过将一个函数赋值给一个事件处理程序属性。非常简单且具有跨浏览器的优势。例如：</p>
-                            <code>
-                                var button = document.gtElementById("myButton"); <br>
-                                button.onclick = function(){ <br>
-                                console.log("clicked"); <br>
-                                }
-                            </code>
+                            <code><pre>
+var button = document.gtElementById("myButton");
+button.onclick = function(){
+    console.log("clicked");
+}
+                            </pre></code>
                             <p>通过这种方法指定的事件处理程序被认为是元素的方法，因此在其依附的元素的作用域中运行。通过调用<span class="input">button.onclick=null</span>即可删除事件处理程序。</p>
                         </div>
                     </li>
@@ -147,20 +147,20 @@
                         <div class="part">
                             <h5>DOM2级事件处理程序</h5>
                             <p>“DOM2级事件”分别定义了 <span class="inline-code">addEventListener()</span>和<span class="inline-code">removeEventListener()</span>用来添加和删除事件处理程序。他们都接受3个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值。布尔值为 true 代表在捕获阶段执行时间处理程序，为 false 代表在冒泡阶段执行事件处理程序。例如：</p>
-                            <code>
-                                button.addEventListener("click",function(){ <br>
-                                    console.log("clicked"); <br>
-                                },false);
-                            </code>
+                            <code><pre>
+button.addEventListener("click",function(){
+    console.log("clicked");
+},false);
+                            </pre></code>
                             <p>通过这种方法指定的事件处理程序也是在其依附的元素的作用域中运行。若要删除这个事件处理程序，第二个参数不能传入匿名函数，因为传入<span class="inline-code">removeEventListener()</span>的函数必须与传入<span class="inline-code">addEventListener()</span>的函数相同。例如：</p>
-                            <code>
-                                var handler = function(){ <br>
-                                    console.log("clicked"); <br>
-                                }; <br>
-                                button.addEventListener("click",handler,false); <br>
-                                //其他代码 <br>
-                                button.removeEventListener("click",handler,false);
-                            </code>
+                            <code><pre>
+var handler = function(){
+    console.log("clicked");
+};
+button.addEventListener("click",handler,false);
+//其他代码
+button.removeEventListener("click",handler,false);
+                            </pre></code>
                             <p>大多数情况下，都是将事件处理程序添加到事件流的冒泡阶段，这样可以最大限度地兼容各种浏览器。</p>
                         </div>
                     </li>
@@ -168,11 +168,11 @@
                         <div class="part">
                             <h5>IE 事件处理程序</h5>
                             <p>IE 实现了 DOM 中类似的两个方法：<span class="inline-code">attachEvent()</span>和<span class="inline-code">detachEvent()</span>。这两个方法接收两个参数：要处理的事件名和作为事件处理程序的函数。因为 IE8 及更早版本只支持事件冒泡，所以通过<span class="inline-code">attachEvent()</span>添加的事件处理程序都会被添加到冒泡阶段。例如：</p>
-                            <code>
-                                button.attachEvent("onclick",handler); <br>
-                                //其他代码 <br>
-                                button.detachEvent("onclick",handler);
-                            </code>
+                            <code><pre>
+button.attachEvent("onclick",handler);
+//其他代码
+button.detachEvent("onclick",handler);
+                            </pre></code>
                             <p>这种方法与 DOM 事件处理程序的主要不同在于，它的事件处理程序是在全局作用域运行。</p>
                         </div>
                     </li>
@@ -180,28 +180,28 @@
                         <div class="part">
                             <h5>跨浏览器的事件处理程序</h5>
                             <p>要保证处理事件的代码能在大多数浏览器下一致地运行，只需关注冒泡阶段。我们创建一个<span class="inline-code">EventUtil</span> 对象，里面包含<span class="inline-code">addHandler()</span>方法和<span class="inline-code">removeHandler()</span>方法。 </p>
-                            <code>
-                                var EventUtil = { <br>
-                                    addHandler : function(element,type,handler){ <br>
-                                        if(element.addEventListener){ <br>
-                                            return element.addEventListener(type,handler,false); <br>
-                                        } else if(element.attachEvent){ <br>
-                                            return element.attachEvent("on"+type,handler); <br>
-                                        } else { <br>
-                                            element["on"+type] = handler; <br>
-                                        } <br>
-                                    }, <br>
-                                    removeHandler : function(element,type,handler){ <br>
-                                        if(element.removeEventListener){ <br>
-                                            return element.removeEventListener(type,handler,false); <br>
-                                        } else if(element.detachEvent){ <br>
-                                            return element.detachEvent("on"+type,handler); <br>
-                                        } else { <br>
-                                            element["on"+type] = null; <br>
-                                        } <br>
-                                    }, <br>
-                                };
-                            </code>
+                            <code><pre>
+var EventUtil = {
+    addHandler : function(element,type,hander){
+        if(element.addEventListener){
+            element.addEventListener(type,hander,false);
+        } else if(element.attachEvent){
+            element.attachEvent("on"+type,hander);
+        } else {
+            element["on"+type] = hander;
+        }
+    },
+    removeHander : function(element,type,hander){
+        if(element.removeEventListener){
+            element.removeEventListener(type,hander,false);
+        } else if(element.detachEvent){
+            element.detachEvent("on"+type,hander);
+        } else {
+            element["on"+type] = null;
+        }
+    }
+};
+                            </pre></code>
                         </div>
                     </li>
                 </ol>
@@ -214,37 +214,37 @@
                         <div class="part">
                             <h5>DOM 中的事件对象</h5>
                             <p>兼容 DOM 的浏览器会把一个 event 对象传入到事件处理程序中，无论指定的事件处理程序采用什么方法( DOM 0级或 DOM 2级 )。看下面的例子：</p>
-                            <code>
-                                button.onclick = function(event){ <br>
-                                    console.log(event.type); //"click" <br>
-                                } <br>
-                                button.addEventListener("click",function(event){ <br>
-                                    console.log(event.type); //"click" <br>
-                                },false);
-                            </code>
+                            <code><pre>
+button.onclick = function(event){
+    console.log(event.type); //"click"
+}
+button.addEventListener("click",function(event){
+    console.log(event.type); //"click"
+},false);
+                            </pre></code>
                             <p>DOM 中的 event 对象有很多属性，根据触发事件的不同而异。通用的属性有：</p>
                             <ol>
                                 <li>
                                     <p><span class="inline-code">preventDefault()</span>：用来取消事件的默认行为( <span class="inline-code">cancelable</span>是true时可以使用 )</p>
                                     <p>要阻止事件的默认行为，可以使用<span class="inline-code">preventDefault()</span>方法。例如阻止链接导航的默认行为：</p>
-                                    <code>
-                                        var link = document.getElementById("myLink"); <br>
-                                        link.onclick = function(event){ <br>
-                                            event.preventDefault(); <br>
-                                        }
-                                    </code>
+                                    <code><pre>
+var link = document.getElementById("myLink");
+link.onclick = function(event){
+    event.preventDefault();
+}
+                                    </pre></code>
                                 </li>
                                 <li>
                                     <p><span class="inline-code">stopPropagation()</span>：立即停止事件在 DOM 层次中的传播，取消事件的进一步捕获或冒泡( <span class="inline-code">bubbles</span>是true时可以使用 )：</p>
-                                    <code>
-                                        button.onclick = function(event){ <br>
-                                            console.log("button clicked"); //"click" <br>
-                                            event.stopPropagation(); //阻止把事件分派到其他节点<br>
-                                        } <br>
-                                        document.body.onclick = function(){ <br>
-                                            console.log("body clicked"); <br>
-                                        }
-                                    </code>
+                                    <code><pre>
+button.onclick = function(event){
+    console.log("button clicked"); //"click"
+    event.stopPropagation(); //阻止把事件分派到其他节点
+}
+document.body.onclick = function(){
+    console.log("body clicked");
+}
+                                    </pre></code>
                                     <p>对于这个例子，如果不调用<span class="inline-code">stopPropagation()</span>，点击<span class="inline-code">button</span>是会输出两条信息："button clicked" 和 "body clicked"。调用了<span class="inline-code">stopPropagation()</span>之后，由于<span class="inline-code">click</span>事件根本不会传播到<span class="inline-code">body</span>，所以只有一条输出信息："button clicked"。</p>
                                 </li>
                                 <li>
@@ -263,40 +263,40 @@
                         <div class="part">
                             <h5>IE 中的事件对象</h5>
                             <p>在 IE 中，用 DOM0级方法添加事件处理程序时， event 对象是作为 window 对象的一个属性存在的。例如：</p>
-                            <code>
-                                button.onclick = function(){ <br>
-                                    var event = window.event; <br>
-                                    console.log(event.type); //"click" <br>
-                                }
-                            </code>
+                            <code><pre>
+button.onclick = function(){
+    var event = window.event;
+    console.log(event.type); //"click"
+}
+                            </pre></code>
                             <p>如果是通过<span class="inline-code">attachEvent()</span>添加的，就会有一个 event 对象作为参数传入事件处理程序中，例如：</p>
-                            <code>
-                                button.attachEvent("click",function(event){ <br>
-                                    console.log(event.type); //"click" <br>
-                                })
-                            </code>
+                            <code><pre>
+button.attachEvent("click",function(event){
+    console.log(event.type); //"click"
+});
+                            </pre></code>
                             <p>这种情况下也可以使用 window.event 访问 event 对象。</p>
                             <p>IE 中的event 对象同样包含各种属性和方法，根据触发事件的不同而异。通用的属性有：</p>
                             <ol>
                                 <li>
                                     <p><span class="inline-code">returnValue</span> ：设置为 false 就可以取消事件的默认行为，相当于 DOM 中的 <span class="inline-code">preventDefault()</span>，例如：</p>
-                                    <code>
-                                        link.onclick = function(){  <br>
-                                            wondow.event.returnValue = false; <br>
-                                            }
-                                    </code>
+                                    <code><pre>
+link.onclick = function(){
+    wondow.event.returnValue = false;
+};
+                                    </pre></code>
                                 </li>
                                 <li>
                                     <p><span class="inline-code">cancelBubble</span>：设置为 true 就可以取消事件冒泡，相当于 DOM 中的<span class="inline-code">stopPropagation()</span>，例如：</p>
-                                    <code>
-                                        button.onclick = function(){ <br>
-                                            console.log("button clicked"); <br>
-                                            window.event.cancelBubble = true; <br>
-                                        } <br>
-                                        doocument.body.onclick = function(){ <br>
-                                            console.log("body clicked"); <br>
-                                        }
-                                    </code>
+                                    <code><pre>
+button.onclick = function(){
+    console.log("button clicked");
+    window.event.cancelBubble = true;
+}
+doocument.body.onclick = function(){
+    console.log("body clicked");
+}
+                                    </pre></code>
                                     <p>这样点击 button 并不会触发 body 的 onclick 事件。</p>
                                 </li>
                                 <li><span class="inline-code">type</span>：事件的类型</li>
@@ -308,36 +308,36 @@
                         <div class="part">
                             <h5>跨浏览器的事件对象</h5>
                             <p>可以根据 DOM 和 IE 中 event 对象的共性拿出跨浏览器的事件对象的方案。对上面的 <span class="inline-code">EventUtil</span>对象加以增强，添加如下方法：</p>
-                            <code>
-                                var EventUtil = { <br>
-                                    addHandler : function(element,type,handler){ <br>
-                                        //... <br>
-                                    }, <br>
-                                    removeHandler : function(element,type,handler){ <br>
-                                        //... <br>
-                                    }, <br>
-                                    getEvent : function(event){ <br>
-                                        return event ? event : window.event; <br>
-                                    }, <br>
-                                    getTarget : function(event){ <br>
-                                        return event.target || event.srcElement; <br>
-                                    }, <br>
-                                    preventDefault : function(event){ <br>
-                                        if(event.preventDefault){ <br>
-                                            event.preventDefault(); <br>
-                                        } else { <br>
-                                            event.returnValue = false; <br>
-                                        } <br>
-                                    }, <br>
-                                    stopPropagation : function(event){ <br>
-                                        if(event.stopPropagation){ <br>
-                                            event.propagation(); <br>
-                                        } else { <br>
-                                            event.cancelBubble = true; <br>
-                                        } <br>
-                                    } <br>
-                                };
-                            </code>
+                            <code><pre>
+var EventUtil = {
+    addHandler : function(element,type,hander){
+        //...
+    },
+    removeHander : function(element,type,hander){
+        //...
+    },
+    getEvent : function(event){
+        return event ? event : window.event; 
+    },
+    getTarget : function(event){
+        return event.target ? event.target : event.srcElement;
+    },
+    preventDefault : function(event){
+        if(event.preventDefault){
+            return event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+    stopPropagation : function(event){
+        if(event.stopPropagation){
+            return event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+};
+                            </pre></code>
                         </div>
                     </li>
                 </ol>

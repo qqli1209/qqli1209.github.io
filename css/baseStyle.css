@@ -31,8 +31,9 @@ body a:hover{
 }
 code {
     display: block;
-    font-size: 95%;
+    font-size: 17px;
     padding: 1em;
+    padding-bottom: 0;
     margin: 1em auto;
     font-family: "Consolas",'Menlo',"Monaco","Lucida Console",
     "Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono",
@@ -40,7 +41,7 @@ code {
     background-color: #eff0f1;
     margin-left: 2em;
 }
-pre {
+pre {line-height: 1.4;
     font-size: 100%;
     color: #c7254e;
     display: block;

@@ -77,17 +77,17 @@
         <div class="part">
             <h4>href</h4>
             <p>href 是 hypertext reference，即超文本引用，用来建立当前元素和文档之间的链接。例如：</p>
-            <code>
-                &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
-            </code>
+            <code><pre>
+&lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
+            </pre></code>
             <p>浏览器明白当前资源是一个样式表，<strong>页面解析不会暂停</strong>。相似地，对于<span class="inline-code">a</span>元素也是使用 href。而使用<span class="inline-code">@import</span>加载 css 时，则没有这样的特性。因此建议使用<span class="inline-code">link</span>而非<span class="inline-code">@import</span>加载 css 资源。</p>
         </div>
         <div class="part">
             <h4>src</h4>
             <p>src 是 source ，即嵌入当前资源到当前文档定义的位置，例如：</p>
-            <code>
-                &lt;script type="text/javascript" src="test.js"&gt;&lt;/script&gt;
-            </code>
+            <code><pre>
+&lt;script type="text/javascript" src="test.js"&gt;&lt;/script&gt;
+            </pre></code>
             <p>当浏览器解析到上面的代码时，<strong>在浏览器下载，编译，执行这个文件之前，页面的加载和处理会被暂停</strong>。相似地，对于<span class="inline-code">iframe</span>和<span class="inline-code">img</span> 用的是src。对于<span class="inline-code">img</span>，浏览器会停止加载直到完成提取和加载图像。这也是建议把 JavaScript 文件放到底部加载的原因。</p>
         </div>
     </div>

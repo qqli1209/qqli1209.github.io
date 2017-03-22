@@ -82,26 +82,23 @@
                         <ol>
                             <li>
                                 单纯使用css，可以简单地实现预加载：
-                                <code>
-                                    #preload01 { background:url(01.jpg) no-repeat -9999px -9999px;} 
-                                    <br>
-                                    #preload02 { background:url(02.jpg) no-repeat -9999px -9999px;} 
-                                    <br>
-                                    #preload03 { background:url(03.jpg) no-repeat -9999px -9999px;} 
-                                    <br>
-                                </code>
+                                <code><pre>
+#preload01 { background:url(01.jpg) no-repeat -9999px -9999px;} 
+#preload02 { background:url(02.jpg) no-repeat -9999px -9999px;}
+#preload03 { background:url(03.jpg) no-repeat -9999px -9999px;}
+                                </pre></code>
                                 <p>利用<span class="inline-code">background</span>属性先把图片加载到页面外面的背景上。只要图片路径不变，当他们在别的地方被使用时，浏览器就会使用缓存的图片。这种方法很简单，几行代码就可以搞定。但仍然有改进的余地。</p>
                             </li>
                             <li>
                                 使用上面的方法会让预加载的图片和整个页面的其他内容一起加载，这显然会延长页面加载的时间。我们可以让页面加载完毕后，再加载这部分内容。
-                                <code>
-                                    function preloader(){<br>
-                                         document.getElementById("preload01").style.background = "url() no-repeat -9999px -9999px";<br>
-                                        document.getElementById("preload02").style.background = "url() no-repeat -9999px -9999px";<br>
-                                        document.getElementById("preload03").style.background = "url() no-repeat -9999px -9999px";<br>
-                                    }<br>
-                                    addLoadEvent(preloader);
-                                </code>
+                                <code><pre>
+function preloader(){
+    document.getElementById("preload01").style.background = "url() no-repeat -9999px -9999px";
+    document.getElementById("preload02").style.background = "url() no-repeat -9999px -9999px";
+    document.getElementById("preload03").style.background = "url() no-repeat -9999px -9999px";
+}
+addLoadEvent(preloader);
+                                </pre></code>
                                 <p>我们在<span class="inline-code">preloader</span>函数中为元素设置<span class="inline-code">background</span>属性，在页面加载完成后才执行这个函数。就算用户禁用了JavaScript，也可以正常浏览网页，只是没有预加载功能。</p>
                             </li>
                         </ol>
@@ -114,34 +111,33 @@
                         <ol>
                             <li>
                                 简单编辑、加载所需要图片的路径与名称即可，很容易实现：
-                                <code>
-                                    var images = new Array();<br>
-                                        function preload() {<br>
-                                            for (i = 0; i < preload.arguments.length; i++) {
-                                            <br>
-                                                images[i] = new Image();<br>
-                                                images[i].src = preload.arguments[i];<br>
-                                            }<br>
-                                        }<br>
-                                        preload("01.jpg";,"02.jpg";,"03.jpg";);
-                                </code>
+                                <code><pre>
+var images = new Array();
+function preload() {
+    for (i = 0; i < preload.arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+preload("01.jpg";,"02.jpg";,"03.jpg";);
+                                </pre></code>
                                 <p>该方法尤其适用预加载大量的图片。</p>
                             </li>
                             <li>
                                 该方法与上面的方法类似，也可以预加载任意数量的图片。
-                                <code>
-                                    function preloader() {<br>
-                                        if (document.images) {  <br>
-                                            img1 = new Image();  <br>
-                                            img2 = new Image();  <br>
-                                            img3 = new Image();  <br>
-                                            img1.src = "01.jpg";  <br>
-                                            img2.src = "02.jpg";  <br>
-                                            img3.src = "03.jpg";  <br>
-                                        }  <br>
-                                    }<br>
-                                    addLoadEvent(preloader);
-                                </code>
+                                <code><pre>
+function preloader() {
+    if (document.images) {
+        img1 = new Image();
+        img2 = new Image();
+        img3 = new Image();
+        img1.src = "01.jpg";
+        img2.src = "02.jpg";
+        img3.src = "03.jpg";
+    }
+}
+addLoadEvent(preloader);
+                                </pre></code>
                             </li>
                         </ol>
                     </div>
@@ -150,21 +146,21 @@
                     <div class="part">
                         <h5>用Ajax实现预加载</h5>
                         <p>该方法利用DOM，不仅仅预加载图片，还会预加载CSS、JavaScript等相关的东西。使用Ajax，比直接使用JavaScript，优越之处在于JavaScript和CSS的加载不会影响到当前页面。该方法简洁、高效。</p>
-                        <code>
-                            window.onload = function() {   <br> 
-                                setTimeout(function() {    <br>
-                                    // XHR to request a JS and a CSS    <br>
-                                    var xhr = new XMLHttpRequest();    <br>
-                                    xhr.open('GET', 'http://domain.tld/preload.js');   <br> 
-                                    xhr.send('');    <br>
-                                    xhr = new XMLHttpRequest();    <br>
-                                    xhr.open('GET', 'http://domain.tld/preload.css');   <br> 
-                                    xhr.send('');    <br>
-                                    // preload image    <br>
-                                    new Image().src = "http://domain.tld/preload.png";    <br>
-                                }, 1000);    <br>
-                            };
-                        </code>
+                        <code><pre>
+window.onload = function() {
+    setTimeout(function() {
+        // XHR to request a JS and a CSS
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://domain.tld/preload.js');
+        xhr.send(''); 
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://domain.tld/preload.css');
+        xhr.send('');
+        // preload image
+        new Image().src = "http://domain.tld/preload.png";
+    }, 1000);
+};
+                        </pre></code>
                     </div>
                 </li>
             </ol>

@@ -78,26 +78,36 @@
             <h4>99%的人都会答错的js面试题</h4>
             <p>这是前端工程师面试中考察比较全面的题，几乎没有人能够完全答对，并非多难只是因为大多面试者过于轻视他。</p>
             <p>题目如下</p>
-            <code>
-                function Foo() { <br>
-                    getName = function () { console.log (1); }; <br>
-                    return this; <br>
-                } <br>
-                Foo.getName = function () { console.log (2);}; <br>
-                Foo.prototype.getName = function () { console.log (3);}; <br>
-                var getName = function () { console.log (4);}; <br>
-                function getName() { console.log (5);}
-            </code>
+            <code><pre>
+function Foo() {
+    getName = function () {
+        console.log (1); 
+    };
+    return this;
+}
+Foo.getName = function () { 
+    console.log (2);
+};
+Foo.prototype.getName = function () { 
+    console.log (3);
+};
+var getName = function () { 
+    console.log (4);
+};
+function getName() { 
+    console.log (5);
+}
+            </pre></code>
             <p>请写出以下输出结果：</p>
-            <code>
-                Foo.getName(); <br>
-                getName(); <br>
-                Foo().getName(); <br>
-                getName(); <br>
-                new Foo.getName(); <br>
-                new Foo().getName(); <br>
-                new new Foo().getName();
-            </code>
+            <code><pre>
+Foo.getName();
+getName();
+Foo().getName();
+getName();
+new Foo.getName();
+new Foo().getName();
+new new Foo().getName();
+            </pre></code>
             <p>
                 此题是我综合之前的开发经验以及遇到的JS各种坑汇集而成。此题涉及的知识点众多，包括变量定义提升、this指针指向、运算符优先级、原型、继承、全局变量污染、对象属性及原型属性优先级等等。此题包含7小问，分别说下。
             </p>
@@ -108,53 +118,55 @@
             <p>第二问，直接调用 getName 函数。既然是直接调用那么就是访问当前上文作用域内的叫getName的函数，所以跟1 2 3都没什么关系。此题有无数面试者回答为5。此处有两个坑，一是变量声明提升，二是函数表达式。</p>
             <h5>变量声明提升：所有声明变量或声明函数都会被提升到当前函数的顶部。</h5>
             <p>例如：</p>
-            <code>
-                console.log('x' in window);//true <br>
-                var x;  <br>
-                x = 0;
-            </code>
+            <code><pre>
+console.log('x' in window);//true
+var x;
+x = 0;
+            </pre></code>
             <p>代码执行时js引擎会将声明语句提升至代码最上方，变为：</p>
-            <code>
-                var x; <br>
-                console.log('x' in window);//true <br>
-                x = 0;
-            </code>
+            <code><pre>
+var x;
+console.log('x' in window);//true
+x = 0;
+            </pre></code>
             <h5>函数表达式：js会将此代码拆分为两行代码分别执行</h5>
             <p>例如：</p>
-            <code>
-                console.log(x);//输出：function x(){}  <br>
-                var x = 1;  <br>
-                function x(){}
-            </code>
+            <code><pre>
+console.log(x);//输出：function x(){}
+var x = 1;
+function x(){}
+            </pre></code>
             <p>实际执行的代码为先把<span class="inline-code">var x=1</span>拆分为<span class="inline-code">var x;</span>和<span class="inline-code">x=1;</span>两行。再将<span class="inline-code">var x;</span>和<span class="inline-code">function x(){}</span>提升至最上方变成：</p>
-            <code>
-                var x;  <br>
-                function x(){}  <br>
-                console.log(x);  <br>
-                x = 1;
-            </code>
+            <code><pre>
+var x;
+function x(){}
+console.log(x);
+x = 1;
+            </pre></code>
             <p>所以最终函数声明的x覆盖了变量声明的x，log输出为x函数。</p>
             <p>同理，原题中代码最终执行时的是：</p>
-            <code>
-                function Foo() {  <br>
-                getName = function () { alert (1); };  <br>
-                return this;  <br>
-                }  <br>
-                var getName;//只提升变量声明  <br>
-                function getName() { alert (5);}//提升函数声明，覆盖var的声明  <br>
-                Foo.getName = function () { alert (2);};  <br>
-                Foo.prototype.getName = function () { alert (3);};  <br>
-                getName = function () { alert (4);};//最终的赋值再次覆盖function getName声明  <br>
-                getName();//最终输出4 <br>
-            </code>
+            <code><pre>
+function Foo() {
+    getName = function () { 
+        console.log (1); 
+    };
+    return this;
+}
+var getName;//只提升变量声明
+function getName() { console.log (5);}//提升函数声明，覆盖var的声明
+Foo.getName = function () { console.log (2);};
+Foo.prototype.getName = function () { console.log (3);};
+getName = function () { console.log (4);};//最终的赋值再次覆盖function getName声明
+getName();//最终输出4
+            </pre></code>
             <h3>第三问</h3>
             <p>第三问的 <span class="inline-code">Foo().getName(); </span>先执行了Foo函数，然后调用Foo函数的返回值对象的getName属性函数。</p>
-            <p>Foo函数的第一句 <span class="inline-code">getName = function () { alert (1); };</span> 是一句函数赋值语句，注意它没有<span class="inline-code">var</span>声明，所以先向当前<span class="inline-code">Foo</span>函数作用域内寻找<span class="inline-code">getName</span>变量，没有。再向当前函数作用域上层，即外层作用域内寻找是否含有<span class="inline-code">getName</span>变量，找到了，也就是第二问中的<span class="inline-code">alert(4)</span>函数，将此变量的值赋值为 <span class="inline-code">function(){alert(1)}</span>。</p>
+            <p>Foo函数的第一句 <span class="inline-code">getName = function () { console.log (1); };</span> 是一句函数赋值语句，注意它没有<span class="inline-code">var</span>声明，所以先向当前<span class="inline-code">Foo</span>函数作用域内寻找<span class="inline-code">getName</span>变量，没有。再向当前函数作用域上层，即外层作用域内寻找是否含有<span class="inline-code">getName</span>变量，找到了，也就是第二问中的<span class="inline-code">console.log(4)</span>函数，将此变量的值赋值为 <span class="inline-code">function(){console.log(1)}</span>。</p>
             <p>此处实际上是将外层作用域内的<span class="inline-code">getName</span>函数修改了。</p>
             <p>注意：此处若依然没有找到会一直向上查找到<span class="inline-code">window</span>对象，若<span class="inline-code">window</span>对象中也没有<span class="inline-code">getName</span>属性，就在<span class="inline-code">window</span>对象中创建一个<span class="inline-code">getName</span>变量。</p>
             <p>之后<span class="inline-code">Foo</span>函数的返回值是<span class="inline-code">this</span>，而JS的<span class="inline-code">this</span>问题博客园中已经有非常多的文章介绍，这里不再多说。</p>
             <p>简单的讲，<span class="inline-code">this</span>的指向是由所在函数的调用方式决定的。而此处的直接调用方式，<span class="inline-code">this</span>指向<span class="inline-code">window</span>对象。</p>
-            <p>遂<span class="inline-code">Foo</span>函数返回的是<span class="inline-code">window</span>对象，相当于执行 <span class="inline-code">window.getName() </span>，而<span class="inline-code">window</span>中的<span class="inline-code">getName</span>已经被修改为<span class="inline-code">alert(1)</span>，所以最终会输出1。</p>
+            <p>遂<span class="inline-code">Foo</span>函数返回的是<span class="inline-code">window</span>对象，相当于执行 <span class="inline-code">window.getName() </span>，而<span class="inline-code">window</span>中的<span class="inline-code">getName</span>已经被修改为<span class="inline-code">console.log(1)</span>，所以最终会输出1。</p>
             <p>此处考察了两个知识点，一个是变量作用域问题，一个是<span class="inline-code">this</span>指向问题。</p>
             <h3>第四问</h3>
             <p>直接调用<span class="inline-code">getName</span>函数，相当于 <span class="inline-code">window.getName() </span>，因为这个变量已经被<span class="inline-code">Foo</span>函数执行时修改了，遂结果与第三问相同，为1。</p>
