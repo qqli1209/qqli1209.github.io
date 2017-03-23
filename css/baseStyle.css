@@ -274,6 +274,10 @@ pre {line-height: 1.4;
     margin: 0;
     padding-bottom: 30px;
 }
+.con-title:hover {
+    cursor: pointer;
+    color: #0ff;
+}
 
 .moreDetails {
   position: absolute;
@@ -294,7 +298,13 @@ pre {line-height: 1.4;
 }
 .address li {
   padding-bottom: 15px;
+  color: #fff;
 }
+ul.address li:hover {
+  cursor: pointer;
+  color: #0ff;
+}
+
 
 ul.address li span a:link, 
 ul.address li span a:visited {
@@ -308,6 +318,7 @@ ul.address li span a:active {
   color: #0ff;
   text-decoration: none;
 }
+
 
 /*--real contact end here--*/
 
