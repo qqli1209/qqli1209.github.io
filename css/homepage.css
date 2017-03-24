@@ -269,7 +269,7 @@ hr {
     color: #8a8a8a;
     font-size: 15px;
 }
-i {
+i.iconcont {
 	margin-right: 2px;
 }
 .icon-item {
@@ -279,7 +279,11 @@ i {
 	display: inline-block;
 	color: #555;
 }
-
+#aboutMePart ul.aboutMePart-contact li i.iconfont {
+	font-size: 18px;
+	color: #666;
+	margin-right: 2px;
+}
 #aboutMePart ul.aboutMePart-contact li:hover{
 	color: #f60;
 }
@@ -545,25 +549,29 @@ blockquote {
 
 .content-footer {
 	position: fixed;
-	bottom : 3em;
+	bottom : 4em;
     right : 1em;
     z-index: 9999;
 }
 .content-footer a {
 	position: relative;
 	display: block;
-	margin-bottom: 1em;
+	margin-bottom: 5px;
 	width: 60px;
-	border: 0;
-}
-.content-footer a span.icon-text {
-	display: inline-block;
-	margin-top: 55px;
-	width: 60px;
+	border: none;
+	color: #888;
 	text-align: center;
-	font-size: 13px;
+	font-size: 14px;
 }
-
+.content-footer i.iconfont {
+	font-size: 55px;
+	color: #888;
+}
+.content-footer a:hover,
+.content-footer i.iconfont:hover {
+	color: #f90;
+}
+/*
 .content-footer a#backToTopLink:link,
 .content-footer a#backToTopLink:visited {
 	background: url(../images/icons/backToTop.png) top center no-repeat;
@@ -599,12 +607,8 @@ blockquote {
 	border: 0;
 	color: #f90;
 }
+*/
 /* article style ends here */
-
-
-
-
-
 
 
 
