@@ -57,11 +57,13 @@ $(function(){
                 document.getElementById("image-container").appendChild(images[i]);
             }
         }
+        /*
         preload(
             "../images/icons/backToHomeAfter.png",
             "../images/icons/backToTopAfter.png",
             "../images/icons/head-hover.png"
         );
+        */
 });
 
 
