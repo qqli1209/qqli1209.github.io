@@ -195,7 +195,7 @@ xdr.send(null);
         	<p>一、$.ajax，这是 jQuery 对 ajax 封装的最基础步，通过使用这个函数可以完成异步通讯的所有功能。常用参数有：</p>
         	<code><pre>
 var configObj = {
-    method   //数据的提交方式：get和post
+    type   //数据的提交方式：get和post
     url   //数据的提交路劲
     async   //是否支持异步刷新，默认是true
     data    //需要提交的数据
@@ -210,7 +210,7 @@ $.ajax(configObj);//通过$.ajax函数进行调用。
 var configObj = {
     url   //数据的提交路劲
     data    //需要提交的数据
-    type  //返回内容格式，xml, html, script, json, text,_default
+    dataType  //返回内容格式，xml, html, script, json, text,_default
     callback  //发送成功时回调函数。
 }
 $.post(configObj);//通过$.ajax函数进行调用。
