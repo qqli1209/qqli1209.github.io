@@ -142,7 +142,7 @@ xhr.send(null);
 			<p>应该像下面这样检查上面两种状态码：</p>
 			<code><pre>
 if((xhr.status>=200 && xhr.status<300) || xhr.status==304){
-    console.log(responseText);
+    console.log(xhr.responseText);
 } else {
     console.log("Request was unsuccessful : " + xhr.status);
 }
