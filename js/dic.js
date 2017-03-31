@@ -22,6 +22,7 @@ $(function(){
             $(this).addClass("textarea-wrap-focus");
             e.stopPropagation();
         });
+        $(".textarea-wrap").click();
 
         //更换src,dst 语言
         var from = 'en';
