@@ -1,7 +1,6 @@
 
 
 const ARTICLE_PER_PAGE = 8;
-
 //按用户点击pageLink,显示网页文章articles
 function showArticle(articles,pageLink){
     var len = pageLink.length;
@@ -57,7 +56,7 @@ $(function(){
         if(index<len-2){
             pageLink.eq(index+1).click();
         } else {
-            pageLink.eq(len-1).click();
+            pageLink.eq(len-2).click();
         }
     });
 
