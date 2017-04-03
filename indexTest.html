@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sandy's blog</title>
+
+    <!-- stylesheets -->
+    <link rel='stylesheet' href="css/screen.css" type='text/css' />
+    <!--[if IE]>
+        <link rel='stylesheet' href="css/ie.css" type='text/css' />
+    <![endif]-->
+    <!-- icon font -->
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css">
+    <!-- baidu map script -->
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <script type="text/JavaScript" src="js/AjaxRequest.js"></script>
+
+</head>
+
+
+<body>
+<!-- header starts here -->
+<div class="header">
+    <!-- show clock -->
+    <div>
+        <canvas id="clock" width="100" height="100" class="draggable"></canvas>
+    </div>
+    <div class="foreground">
+        <div class="content">
+            <div class="header-logo">
+                <h1><a href="#">Sandy's blog</a></h1>
+            </div>
+            <div class="top-nav">
+                <ul class="nav1">
+                    <li id="all-articles"><a href="#">首页</a></li>
+                    <li id="front-end-articles"><a href="#myArticles">前端学习</a>
+                        <ul id="article-nav">
+                            <li id="html-article"><a href="#myArticles">html</a></li>
+                            <li id="js-article"><a href="#myArticles">js</a></li>
+                            <li id="css-article"><a href="#myArticles">css</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">作品案例</a>
+                        <ul>
+                            <li>
+                            <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
+                            </li>
+                            <li><a href="works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="works/Roma/index.html">Roma</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">碎言碎语</a>
+                        <ul id="eassy">
+                            <li id="eassy-article"><a href="#myArticles">随记</a></li>
+                            <li><a href="articles/aboutMe.html">关于我</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- header ends here -->
+
+<div class="imageroll">
+    <a href="#nogo" id="imgWrap">
+        <img src="images/imageRoll/1.jpg" alt="世外仙境，可是桃花源"/>
+        <img src="images/imageRoll/2.jpg" alt="理想之城"/>
+        <img src="images/imageRoll/3.jpg" alt="初升的太阳"/>
+        <img src="images/imageRoll/4.jpg" alt="小桥流水人家"/>
+        <img src="images/imageRoll/5.jpg" alt="只缘身在此山中"/>
+    </a>
+    <div>
+        <a href="#1"><em>世外仙境，可是桃花源</em></a>
+        <a href="#2"><em>理想之城</em></a>
+        <a href="#3"><em>只缘身在此山中</em></a>
+        <a href="#4"><em>初升的太阳</em></a>
+        <a href="#5" class="last"><em>小桥流水人家</em></a>
+    </div>
+</div>
+<!-- main content starts here -->
+
+<div id="main">
+        <div id="articleWrapper"></div>
+        <div id="pageNav">
+            <ul class="pageNavList">
+                <li><a href="#myArticles">«</a></li>
+                <li><a href="#myArticles">1</a></li>
+                <li><a href="#myArticles">2</a></li>
+                <li><a href="#myArticles">3</a></li>
+                <li><a href="#myArticles">»</a></li>
+            </ul>
+        </div>
+    </div>
+
+     <!-- side bar begins here-->
+    <div class="sidebar">
+        <div id="myInfo">
+            <h4>博主</h4>
+            <hr>
+            <p>
+            <img src="images/index_head.JPG" alt="head portrait" title="Github">
+            我是Sandy，大家都叫我QQ或QQ糖。欢迎大家来到我的博客。本站总计访问量<span data-hk-page="current"> - </span>次。</p>
+        </div>
+        <div id="other-sites">
+            <h4>我在别处</h4>
+            <hr>
+            <p>你还可以在这些地方找到我：</p>
+            <div class="icons">
+                <a href="https://github.com/qqli1209">
+                    <img src="images/icons/github_icon.png" alt="git pic" title="Github">
+                </a>
+                <a href="https://segmentfault.com/u/njulily">
+                    <img src="images/icons/sf_icon.png" alt="git pic" title="segmentfault">
+                </a>
+                <a href="http://stackoverflow.com/users/6526284/sandy">
+                    <img src="images/icons/stackoverflow_icon.png" alt="stackoverflow pic" title="stackoverflow">
+                </a>
+                <a href="https://www.zhihu.com/people/lily_Li/activities">
+                    <img src="images/icons/zhihu_icon.png" alt="zhihu pic" title="知乎">
+                </a>
+                <a href="http://www.linkedin.com/in/%E5%80%A9%E5%80%A9-%E6%9D%8E-28a098105/">
+                    <img src="images/icons/linkedin_icon.png" alt="linkedin pic" title="linkedin">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- side bar ends here-->
+<!-- main content ends here -->
+
+
+
+
+<!-- map starts here -->
+<div id="contact">
+    <script>
+        var map = new AMap.Map('contact', {
+                  zoom: 17,
+                  center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
+                  });
+
+        var marker = new AMap.Marker({
+                     position: [118.9615169379,32.1108455072],
+                     map: map
+                     });
+
+        //scale rule
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
+                   var toolBar = new AMap.ToolBar();
+                   var scale   = new AMap.Scale();
+                   map.addControl(toolBar);
+                   map.addControl(scale);
+                   });
+    </script>
+</div>
+<!-- map ends here -->
+
+
+<!-- contact starts here -->
+<div class="container" id="contact-text">
+        <div class="moreDetails">
+            <h2 class="con-title">Contact Me</h2>
+            <ul class="address">
+                <li>
+                    <i class="iconfont icon-dizhi"></i>
+                    <span>
+                        305 Room, Panzhonglai Building,<br>
+                        <span class="tab">163, Xianlin Avenue,<br></span>
+                        <span class="tab">Nanjing, Jiangsu Province, China<br></span>
+                    </span>
+                </li>
+                <li>
+                    <i class="iconfont icon-youxiang1"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@163.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="iconfont icon-youxiang1"></i>
+                    <span>
+                        <a href="mailto:lqq201194@163.com">lqq201194@gmail.com</a>
+                    </span>
+                </li>
+                <li>
+                    <i class="iconfont icon-github"></i>
+                    <span>
+                        <a target="_blank" href="http://github.com/qqli1209">github.com/qqli1209</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+</div>
+
+<!-- contact ends here -->
+
+
+
+
+
+<!-- footer starts here -->
+<div class="footer">
+    <p>Copyright &copy; 2017.Sandy All rights reserved.</p>
+    <div class="clearfix"></div>
+</div>
+<!-- header ends here -->
+<!-- scripts-->
+    
+    <script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/header.js" type="text/javascript"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="js/jQuery.dot.js"></script>
+    <!-- show clock -->
+    <script type="text/javascript" src="js/clock.js"></script>
+    <!-- banner轮播 -->
+    <script type="text/javascript" src="js/banner-pc.js"></script>
+    <!-- 底部导航栏，选择博客,按文章分类显示文章 -->
+    <script type="text/javascript" src="js/pageNav.js"></script>
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+    <script src="http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-lc-0.3.0.js"></script>
+    <!-- 自定义事件 -->
+    <script type="text/javascript" src="js/EventUtil.js"></script>
+    <!-- 移动元素 -->
+    <script type="text/javascript" src="js/moveEle.js"></script>
+    <script type="text/javascript">
+        $.ajax( {
+        url: "database.html", 
+        type: "get",
+        success: function(data){
+            var result = $(data).find("#myArticles");
+            $("articleWrapper").html(result);
+        }
+}); 
+    </script>
+</body>
+</html>
