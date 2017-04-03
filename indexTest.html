@@ -227,6 +227,7 @@
     <!-- 移动元素 -->
     <script type="text/javascript" src="js/moveEle.js"></script>
     <script type="text/javascript">
+    $(function(){
         $.ajax( {
         url: "database.html", 
         type: "get",
@@ -234,6 +235,8 @@
             var result = $(data).find("#myArticles");
             $("articleWrapper").html(result);
         }
+    });
+        
 }); 
     </script>
 </body>
