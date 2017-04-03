@@ -228,16 +228,9 @@
     <script type="text/javascript" src="js/moveEle.js"></script>
     <script type="text/javascript">
     $(function(){
-        $.ajax( {
-        url: "database.html", 
-        type: "get",
-        success: function(data){
-            var result = $(data).find("#myArticles");
-            $("articleWrapper").html(result);
-        }
+        $("#articleWrapper").load("http:\\liqianqian.me\\database.html");
     });
         
-}); 
     </script>
 </body>
 </html>
