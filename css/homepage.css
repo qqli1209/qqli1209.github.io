@@ -616,7 +616,9 @@ blockquote {
 
 
 
-
+#tempContainer {
+	display: none;
+}
 
 
 
