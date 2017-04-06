@@ -17,6 +17,13 @@ $(function(){
     $("#articleWrapper").load("database.html");
     var frame = document.getElementById("articleFrame");
     frame.onload = function(){
+        //访问量统计
+        var script1 = 
+        $("<script src='https://cdn1.lncld.net/static/js/av-min-1.5.0.js'></script>");
+        var script2 =
+        $("<script src='http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-lc-0.3.0.js'></script>");
+        $("body").append(script1);
+        $("body").append(script2);
         //console.log(this);
         var myArticles = document.getElementById("myArticles");
    		//console.log(myArticles);
