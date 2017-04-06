@@ -106,13 +106,6 @@ $(function(){
         article.show();
         article_eassy.hide();
     });
-    //访问量统计
-        var script1 = 
-        $("<script src='https://cdn1.lncld.net/static/js/av-min-1.5.0.js'></script>");
-        var script2 =
-        $("<script src='http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-lc-0.3.0.js'></script>");
-        $("body").append(script1);
-        $("body").append(script2);
     };
     
 });
