@@ -57,20 +57,22 @@
 /* end */
 
 /* my articles */
-/*
+
 #articleWrapper {
 	margin-left: 20%;
     max-width: 800px;
     width: 60%;
     display: inline-block;
 }
-*/
+
+/*
 #myArticles {
     margin-left: 20%;
     max-width: 800px;
     width: 60%;
     display: inline-block;
 }
+*/
 
 #myArticles>h3 {
 	text-indent: 10px;
