@@ -14,12 +14,12 @@ function showArticle(articles,pageLink){
 }
 
 $(function(){
-    $("#articleWrapper").load("http:\\liqianqian.me\\database.html");
+    $("#articleWrapper").load("database.html");
     var frame = document.getElementById("articleFrame");
     frame.onload = function(){
-        console.log(this);
+        //console.log(this);
         var myArticles = document.getElementById("myArticles");
-   		console.log(myArticles);
+   		//console.log(myArticles);
    		var articles = $("article");
     var pageLink = $("#pageNav").find("li");
     var pageA = $("#pageNav");
