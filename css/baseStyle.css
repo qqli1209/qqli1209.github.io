@@ -95,6 +95,7 @@ pre {line-height: 1.4;
   position: absolute;
   top: 40px;
   right: 6%;
+  z-index = 9999;
 }
 /*
 .top-nav {
