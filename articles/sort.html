@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>常用排序算法之JavaScript实现 | Sandy's blog</title>
+    
+    <!-- stylesheets -->
+    <link rel='stylesheet' href="../css/screen.css" type='text/css' />
+    <!--[if IE]> 
+        <link rel='stylesheet' href="css/ie.css" type='text/css' />
+    <![endif]-->
+    <!-- icon font -->
+    <link rel="stylesheet" type="text/css" href="../css/iconfont/iconfont.css">
+
+</head>
+
+
+<body>
+<!-- header starts here -->
+<div class="header">
+    <!-- show clock -->
+    <div>
+        <canvas id="clock" width="100" height="100" class="draggable"></canvas>
+    </div>
+    <div class="foreground">
+        <div class="content">
+            <div class="header-logo">
+                <h1><a href="#">Sandy's blog</a></h1>
+            </div>
+            <div class="top-nav">
+                <ul class="nav1">
+                    <li id="all-articles"><a href="../index.html">首页</a></li>
+                    <li id="front-end-articles"><a href="../index.html#myArticles">前端学习</a>
+                        <ul id="article-nav">
+                            <li id="html-article"><a href="../index.html#myArticles">html</a></li>
+                            <li id="js-article"><a href="../index.html#myArticles">js</a></li>
+                            <li id="css-article"><a href="../index.html#myArticles">css</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">作品案例</a>
+                        <ul>
+                            <li>
+                            <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
+                            </li>
+                            <li><a href="works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="works/Roma/index.html">Roma</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">碎言碎语</a>
+                        <ul id="eassy">
+                            <li id="eassy-article"><a href="../index.html#myArticles">随记</a></li>
+                            <li><a href="aboutMe.html">关于我</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!-- header ends here -->
+
+
+<!-- main content starts here -->
+<div class="main-content">
+    <h2 class="title">常用排序算法之JavaScript实现</h2>
+    <div class="content-header">
+        <span class="icon-item"><span class="index-icon"><i class="iconfont icon-shijianaini"></i></span>发表于2017-04-08</span>
+        <span class="icon-item"><span class="index-icon"><i class="iconfont icon-liulan"></i></span>浏览<span data-hk-page="current"> - </span>次</span>
+        <span class="classified">分类于 <a href="#">前端学习</a> | <a href="#">JavaScript</a></span>
+    </div>
+    <div class="content-body">
+        <div class="part">
+            <h4>排序算法</h4>
+            <p>熟练掌握各种排序算法是软件开发工程师的基本功。终于抽出了时间好好整理了一下。</p>
+            <ol>
+                <li>
+                    <h5>基本排序算法</h5>
+                    <p>插入排序，选择排序，冒泡排序的时间复杂度都是O(n^2)，这三个是最基本的排序算法。</p>
+                    <ol>
+                        <li>
+                            <h5>冒泡排序</h5>
+                            <p>冒泡排序是一种简单直观的排序算法。它重复地比较相邻两个数组元素，如果他们顺序错误，就把他们交换一下。</p>
+                            <p>预定义一个<span class="inline-code">swap</span>函数实现数组元素交换：</p>
+                            <code><pre>
+//交换 arr[i] 和 arr[j]
+function swap(arr,i,j){
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+                            </pre></code>
+                            <p>冒泡排序JavaScript实现：</p>
+                            <code><pre>
+//冒泡排序，重复地交换相邻的两个反序元素
+function bubbleSort(arr){
+    var n = arr.length;
+    for(var i=n-1;i>0;i--){
+        for(var j=0;j<<span>i</span>;j++){
+            if(arr[j]>arr[j+1]){
+                swap(arr,j,j+1);
+            }
+        }
+    }
+}
+                            </pre></code>
+                        </li>
+                        <li>
+                            <h5>选择排序</h5>
+                            <p>选择排序也是一种简单的排序算法，它重复选择所剩的无序元素中最小( 或最大 )的元素，把他们放到排序序列的开始或结束位置。</p>
+                            <p>选择排序的JavaScript实现：</p>
+                            <code><pre>
+//选择排序，重复选择所剩余的无序元素中最小或最大的值
+function selectionSort(arr){
+    var n = arr.length;
+    var minPos;
+    for(var i=0;i<<span>n-1</span>;i++){
+        minPos = i;
+        for(var j=i+1;j<<span>n</span>;j++){
+            if(arr[j]<<span>minPos</span>){
+                minPos = j;
+            }
+        }
+        swap(arr,i,minPos);
+    }
+}
+                            </pre></code> 
+                        </li>
+                        <li>
+                            <h5>插入排序</h5>
+                            <p>同样地，插入排序也是一种简单的排序算法，可以看成打扑克牌。左手拿着已排好序的，右手不断拿到新牌并插入到左手有序牌的合适的位置。</p>
+                            <p>插入排序的JavaScript实现：</p>
+                            <code><pre>
+//选择排序，重复选择所剩余的无序元素中最小或最大的值
+function insertSort(arr){
+    var n = arr.length;
+    var temp,j;
+    for(var i=1;i<<span>n</span>;i++){
+        j = i;
+        temp = arr[i];
+        while(j>0 && arr[j-1]>temp){
+            arr[j] = arr[j-1];
+            j--;
+        }
+        arr[j] = temp;
+    }
+}
+                            </pre></code> 
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <h5>高级排序算法</h5>
+                    <p>高级排序算法通常适合处理大型数据集，包括快速排序，归并排序，堆排序，桶排序和计数排序。他们的平均时间复杂度都是O(nlogn)。</p>
+                    <ol>
+                        <li>
+                            <h5>快速排序</h5>
+                            <p>快速排序是处理大数据集最快的排序方法之一，它是一种分而治之的算法，通过递归的方式把数据依次分解为包含较小元素和较大元素的不同子序列，每次将小于pivot的值放在左侧，大的放在右侧，重复这个步骤直至所有的元素都是有序的。</p>
+                            <p>思想：</p>
+                            <ol>
+                                <li>从数列中挑出一个元素，称为 “基准”（pivot）</li>
+                                <li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作</li>
+                                <li>递归地把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+                            </ol>
+                            <p>快速排序的JavaScript实现：</p>
+                            <code><pre>
+//快排，递归实现
+function quickSort(arr,p,r){
+    if(r>p){
+        var pivot = partition(arr,p,r);
+        quickSort(arr,p,pivot-1);
+        quickSort(arr,pivot+1,r);
+    }
+
+}
+//分区
+function partition(arr,p,r){
+    var q = arr[p];
+    var i = p + 1;
+    var j = r;
+    while(i<<span>j</span>){
+        if(arr[i]<<span>q</span>){
+            <span>i</span>++;
+        } else {
+            swap(arr,i,j);
+            j--;
+        }
+    }
+    if(arr[i]<<span>q</span>){
+        <span>swap</span>(arr,i,p);
+        return i;
+    } else {
+        swap(arr,p,i-1);
+        return i-1;
+    }
+}
+                            </pre></code>
+                        </li>
+                        <li>
+                            <h5>归并排序</h5>
+                            <p>分治策略，每步划分为两个子序列，每个递归进行排序(mergeSort)，再合并两个已排序的子序列(merge)。</p>
+                            <p>递归排序的JavaScript实现：</p>
+                            <code><pre>
+function mergeSort(arr,p,r){
+    if(p<<span>r</span>){
+        var q = Math.floor((p+r)/2);
+        mergeSort(arr, p, q);
+        mergeSort(arr, q+1, r);
+        merge(arr, p, q, r);
+    }
+}
+function merge(arr, p, q ,r){
+    var n1 = q - p + 1, n2 = r - q;
+    var left = new Array(n1+1), right = new Array(n2+1);
+    for(var i=0; i<<span>n1</span>; i++){
+        left[i] = arr[i+p];
+    }
+    for(var j=0; j<<span>n2</span>; j++){
+        right[j] = arr[j+q+1];
+    }
+    left[n1] = Infinity;
+    right[n2] = Infinity;
+    var m = 0, n = 0;
+    for(var k=p; k<=r; k++){
+        if(left[m]<=right[n]){
+            arr[k] = left[m];
+            m++;
+        } else {
+            arr[k] = right[n];
+            n++;
+        }
+    }
+}
+                            </pre></code>
+                        </li>
+                        <li>
+                            <h5>堆排序</h5>
+                            <p>先建立最大堆，然后依次取出堆顶最大值，每次取出后都需保持最大堆的性质</p>
+                            <p>思想：</p>
+                            <ol>
+                                <li>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区</li>
+                                <li>将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]<=R[n]</li>
+                                <li>由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</li>
+                            </ol>
+                            <p>堆排序的JavaScript实现：</p>
+                            <code><pre>
+function heapSort(array) {
+    //建堆
+    var heapSize = array.length, temp;
+    for (var i = Math.floor(heapSize / 2); i >= 0; i--) {
+        heapify(array, i, heapSize);
+    }
+ 
+    //堆排序
+    for (var j = heapSize - 1; j >= 1; j--) {
+        temp = array[0];
+        array[0] = array[j];
+        array[j] = temp;
+        heapify(array, 0, --heapSize);
+    }
+}
+/*方法说明：维护堆的性质
+@param  arr 数组
+@param  x   数组下标
+@param  len 堆大小*/
+function heapify(arr, x, len) {
+    var l = 2 * x, r = 2 * x + 1, largest = x, temp;
+    if (l < len && arr[l] > arr[largest]) {
+        largest = l;
+    }
+    if (r < len && arr[r] > arr[largest]) {
+        largest = r;
+    }
+    if (largest != x) {
+        temp = arr[x];
+        arr[x] = arr[largest];
+        arr[largest] = temp;
+        heapify(arr, largest, len);
+    }
+}
+                            </pre></code>
+                        </li>
+                        <li>
+                            <h5>桶排序</h5>
+                            <p>桶排序在数组长度一致的情况下时间复杂度只有O(n)，在此情况下是最快的排序算法。他的思想是假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序）。</p>
+                            <p>桶排序的JavaScript实现：</p>
+                            <code><pre>
+//array,待排序的数组
+//num,桶的数量
+function bucketSort(array, num) {
+    if (array.length <= 1) {
+        return array;
+    }
+    var len = array.length, buckets = [], result = [], min = max = array[0],space, n = 0;
+    for (var i = 1; i < len; i++) {
+        min = min <= array[i] ? min : array[i];
+        max = max >= array[i] ? max : array[i];
+    }
+    space = (max - min + 1) / num;
+    for (var j = 0; j < len; j++) {
+        var index = Math.floor((array[j] - min) / space);
+        if (buckets[index]) {   //  非空桶，插入排序
+            var k = buckets[index].length - 1;
+            while (k >= 0 && buckets[index][k] > array[j]) {
+                buckets[index][k + 1] = buckets[index][k];
+                k--;
+            }
+            buckets[index][k + 1] = array[j];
+        } else {    //空桶，初始化
+            buckets[index] = [];
+            buckets[index].push(array[j]);
+        }
+    }
+    while (n < num) {
+        result = result.concat(buckets[n]);
+        n++;
+    }
+    return result;
+}
+                            </pre></code>
+                        </li>
+                        <li>
+                            <h5>计数排序</h5>
+                            <p>计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。</p>
+                            <p>桶排序的JavaScript实现：</p>
+                            <code><pre>
+function countingSort(array) {
+    var len = array.length, B = [], C = [], min = max = array[0];
+    for (var i = 0; i < len; i++) {
+        min = min <= array[i] ? min : array[i];
+        max = max >= array[i] ? max : array[i];
+        C[array[i]] = C[array[i]] ? C[array[i]] + 1 : 1;
+    }
+    for (var j = min; j < max; j++) {
+        C[j + 1] = (C[j + 1] || 0) + (C[j] || 0);
+    }
+    for (var k = len - 1; k >=0; k--) {
+        B[C[array[k]] - 1] = array[k];
+        C[array[k]]--;
+    }
+    return B;
+}
+                            </pre></code>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <div class="part">
+            <h4>总结</h4>
+            <p>这些排序算法中稳定的有插入排序，冒泡排序，归并排序，计数排序。在数据集较大时，适合选用高级排序算法，使用的最多的是快排。在数据集较小时，反而简单的排序算法可能效果更好。JavaScript 自带的<span class="inline-code">sort()</span>函数默认是字典排序，向它传入一个自定义的<span class="inline-code">compare</span>函数就可以按自定义的方法排序，十分灵活。</p>
+        </div>
+    </div>
+    <div class="content-footer">
+        <a href="#" id="backToTopLink">
+            <span class="icon-text">
+                <i class="iconfont icon-guanjiaowangtubiao37"></i>
+            </span>
+            <span>回到顶部</span>
+        </a>
+        <a href="../index.html" id="backToHomeLink">
+            <span class="icon-text">
+                <i class="iconfont icon-fanhuishouye"></i>
+            </span>
+            <span>返回首页</span>
+        </a>
+    </div>
+</div>
+<!-- main content ends here -->
+
+
+<!-- footer starts here -->
+<div class="footer">
+    <p>Copyright &copy; 2017.Sandy All rights reserved.</p>      
+    <div class="clearfix"></div>
+</div>
+<!-- header ends here -->
+
+ <!-- scripts-->
+    <script src="../js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/header.js" type="text/javascript"></script>
+    <!-- baidu map script -->
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="../js/jQuery.dot.js"></script>
+    <!-- back to top -->
+    <script type="text/javascript" src="../js/backToTop.js"></script>
+    <!-- show clock -->
+    <script type="text/javascript" src="../js/clock.js"></script> 
+    <!-- 底部导航栏，选择博客,按文章分类显示文章 -->
+    <script type="text/javascript" src="../js/pageNav.js"></script>
+    <!-- 统计博客访问次数 -->
+    <script src="https://cdn1.lncld.net/static/js/av-mini-0.6.10.js"></script>
+    <script src="http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-lc-0.2.0.js"></script>
+    <!-- 自定义事件 -->
+    <script type="text/javascript" src="../js/EventUtil.js"></script>
+    <!-- 移动元素 -->
+    <script type="text/javascript" src="../js/moveEle.js"></script>
+</body>
+</html>
