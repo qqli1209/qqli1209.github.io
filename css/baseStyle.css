@@ -121,7 +121,6 @@ pre {line-height: 1.4;
 
 .top-nav ul li a:link,
 .top-nav ul li a:visited {
-  border: 1px solid transparent;
   text-align: center;
   width: 7em;
   display: inline-block;
@@ -134,6 +133,16 @@ pre {line-height: 1.4;
   font-family: 'Open Sans', sans-serif;
 }
 
+/*fix flicker bugs while hover on li item, add transparent border*/
+.top-nav ul.nav1>li>a:link,
+.top-nav ul.nav1>li>a:visited {
+  border: 1px solid transparent;
+}
+.top-nav ul.nav1>li>a:hover,
+.top-nav ul.nav1>li>a:focus,
+.top-nav ul.nav1>li>a:active {
+  border: 1px solid #66a300;
+}
 .top-nav ul li a:hover,
 .top-nav ul li a:focus,
 .top-nav ul li a:active,
