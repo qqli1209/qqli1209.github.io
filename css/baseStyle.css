@@ -121,6 +121,7 @@ pre {line-height: 1.4;
 
 .top-nav ul li a:link,
 .top-nav ul li a:visited {
+  border: 1px solid transparent;
   text-align: center;
   width: 7em;
   display: inline-block;
