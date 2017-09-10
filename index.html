@@ -524,28 +524,26 @@
 <!-- main content ends here -->
 
 
-
-
 <!-- map starts here -->
 <div id="contact">
     <script>
         var map = new AMap.Map('contact', {
-                  zoom: 17,
-                  center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
-                  });
+            zoom: 17,
+            center: [118.9615169379,32.1108455072] //Panzhonglai Building Longitude and Latitude
+        });
 
         var marker = new AMap.Marker({
-                     position: [118.9615169379,32.1108455072],
-                     map: map
-                     });
+            position: [118.9615169379,32.1108455072],
+            map: map
+        });
 
         //scale rule
         AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function(){
-                   var toolBar = new AMap.ToolBar();
-                   var scale   = new AMap.Scale();
-                   map.addControl(toolBar);
-                   map.addControl(scale);
-                   });
+            var toolBar = new AMap.ToolBar();
+            var scale   = new AMap.Scale();
+            map.addControl(toolBar);
+            map.addControl(scale);
+        });
     </script>
 </div>
 <!-- map ends here -->
